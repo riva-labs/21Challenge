@@ -34,6 +34,53 @@ A **Sui object** is a special type of struct that:
 2. **What is an Object?** - Understand the concept:
    [https://move-book.com/object/object-model.html/](https://move-book.com/object/object-model.html/)
 
+## Related Days
+
+- **Day 16** - Creating your first Sui object with UID
+- **Day 17** - Entry functions and object ownership
+
+## Entry Functions Guide (Coming Up)
+
+Starting from Day 17, you'll learn about **entry functions** - special functions that can be called directly from explorers(e.g. https://suiscan.xyz). Here's what you need to know:
+
+### What are Entry Functions?
+
+Entry functions are the public interface of your Sui module. They:
+- Can be called directly from explorers
+- Are marked with the `entry` keyword
+- Must take `&mut TxContext` as the last parameter (if they create objects)
+- Are what users interact with when using your module
+
+### Basic Entry Function Pattern
+
+```move
+entry fun create_something(ctx: &mut TxContext) {
+    // Create an object
+    let obj = Object {
+      id: object::new(ctx)
+    };
+    // Transfer it to the sender
+    transfer::transfer(obj, sender(ctx));
+}
+```
+
+### Entry Functions for Object Operations
+
+When you want to modify an object, your entry function receives the object:
+
+```move
+entry fun update_object(obj: &mut MyObject) {
+    // Modify the object
+    obj.field = new_value;
+}
+```
+
+### Sending Transactions
+
+<!-- Screenshots will be added here -->
+
+You'll learn more about entry functions in Days 17-21!
+
 ## Commit
 
 ```bash

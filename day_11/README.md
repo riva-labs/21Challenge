@@ -42,6 +42,11 @@ When you create a `TaskBoard` with an `owner: address`:
 2. **Ownership & Scope** - Review ownership concepts:
    [https://move-book.com/move-basics/ownership-and-scope/](https://move-book.com/move-basics/ownership-and-scope/)
 
+## Related Days
+
+- **Day 10** - Visibility modifiers (prerequisite)
+- **Day 12** - Building on TaskBoard with more functions
+
 ## Commit
 
 ```bash

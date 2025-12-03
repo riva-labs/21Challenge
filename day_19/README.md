@@ -25,6 +25,15 @@ These are useful for:
 2. Write `total_planted()` that returns the planted count
 3. Write `total_harvested()` that returns the harvested count
 
+## Testing
+
+Tests for this day are located in `tests/day_19_test.move`. This is an independent test file that demonstrates how to test query functions using Sui's test scenario framework.
+
+To run the tests:
+```bash
+sui move test
+```
+
 ## Reading Materials
 
 1. **Functions** - Review function syntax:

@@ -28,6 +28,11 @@ In Move, functions can be:
 1. **Visibility Modifiers** - Learn about public vs private:
    [https://move-book.com/move-basics/visibility/](https://move-book.com/move-basics/visibility/)
 
+## Related Days
+
+- **Day 9** - Task struct and enums (prerequisite)
+- **Day 11** - Building on visibility with TaskBoard
+
 ## Commit
 
 ```bash
