@@ -17,14 +17,27 @@ A **Sui object** is a special type of struct that:
 
 **Today's Note:** We're NOT creating a Sui object yet! We're just creating a regular struct. We'll add UID and make it an object tomorrow.
 
+## Farm Updates
+
+The farm includes plotId support:
+- **PlotId validation**: PlotIds must be between 1 and 20
+- **Plot tracking**: A vector tracks all planted plots
+- **Duplicate prevention**: Cannot plant the same plotId twice
+- **Limit enforcement**: Maximum of 20 plots
+- **Harvest validation**: Cannot harvest plots that don't exist
+
+All functions now take `plotId: u8` parameters.
+
 ## Your Task
 
 1. Open `sources/main.move`
-2. Define a `FarmCounters` struct with:
+2. Define constants for plotId validation and error codes
+3. Define a `FarmCounters` struct with:
    - `planted: u64`
    - `harvested: u64`
-3. Add `copy`, `drop`, and `store` abilities (store is needed for objects later)
-4. Write `new_counters()`, `plant()`, and `harvest()` functions
+   - `plots: vector<u8>`
+4. Add `copy`, `drop`, and `store` abilities (store is needed for objects later)
+5. Write `new_counters()`, `plant(plotId: u8)`, and `harvest(plotId: u8)` functions with plotId validation
 
 ## Reading Materials
 

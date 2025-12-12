@@ -10,15 +10,32 @@ Today you'll learn:
 ## Understanding Object Parameters in Entry Functions
 
 Entry functions can receive objects as parameters. When you call an entry function with an object:
-- The object must be owned by the transaction sender
+- For owned objects: The object must be owned by the transaction sender
+- For shared objects: The object can be accessed by anyone (shared objects are created with `transfer::share_object()`)
 - The function receives a mutable reference (`&mut Object`)
 - Changes to the object are persisted on-chain
 
+## Farm Updates
+
+The farm has been extended with plotId support:
+- **PlotId validation**: PlotIds must be between 1 and 20
+- **Plot tracking**: A vector tracks all planted plots
+- **Duplicate prevention**: Cannot plant the same plotId twice
+- **Limit enforcement**: Maximum of 20 plots
+- **Harvest validation**: Cannot harvest plots that don't exist
+- **Shared objects**: Farm is now a shared object (using `transfer::share_object`)
+
+All functions now take `plotId: u8` parameters.
+
 ## Your Task
 
-1. The code from day_17 is already in `sources/main.move` (you can also check `day_17/sources/solution.move` if needed)
-2. Write `entry fun plant_on_farm_entry()` that receives `&mut Farm`
-3. Write `entry fun harvest_from_farm_entry()` that receives `&mut Farm`
+1. The code from day_17 is already in `sources/main.move` with plotId support added (you can also check `day_17/sources/solution.move` if needed)
+2. Write an entry function `plant_on_farm_entry(farm: &mut Farm, plotId: u8)` that:
+   - Takes `farm: &mut Farm` and `plotId: u8` as parameters
+   - Calls `plant_on_farm(farm, plotId)` to plant on the specified plot
+3. Write an entry function `harvest_from_farm_entry(farm: &mut Farm, plotId: u8)` that:
+   - Takes `farm: &mut Farm` and `plotId: u8` as parameters
+   - Calls `harvest_from_farm(farm, plotId)` to harvest from the specified plot
 
 ## Reading Materials
 

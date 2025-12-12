@@ -22,9 +22,20 @@ The `key` ability means:
 - It can be owned and transferred
 - It can be stored on-chain
 
+## Farm Updates
+
+The farm has been extended with plotId support:
+- **PlotId validation**: PlotIds must be between 1 and 20
+- **Plot tracking**: A vector tracks all planted plots
+- **Duplicate prevention**: Cannot plant the same plotId twice
+- **Limit enforcement**: Maximum of 20 plots
+- **Harvest validation**: Cannot harvest plots that don't exist
+
+All functions now take `plotId: u8` parameters.
+
 ## Your Task
 
-1. The `FarmCounters` from day_15 is already in `sources/main.move` (you can also check `day_15/sources/solution.move` if needed)
+1. The `FarmCounters` from day_15 is already in `sources/main.move` with plotId support added (you can also check `day_15/sources/solution.move` if needed)
 2. Define a `Farm` struct with:
    - `id: UID`
    - `counters: FarmCounters`
