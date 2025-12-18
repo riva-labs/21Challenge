@@ -32,23 +32,6 @@ Tests in Move are functions marked with `#[test]`. They:
 - Help verify your code works correctly
 - Use assertions to check expected values
 
-Basic test syntax:
-``` move
-fun test_name() {
-    assert_eq!(1 + 1, 2)
-}
-```
-
-`assert_eq!` has to be called with the exclamation mark because it's a macro rather than a function. If you don't know what is macro, you can think that it's cooler function. It copy-pasted the actual code instead of calling the function.
-
-Note: In Move, you have to import the `assert_eq` from `std::unit_test` inside your module to use it. You can do it like:
-``` move
-#[test_only]
-use std::unit_test::assert_eq;
-```
-
-The good people tend to use `#[test_only]` to not pollute scope with test related things to speed up compiler performance. Also, it's good to declare it's not related with actual code.
-
 ## Your Task
 
 1. Open `sources/main.move`
@@ -63,9 +46,6 @@ The good people tend to use `#[test_only]` to not pollute scope with test relate
 2. **Functions** - Learn function syntax and usage:
    [https://move-book.com/move-basics/function/](https://move-book.com/move-basics/function/)
 
-3. **Testing** - Learn testing fundamentals:
-   [https://move-book.com/move-basics/testing/](https://move-book.com/move-basics/testing/)
-
 ## Commit
 
 ```bash
@@ -74,3 +54,4 @@ sui move test
 git add day_02/
 git commit -m "Day 2: practice primitive types and functions"
 ```
+
