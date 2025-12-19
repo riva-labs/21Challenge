@@ -12,5 +12,5 @@ module challenge::day_01 {
 
     const NUMBER: u64 = 42; // Unsigned 64-bit integer (0, 1, 2, 3, ...)
     const FLAG: bool = true; // Boolean value (true or false)
-    const MY_ADDRESS: address = @0x1; // Address type  A blockchain address (like 0x123...)
+    const MY_ADDRESS: address = @0x1; // A blockchain address (like 0x123...)
 }
