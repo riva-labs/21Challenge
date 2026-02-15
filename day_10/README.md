@@ -1,37 +1,37 @@
-# Day 10: Visibility & API Design
+# Gun 10: Visibility (Gorunurluk) ve API Tasarimi
 
-## What You'll Learn Today
+## Bugun Ne Ogreneceksiniz
 
-Today you'll learn:
-- The difference between `public` and private functions
-- How to design a good public API
-- When to make functions public vs private
+Bugun ogrenecekleriniz:
+- `public` ve private fonksiyonlar arasindaki fark
+- Iyi bir public API nasil tasarlanir
+- Fonksiyonlar ne zaman public, ne zaman private yapilmali
 
-## Understanding Visibility
+## Visibility'yi Anlama
 
-In Move, functions can be:
-- **`public fun`** - Can be called from outside the module
-- **`fun`** (no public) - Can only be called from within the same module (private)
+Move'da fonksiyonlar su sekilde olabilir:
+- **`public fun`** - Modul disindaan cagrilabilir
+- **`fun`** (public yok) - Yalnizca ayni modul icinden cagrilabilir (private)
 
-**API Design Principle:**
-- Make functions `public` if users of your module need to call them
-- Keep helper functions `private` (just `fun`) if they're only used internally
+**API Tasarim Ilkesi:**
+- Modulunuzun kullaniiclarinin cagirmasi gereken fonksiyonlari `public` yapin
+- Yalnizca dahili olarak kullanulan yardimci fonksiyonlari `private` (sadece `fun`) tutun
 
-## Your Task
+## Goreviniz
 
-1. The code from day_09 is already in `sources/main.move` (you can also check `day_09/sources/solution.move` if needed)
-2. Write a `public fun complete_task()` that marks a task as completed
-3. (Optional) Write a private helper function to show the difference
+1. day_09'daki kod zaten `sources/main.move` dosyasinda (gerekirse `day_09/sources/solution.move` dosyasini da kontrol edebilirsiniz)
+2. Bir gorevi tamamlanmis olarak isaretleyen `public fun complete_task()` yazin
+3. (Opsiyonel) Farki gostermek icin bir private yardimci fonksiyon yazin
 
-## Reading Materials
+## Okuma Materyalleri
 
-1. **Visibility Modifiers** - Learn about public vs private:
+1. **Visibility Degistiricileri** - Public ve private hakkinda bilgi edinin:
    [https://move-book.com/move-basics/visibility/](https://move-book.com/move-basics/visibility/)
 
-## Related Days
+## Ilgili Gunler
 
-- **Day 9** - Task struct and enums (prerequisite)
-- **Day 11** - Building on visibility with TaskBoard
+- **Gun 9** - Task struct'i ve enum'lar (on kosul)
+- **Gun 11** - TaskBoard ile visibility uzerine insa etme
 
 ## Commit
 

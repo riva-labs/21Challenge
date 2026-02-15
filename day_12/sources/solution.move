@@ -1,14 +1,14 @@
-/// DAY 12: Option for Task Lookup - SOLUTION
-/// 
-/// This is the solution file for day 12.
-/// Students should complete main.move, not this file.
+/// GUN 12: Gorev Arama icin Option - COZUM
+///
+/// Bu, gun 12'nin cozum dosyasidir.
+/// Ogrenciler bu dosyayi degil, main.move dosyasini tamamlamalidir.
 
 module challenge::day_12_solution {
     use std::vector;
     use std::string::String;
     use std::option::{Self, Option};
 
-    // Copy TaskBoard and related structs from day_11
+    // day_11'den TaskBoard ve ilgili struct'lar kopyalandi
     public enum TaskStatus has copy, drop {
         Open,
         Completed,
@@ -44,7 +44,7 @@ module challenge::day_12_solution {
         vector::push_back(&mut board.tasks, task);
     }
 
-    // Find task by title, returns Option<u64> with index if found
+    // Basliga gore gorev bulma, bulunursa index ile Option<u64> dondurur
     public fun find_task_by_title(board: &TaskBoard, title: &String): Option<u64> {
         let len = vector::length(&board.tasks);
         let mut i = 0;

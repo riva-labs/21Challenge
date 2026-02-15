@@ -1,13 +1,13 @@
-/// DAY 13: Simple Aggregations - SOLUTION
-/// 
-/// This is the solution file for day 13.
-/// Students should complete main.move, not this file.
+/// GUN 13: Basit Aggregation'lar - COZUM
+///
+/// Bu, gun 13'un cozum dosyasidir.
+/// Ogrenciler bu dosyayi degil, main.move dosyasini tamamlamalidir.
 
 module challenge::day_13_solution {
     use std::vector;
     use std::string::String;
 
-    // Copy TaskBoard and related structs from previous days
+    // Onceki gunlerden TaskBoard ve ilgili struct'lar kopyalandi
     public enum TaskStatus has copy, drop {
         Open,
         Completed,
@@ -47,7 +47,7 @@ module challenge::day_13_solution {
         task.status = TaskStatus::Completed;
     }
 
-    // Calculate total reward of all tasks
+    // Tum gorevlerin toplam odulunu hesaplar
     public fun total_reward(board: &TaskBoard): u64 {
         let len = vector::length(&board.tasks);
         let mut total = 0;
@@ -60,7 +60,7 @@ module challenge::day_13_solution {
         total
     }
 
-    // Count completed tasks
+    // Tamamlanan gorevleri sayar
     public fun completed_count(board: &TaskBoard): u64 {
         let len = vector::length(&board.tasks);
         let mut count = 0;

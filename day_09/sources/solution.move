@@ -1,25 +1,25 @@
-/// DAY 9: Enums & TaskStatus - SOLUTION
-/// 
-/// This is the solution file for day 9.
-/// Students should complete main.move, not this file.
+/// GUN 9: Enum'lar ve TaskStatus - COZUM
+///
+/// Bu, gun 9'un cozum dosyasidir.
+/// Ogrenciler bu dosyayi degil, main.move dosyasini tamamlamalidir.
 
 module challenge::day_09_solution {
     use std::string::String;
 
-    // Task status enum
+    // Gorev durumu enum'u
     public enum TaskStatus has copy, drop {
         Open,
         Completed,
     }
 
-    // Task struct using TaskStatus instead of bool
+    // bool yerine TaskStatus kullanan Task struct'i
     public struct Task has copy, drop {
         title: String,
         reward: u64,
         status: TaskStatus,
     }
 
-    // Constructor that sets status to Open
+    // Durumu Open olarak ayarlayan constructor
     public fun new_task(title: String, reward: u64): Task {
         Task {
             title,
@@ -28,7 +28,7 @@ module challenge::day_09_solution {
         }
     }
 
-    // Check if a task is open
+    // Bir gorevin acik olup olmadigini kontrol eder
     public fun is_open(task: &Task): bool {
         task.status == TaskStatus::Open
     }

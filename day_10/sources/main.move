@@ -1,16 +1,16 @@
-/// DAY 10: Visibility Modifiers (Public vs Private Functions)
-/// 
-/// Today you will:
-/// 1. Learn about visibility modifiers (public vs private)
-/// 2. Design a public API
-/// 3. Write a function to complete tasks
+/// GUN 10: Visibility Degistiricileri (Public ve Private Fonksiyonlar)
 ///
-/// Note: You can copy code from day_09/sources/solution.move if needed
+/// Bugun yapacaklariniz:
+/// 1. Visibility degistiricilerini ogrenme (public ve private)
+/// 2. Bir public API tasarlama
+/// 3. Gorevleri tamamlamak icin bir fonksiyon yazma
+///
+/// Not: Gerekirse day_09/sources/solution.move dosyasindan kod kopyalayabilirsiniz
 
 module challenge::day_10 {
     use std::string::String;
 
-    // Copy from day_09: TaskStatus enum and Task struct
+    // day_09'dan kopyalandi: TaskStatus enum'u ve Task struct'i
     public enum TaskStatus has copy, drop {
         Open,
         Completed,
@@ -34,18 +34,18 @@ module challenge::day_10 {
         task.status == TaskStatus::Open
     }
 
-    // TODO: Write a public function 'complete_task' that:
-    // - Takes task: &mut Task
-    // - Sets task.status = TaskStatus::Completed
-    // This should be public so users can call it
+    // TODO: Su ozelliklere sahip bir public 'complete_task' fonksiyonu yazin:
+    // - task: &mut Task parametresi alir
+    // - task.status = TaskStatus::Completed olarak ayarlar
+    // Kullanicilarin cagirabilmesi icin public olmalidir
     // public fun complete_task(task: &mut Task) {
-    //     // Your code here
+    //     // Kodunuz buraya
     // }
 
-    // TODO: (Optional) Write a private helper function
-    // Private functions use 'fun' instead of 'public fun'
-    // They can only be called from within the same module
-    // BONUS: Add a public function that calls your private helper
-    //        (e.g. 'has_valid_reward' that internally calls 'internal_helper')
+    // TODO: (Opsiyonel) Bir private yardimci fonksiyon yazin
+    // Private fonksiyonlar 'public fun' yerine 'fun' kullanir
+    // Yalnizca ayni modul icinden cagrilabilirler
+    // BONUS: Private yardimcinizi cagiran bir public fonksiyon ekleyin
+    //        (ornegin dahili olarak 'internal_helper' cagiran 'has_valid_reward')
 }
 

@@ -1,19 +1,19 @@
-/// DAY 11: TaskBoard & Address Type
-/// 
-/// Today you will:
-/// 1. Learn about the address type
-/// 2. Create a TaskBoard that tracks ownership
-/// 3. Understand ownership in practice
+/// GUN 11: TaskBoard ve Address Tipi
 ///
-/// Note: You can copy code from day_10/sources/solution.move if needed
-/// 
-/// Related: Day 10 (Visibility), Day 12 (Building on TaskBoard)
+/// Bugun yapacaklariniz:
+/// 1. Address tipi hakkinda bilgi edinme
+/// 2. Sahipligi takip eden bir TaskBoard olusturma
+/// 3. Sahipligi pratikte anlama
+///
+/// Not: Gerekirse day_10/sources/solution.move dosyasindan kod kopyalayabilirsiniz
+///
+/// Ilgili: Gun 10 (Visibility), Gun 12 (TaskBoard uzerine insa etme)
 
 module challenge::day_11 {
     use std::vector;
     use std::string::String;
 
-    // Copy from day_10: TaskStatus enum and Task struct
+    // day_10'dan kopyalandi: TaskStatus enum'u ve Task struct'i
     public enum TaskStatus has copy, drop {
         Open,
         Completed,
@@ -37,26 +37,25 @@ module challenge::day_11 {
         task.status = TaskStatus::Completed;
     }
 
-    // TODO: Define a struct called 'TaskBoard' with:
-    // - owner: address (the address that owns this board)
+    // TODO: Asagidakilere sahip 'TaskBoard' adinda bir struct tanimlayin:
+    // - owner: address (bu panoya sahip olan adres)
     // - tasks: vector<Task>
-    // Add 'drop' ability
+    // 'drop' ability'si ekleyin
     // public struct TaskBoard has drop {
-    //     // Your fields here
+    //     // Alanlariniz buraya
     // }
 
-    // TODO: Write a constructor 'new_board' that takes owner: address
-    // and returns an empty TaskBoard
+    // TODO: owner: address alan ve bos bir TaskBoard donduren 'new_board' constructor'i yazin
     // public fun new_board(owner: address): TaskBoard {
-    //     // Your code here
+    //     // Kodunuz buraya
     // }
 
-    // TODO: Write a function 'add_task' that:
-    // - Takes board: &mut TaskBoard and task: Task
-    // - Adds the task to the board's vector
-    // The task becomes part of the board's data
+    // TODO: Su ozelliklere sahip bir 'add_task' fonksiyonu yazin:
+    // - board: &mut TaskBoard ve task: Task parametreleri alir
+    // - Gorevi panonun vector'une ekler
+    // Gorev panonun verisinin bir parcasi olur
     // public fun add_task(board: &mut TaskBoard, task: Task) {
-    //     // Your code here
+    //     // Kodunuz buraya
     // }
 }
 

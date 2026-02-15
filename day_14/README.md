@@ -1,30 +1,30 @@
-# Day 14: Tests for Bounty Board
+# Gun 14: Bounty Board icin Testler
 
-## What You'll Learn Today
+## Bugun Ne Ogreneceksiniz
 
-Today you'll learn:
-- How to write comprehensive tests
-- How to test multiple functions together
-- Best practices for test organization
+Bugun ogrenecekleriniz:
+- Kapsamli testler nasil yazilir
+- Birden fazla fonksiyon birlikte nasil test edilir
+- Test organizasyonu icin en iyi uygulamalar
 
-## Understanding Test Coverage
+## Test Kapsamini Anlama
 
-Good tests cover:
-- **Happy path** - Normal, expected usage
-- **Edge cases** - Boundary conditions
-- **Multiple functions** - How functions work together
+Iyi testler sunlari kapsar:
+- **Mutlu yol** - Normal, beklenen kullanim
+- **Sinir durumlari** - Sinir kosullari
+- **Coklu fonksiyonlar** - Fonksiyonlarin birlikte nasil calistigi
 
-## Your Task
+## Goreviniz
 
-1. The code from day_13 is already in `sources/main.move` (you can also check `day_13/sources/solution.move` if needed)
-2. Write at least 3 tests:
-   - Create board and add task
-   - Complete a task and verify count
-   - Calculate total reward
+1. day_13'teki kod zaten `sources/main.move` dosyasinda (gerekirse `day_13/sources/solution.move` dosyasini da kontrol edebilirsiniz)
+2. En az 3 test yazin:
+   - Pano olusturun ve gorev ekleyin
+   - Bir gorevi tamamlayin ve sayiyi dogrulayin
+   - Toplam odulu hesaplayin
 
-## Reading Materials
+## Okuma Materyalleri
 
-1. **Testing** - Review testing concepts:
+1. **Test Yazma** - Test kavramlarini gozden gecirin:
    [https://move-book.com/move-basics/testing/](https://move-book.com/move-basics/testing/)
 
 ## Commit

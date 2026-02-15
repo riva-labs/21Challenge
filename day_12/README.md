@@ -1,19 +1,19 @@
-# Day 12: Option for Task Lookup
+# Gun 12: Gorev Arama icin Option
 
-## What You'll Learn Today
+## Bugun Ne Ogreneceksiniz
 
-Today you'll learn:
-- What `Option<T>` is and when to use it
-- How to handle "maybe found, maybe not" situations
-- How to return `Some(value)` or `None`
+Bugun ogrenecekleriniz:
+- `Option<T>` nedir ve ne zaman kullanilir
+- "Belki bulundu, belki bulunmadi" durumlarini nasil ele alinir
+- `Some(value)` veya `None` nasil dondurulur
 
-## Understanding Option
+## Option'i Anlama
 
-**Option** is a type that represents "maybe there's a value, maybe there isn't". It has two variants:
-- `Some(value)` - There is a value
-- `None` - There is no value
+**Option** (opsiyonel), "belki bir deger var, belki yok" durumunu temsil eden bir tiptir. Iki varyanti vardir:
+- `Some(value)` - Bir deger var
+- `None` - Deger yok
 
-This is perfect for functions that might not find what they're looking for:
+Aradigi seyi bulamayabilecek fonksiyonlar icin mukemmeldir:
 ```move
 fun find_task(...): Option<u64> {
     if (found) {
@@ -24,17 +24,17 @@ fun find_task(...): Option<u64> {
 }
 ```
 
-## Your Task
+## Goreviniz
 
-1. The code from day_11 is already in `sources/main.move` (you can also check `day_11/sources/solution.move` if needed)
-2. Write `find_task_by_title()` that:
-   - Takes a board and a title
-   - Returns `Option<u64>` (the index if found, None if not)
-   - Loops through tasks to find a match
+1. day_11'deki kod zaten `sources/main.move` dosyasinda (gerekirse `day_11/sources/solution.move` dosyasini da kontrol edebilirsiniz)
+2. Su ozelliklere sahip `find_task_by_title()` yazin:
+   - Bir board ve bir title alir
+   - `Option<u64>` dondurur (bulunursa index, bulunmazsa None)
+   - Eslesen bir gorev bulmak icin gorevler arasinda dongu yapar
 
-## Reading Materials
+## Okuma Materyalleri
 
-1. **Option** - Learn about Option type:
+1. **Option** - Option tipi hakkinda bilgi edinin:
    [https://move-book.com/move-basics/option/](https://move-book.com/move-basics/option/)
 
 ## Commit

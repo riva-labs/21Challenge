@@ -1,17 +1,17 @@
-# Day 9: Enums & TaskStatus
+# Gun 9: Enum'lar ve TaskStatus
 
-## What You'll Learn Today
+## Bugun Ne Ogreneceksiniz
 
-Today you'll learn:
-- What enums are and when to use them
-- How to replace boolean flags with enums
-- How to check enum values
+Bugun ogrenecekleriniz:
+- Enum'larin (numaralandirma) ne oldugu ve ne zaman kullanilacagi
+- Boolean flag'lerin enum'larla nasil degistirilecegi
+- Enum degerlerinin nasil kontrol edilecegi
 
-## Understanding Enums
+## Enum'lari Anlama
 
-An **enum** (enumeration) is a type that can be one of several variants. It's perfect for representing states or categories.
+Bir **enum** (numaralandirma), birden fazla varyantttan biri olabilen bir tiptir. Durumlari veya kategorileri temsil etmek icin mukemmeldir.
 
-Instead of using `bool` for "done or not done", we can use an enum:
+"Yapildi mi yapilmadi mi" icin `bool` kullanmak yerine bir enum kullanabiliriz:
 ```move
 enum TaskStatus {
     Open,      // Task is available
@@ -19,21 +19,21 @@ enum TaskStatus {
 }
 ```
 
-This is better because:
-- More readable (status == Open vs done == false)
-- Easier to extend (can add more statuses later)
-- Type-safe (can't accidentally use wrong value)
+Bu daha iyidir cunku:
+- Daha okunabilir (status == Open vs done == false)
+- Genisletmesi daha kolay (daha sonra daha fazla durum eklenebilir)
+- Tip guvenli (yanlis deger kullanmak mumkun degil)
 
-## Your Task
+## Goreviniz
 
-1. Copy your `Task` struct from day_08 into `sources/main.move`
-2. Define a `TaskStatus` enum with `Open` and `Completed` variants
-3. Update `Task` to use `status: TaskStatus` instead of `done: bool`
-4. Write an `is_open()` function
+1. `Task` struct'inizi day_08'den `sources/main.move` dosyasina kopyalayin
+2. `Open` ve `Completed` varyantlarina sahip bir `TaskStatus` enum'u tanimlayin
+3. `Task`'i `done: bool` yerine `status: TaskStatus` kullanacak sekilde guncelleyin
+4. Bir `is_open()` fonksiyonu yazin
 
-## Reading Materials
+## Okuma Materyalleri
 
-1. **Enums & Match** - Learn about enums and pattern matching:
+1. **Enum'lar ve Match** - Enum'lar ve oruntu eslestirme hakkinda bilgi edinin:
    [https://move-book.com/move-basics/enum-and-match/](https://move-book.com/move-basics/enum-and-match/)
 
 ## Commit

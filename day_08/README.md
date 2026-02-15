@@ -1,31 +1,31 @@
-# Day 8: New Module & Simple Task Struct
+# Gun 8: Yeni Module & Basit Task Struct
 
-## What You'll Learn Today
+## Bugun Ne Ogreneceksiniz
 
-Today you'll start a new project: **Task Bounty Board**. You'll learn:
-- How to create a new module for a different project
-- How to design a struct for tasks
-- How to write constructor functions
+Bugun yeni bir projeye baslayacaksiniz: **Task Bounty Board**. Ogrenecekleriniz:
+- Farkli bir proje icin yeni bir module (modul) nasil olusturulur
+- Gorevler icin bir struct (veri yapisi) nasil tasarlanir
+- Constructor function (yapici fonksiyon) nasil yazilir
 
-## Understanding Project Organization
+## Proje Organizasyonunu Anlama
 
-Each day builds on previous concepts, but sometimes we start fresh projects to practice different patterns. Today we're building a task management system.
+Her gun onceki kavramlarin uzerine insa edilir, ancak bazen farkli kaliplari pratik etmek icin sifirdan projeler baslatiyoruz. Bugun bir gorev yonetim sistemi olusturuyoruz.
 
-## Your Task
+## Goreviniz
 
-1. Open `sources/main.move`
-2. Define a `Task` struct with:
+1. `sources/main.move` dosyasini acin
+2. Asagidaki alanlara sahip bir `Task` struct'i tanimlayin:
    - `title: String`
    - `reward: u64`
    - `done: bool`
-3. Write a `new_task()` constructor function
+3. Bir `new_task()` constructor function (yapici fonksiyon) yazin
 
-## Reading Materials
+## Okuma Materyalleri
 
-1. **Modules** - Review module structure:
+1. **Modules** - Module yapisini gozden gecirin:
    [https://move-book.com/move-basics/module/](https://move-book.com/move-basics/module/)
 
-2. **Structs** - Review struct definition:
+2. **Structs** - Struct tanimini gozden gecirin:
    [https://move-book.com/move-basics/struct/](https://move-book.com/move-basics/struct/)
 
 ## Commit
@@ -36,4 +36,3 @@ sui move test
 git add day_08/
 git commit -m "Day 8: create bounty_board module and Task struct"
 ```
-
