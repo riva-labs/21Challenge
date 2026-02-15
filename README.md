@@ -1,36 +1,36 @@
-# 21-Day Sui Move Learning Challenge
+# 21 Gunluk Sui Move Ogrenme Challenge'i
 
-A simple, beginner-friendly guide to learning Sui Move programming in 21 days.
+Sui Move programlamayi 21 gunde ogrenmek icin basit ve yeni baslayanlar icin uygun bir rehber.
 
-## How It Works
+## Nasil Calisir
 
-**Each day has its own folder** with everything you need:
+**Her gunun ihtiyaciniz olan her seyi iceren kendi klasoru vardir:**
 
-- `day_01/` - Day 1: Modules + Primitive Types
-- `day_02/` - Day 2: Functions
-- `day_03/` - Day 3: Structs
+- `day_01/` - Gun 1: Module'ler + Ilkel Tipler
+- `day_02/` - Gun 2: Fonksiyonlar
+- `day_03/` - Gun 3: Struct'lar
 - ...
-- `day_21/` - Day 21: Final Tests
+- `day_21/` - Gun 21: Final Testleri
 
-Each day folder contains:
-- `README.md` - Explanation of concepts + reading materials
-- `Move.toml` - Move package configuration
-- `sources/main.move` - Your code file with TODO comments
+Her gun klasoru sunlari icerir:
+- `README.md` - Kavramlarin aciklamasi + okuma materyalleri
+- `Move.toml` - Move paket yapilandirmasi
+- `sources/main.move` - TODO yorumlari olan kod dosyaniz
 
-## Getting Started
+## Baslangic
 
-### Prerequisites
+### On Kosullar
 
-**New to programming?** Start with `day_00_setup/README.md` for detailed setup instructions!
+**Programlamaya yeni misiniz?** Ayrintili kurulum talimatlari icin `day_00_setup/README.md` ile baslayinn!
 
-- Sui CLI installed ([Quick Install Guide](https://docs.sui.io/build/install) or see `day_00_setup/`)
-- Code editor (VS Code recommended)
-- Git installed
-- Basic terminal knowledge
+- Sui CLI yuklu ([Hizli Kurulum Rehberi](https://docs.sui.io/build/install) veya `day_00_setup/` klasorune bakin)
+- Kod editorru (VS Code onerilir)
+- Git yuklu
+- Temel terminal bilgisi
 
-**Not sure if you're ready?** Check the setup guide in `day_00_setup/README.md` for step-by-step instructions.
+**Hazir olup olmadiginizdan emin degil misiniz?** Adim adim talimatlar icin `day_00_setup/README.md` dosyasindaki kurulum rehberine bakin.
 
-### Quick Start (If You Have Sui CLI Installed)
+### Hizli Baslangicc (Sui CLI Yukluyse)
 
 ```bash
 # Clone or download the project
@@ -47,44 +47,44 @@ sui move build
 sui move test
 ```
 
-**First time?** See detailed explanation of these commands below ⬇️
+**Ilk kez mi?** Bu komutlarin ayrintili aciklamasi icin asagiya bakin ⬇️
 
-## How to Use
+## Nasil Kullanilir
 
-1. **Setup First** (if needed): Check `day_00_setup/README.md` for installation help
-2. **Start with Day 1**: Go to `day_01/` folder
-3. **Read the README**: Each day's README explains:
-   - What you'll learn
-   - Key concepts (with examples)
-   - Your tasks
-   - Reading materials (Move Book links)
-   - **Related Days** - see which days connect to this one
-4. **Code**: Open `sources/main.move` and complete the TODOs
-   - Look for `TODO:` comments with instructions
-   - Code examples and hints are provided as comments
-5. **Test**: Run `sui move test` in that day's folder
-6. **Stuck?** Check the solution:
-   - Look at `sources/solution.move` for the complete answer
-   - Try solving it yourself first!
-   - Solutions include helpful comments explaining the logic
-7. **Commit**: Commit your work
-8. **Move to next day**: Repeat for `day_02/`, `day_03/`, etc.
+1. **Once Kurulum** (gerekiyorsa): Kurulum yardimi icin `day_00_setup/README.md` dosyasini kontrol edin
+2. **Gun 1 ile Baslayin**: `day_01/` klasorune gidin
+3. **README'yi Okuyun**: Her gunun README'si sunlari aciklar:
+   - Ne ogreneceksiniz
+   - Temel kavramlar (orneklerle)
+   - Gorevleriniz
+   - Okuma materyalleri (Move Book baglantilari)
+   - **Ilgili Gunler** - hangi gunlerin bununla baglantili oldugunu gorun
+4. **Kodlayin**: `sources/main.move` dosyasini acin ve TODO'lari tamamlayin
+   - Talimatlarla birlikte `TODO:` yorumlarini arayin
+   - Kod ornekleri ve ipuclari yorum olarak saglanmistir
+5. **Test Edin**: O gunun klasorunde `sui move test` calistirin
+6. **Takildiyseniz?** Cozumu kontrol edin:
+   - Tam cevap icin `sources/solution.move` dosyasina bakin
+   - Once kendiniz cozmeyi deneyin!
+   - Cozumler mantigi aciklayan yardimci yorumlar icerir
+7. **Commit**: Calismanizi commit edin
+8. **Sonraki gune gecin**: `day_02/`, `day_03/`, vb. icin tekrarlayin
 
-## Project Structure
+## Proje Yapisi
 
 ```
 21Challenge/
-├── README.md              # This file
-├── GLOSSARY.md            # Terms and definitions reference
-├── TROUBLESHOOTING.md     # Solutions to common problems
-├── day_00_setup/          # Setup instructions (start here if new!)
+├── README.md              # Bu dosya
+├── GLOSSARY.md            # Terimler ve tanimlar referansi
+├── TROUBLESHOOTING.md     # Yaygin sorunlarin cozumleri
+├── day_00_setup/          # Kurulum talimatlari (yeniyseniz buradan baslayin!)
 │   └── README.md
 ├── day_01/
-│   ├── README.md          # Day 1 guide
-│   ├── Move.toml          # Package config
+│   ├── README.md          # Gun 1 rehberi
+│   ├── Move.toml          # Paket yapilandirmasi
 │   └── sources/
-│       ├── main.move      # Your code (complete the TODOs)
-│       └── solution.move  # Solution (check if stuck)
+│       ├── main.move      # Kodunuz (TODO'lari tamamlayin)
+│       └── solution.move  # Cozum (takildiysaniz kontrol edin)
 ├── day_02/
 │   ├── README.md
 │   ├── Move.toml
@@ -100,76 +100,76 @@ sui move test
         └── solution.move
 ```
 
-### Key Files
+### Onemli Dosyalar
 
-- **GLOSSARY.md** - Quick reference for Move terms (module, struct, ownership, etc.)
-- **TROUBLESHOOTING.md** - Solutions to common errors
-- **day_00_setup/** - Detailed setup guide (Sui CLI, VS Code, terminal basics)
-- **sources/main.move** - Your code file with TODOs
-- **sources/solution.move** - Complete solution (try first, then check!)
+- **GLOSSARY.md** - Move terimleri icin hizli basvuru (module, struct, ownership, vb.)
+- **TROUBLESHOOTING.md** - Yaygin hatalarin cozumleri
+- **day_00_setup/** - Ayrintili kurulum rehberi (Sui CLI, VS Code, terminal temelleri)
+- **sources/main.move** - TODO'larla birlikte kod dosyaniz
+- **sources/solution.move** - Tam cozum (once deneyin, sonra kontrol edin!)
 
-## Learning Goals
+## Ogrenme Hedefleri
 
-After completing this challenge, you'll understand:
+Bu challenge'i tamamladiktan sonra sunlari anlayacaksiniz:
 
-- ✅ Move syntax and basic concepts
-- ✅ Structs, enums, vectors
-- ✅ Ownership in Move
-- ✅ Sui object model
-- ✅ Entry functions
-- ✅ Events
-- ✅ Testing
+- ✅ Move sozdizimi ve temel kavramlar
+- ✅ Struct'lar, enum'lar, vector'ler
+- ✅ Move'da ownership (sahiplik)
+- ✅ Sui object modeli
+- ✅ Entry function'lar
+- ✅ Event'ler
+- ✅ Test yazma
 
-## Daily Workflow
+## Gunluk Is Akisi
 
-For each day:
+Her gun icin:
 
-1. **Read** (15-30 min) - Read the README and Move Book links
-2. **Code** (30-60 min) - Complete the TODOs in `main.move`
-3. **Test** (5 min) - Run `sui move test`
-4. **Commit** (1 min) - Commit your work
+1. **Okuyun** (15-30 dk) - README'yi ve Move Book baglantilarini okuyun
+2. **Kodlayin** (30-60 dk) - `main.move` dosyasindaki TODO'lari tamamlayin
+3. **Test Edin** (5 dk) - `sui move test` calistirin
+4. **Commit Edin** (1 dk) - Calismanizi commit edin
 
-## Understanding Commands
+## Komutlari Anlama
 
 ### `sui move build`
 
-**What it does:** Compiles your Move code into bytecode
+**Ne yapar:** Move kodunuzu bytecode'a derler
 
-**Where to run:** In each day's folder (e.g., inside `day_01/`)
+**Nerede calistirilir:** Her gunun klasorunde (ornegin `day_01/` icinde)
 
-**When to run:** After writing or changing code
+**Ne zaman calistirilir:** Kod yazdiktan veya degistirdikten sonra
 
-**Success looks like:**
+**Basarili gorunum:**
 ```
 BUILDING day_01
 Build successful
 ```
 
-> **You may see warnings — this is normal!** The compiler may show warnings like `unused function` or `unused variable`. These are NOT errors. As long as you see `Build successful` at the end, your code is correct.
+> **Uyarilar gorebilirsiniz — bu normaldir!** Derleyici `unused function` veya `unused variable` gibi uyarilar gosterebilir. Bunlar hata DEGILDIR. Sonunda `Build successful` gordugunuz surece kodunuz dogruduir.
 
-> **Windows users:** If the build fails, try deleting the `Move.lock` file and rebuilding: `rm Move.lock && sui move build`. See TROUBLESHOOTING.md for details.
+> **Windows kullanicilari:** Build basarisiz olursa, `Move.lock` dosyasini silip yeniden build'lemeyi deneyin: `rm Move.lock && sui move build`. Ayrintilar icin TROUBLESHOOTING.md dosyasina bakin.
 
-**Error?** See TROUBLESHOOTING.md or check the error message (it shows the line number!)
+**Hata mi?** TROUBLESHOOTING.md dosyasina bakin veya hata mesajini kontrol edin (satir numarasini gosterir!)
 
 ### `sui move test`
 
-**What it does:** Runs all test functions to verify your code works
+**Ne yapar:** Kodunuzun calistigini dogrulamak icin tum test fonksiyonlarini calistirir
 
-**Where to run:** In each day's folder
+**Nerede calistirilir:** Her gunun klasorunde
 
-**When to run:** After completing tasks
+**Ne zaman calistirilir:** Gorevleri tamamladiktan sonra
 
-**Success looks like:**
+**Basarili gorunum:**
 ```
 Running Move unit tests
 Test result: OK. Total tests: 3; passed: 3; failed: 0
 ```
 
-> **You may see warnings — this is normal!** You may also see warnings like `unused function` when running tests. If the tests pass (shows `OK`), everything is fine.
+> **Uyarilar gorebilirsiniz — bu normaldir!** Testleri calistirirken de `unused function` gibi uyarilar gorebilirsiniz. Testler geciyorsa (`OK` gosteriyorsa), her sey yolundadir.
 
-**Failure?** Fix the code until all tests pass. The error message shows which test failed.
+**Basarisiz mi?** Tum testler gecene kadar kodu duzeltin. Hata mesaji hangi testin basarisiz oldugunu gosterir.
 
-### Common Terminal Commands
+### Yaygin Terminal Komutlari
 
 ```bash
 # Show current directory
@@ -191,95 +191,95 @@ cd ~
 cat filename.md
 ```
 
-**Need more help?** Check `day_00_setup/README.md` for terminal basics!
+**Daha fazla yardima mi ihtiyaciniz var?** Terminal temelleri icin `day_00_setup/README.md` dosyasina bakin!
 
-## Three Projects, Progressive Learning
+## Uc Proje, Adim Adim Ogrenme
 
-This challenge includes **3 different projects** to help you practice:
+Bu challenge, pratik yapmaniza yardimci olacak **3 farkli proje** icerir:
 
-### Days 1-7: Habit Tracker
-**Focus:** Move basics
-- Learn: structs, vectors, ownership, control flow
-- Build: A simple habit tracking system
+### Gun 1-7: Habit Tracker (Aliskanlik Takipci)
+**Odak:** Move temelleri
+- Ogrenin: struct'lar, vector'ler, ownership, kontrol akisi
+- Oluseturun: Basit bir aliskanlik takip sistemi
 
-### Days 8-14: Task Bounty Board
-**Focus:** Intermediate concepts
-- Learn: enums, Option, visibility, aggregations
-- Build: A task management system with rewards
+### Gun 8-14: Task Bounty Board (Gorev Odul Panosu)
+**Odak:** Orta seviye kavramlar
+- Ogrenin: enum'lar, Option, visibility (gorunurluk), aggregation'lar
+- Olusturun: Odullu bir gorev yonetim sistemi
 
-### Days 15-21: Farm Simulator
-**Focus:** Sui-specific features
-- Learn: Objects, UID, entry functions, events
-- Build: A farm with on-chain state
+### Gun 15-21: Farm Simulator (Ciftlik Simulatoru)
+**Odak:** Sui'ye ozel ozellikler
+- Ogrenin: Object'ler, UID, entry function'lar, event'ler
+- Olusturun: Zincir uzerinde duruma sahip bir ciftlik
 
-Each project reinforces previous concepts while introducing new ones!
+Her proje, yenilerini tanitirken onceki kavramlari pekistirir!
 
-## Learning Features
+## Ogrenme Ozellikleri
 
-This challenge includes several features to help you learn effectively:
+Bu challenge, etkili bir sekilde ogrenmenize yardimci olacak cesitli ozellikler icerir:
 
-### 📚 Comprehensive Documentation
-- **GLOSSARY.md** - Quick reference for all Move terms (alphabetically organized)
-- **TROUBLESHOOTING.md** - Solutions to common errors with examples
-- **day_00_setup/** - Step-by-step installation guide using suiup
+### 📚 Kapsamli Dokumantasyon
+- **GLOSSARY.md** - Tum Move terimleri icin hizli basvuru (alfabetik sirali)
+- **TROUBLESHOOTING.md** - Orneklerle yaygin hatalarin cozumleri
+- **day_00_setup/** - suiup kullanarak adim adim kurulum rehberi
 
-### 🗺️ Smart Navigation
-- **Related Days** sections in each day's README show:
-  - Prerequisites (which days to complete first)
-  - What comes next (where this leads)
-  - Connected concepts across days
+### 🗺️ Akilli Navigasyon
+- Her gunun README'sindeki **Ilgili Gunler** bolumleri gosterir:
+  - On kosullar (once hangi gunleri tamamlamalisiniz)
+  - Sirada ne var (bu nereye goturur)
+  - Gunler arasi baglantili kavramlar
 
-### 💡 Learning Aids in Every Day
-- **TODO comments** with clear instructions
-- **Code examples** showing syntax and patterns
-- **Hints** for tricky parts
-- **Complete solutions** with explanatory comments
-- **Move Book links** for deeper understanding
+### 💡 Her Gunde Ogrenme Yardimcilari
+- Net talimatlarla **TODO yorumlari**
+- Sozdizimi ve kaliplari gosteren **kod ornekleri**
+- Zor kisimlar icin **ipuclari**
+- Aciklayici yorumlarla **tam cozumler**
+- Daha derin anlayis icin **Move Book baglantilari**
 
-### 🧪 Test-Driven Learning
-- Each day includes tests to verify your code
-- Tests fail until you complete the tasks correctly
-- Immediate feedback on your progress
+### 🧪 Test Odakli Ogrenme
+- Her gun kodunuzu dogrulamak icin testler icerir
+- Gorevleri dogru tamamlayana kadar testler basarisiz olur
+- Ilerlemeniz hakkinda aninda geri bildirim
 
-### 🎯 When You Get Stuck
-1. **Re-read the day's README** - the answer is often there
-2. **Check GLOSSARY.md** - understand the terms
-3. **Look at code examples** - see how it's done
-4. **Check TROUBLESHOOTING.md** - common errors and fixes
-5. **Peek at solution.move** - but try first!
+### 🎯 Takildiginizda
+1. **Gunun README'sini tekrar okuyun** - cevap genellikle oradadir
+2. **GLOSSARY.md'yi kontrol edin** - terimleri anlayin
+3. **Kod orneklerine bakin** - nasil yapildigini gorun
+4. **TROUBLESHOOTING.md'yi kontrol edin** - yaygin hatalar ve duzeltmeler
+5. **solution.move'a goz atin** - ama once deneyin!
 
-## Useful Links
+## Faydali Baglantilar
 
-- [Move Book](https://move-book.com) - Main learning resource
-- [Sui Documentation](https://docs.sui.io) - Sui platform docs
+- [Move Book](https://move-book.com) - Ana ogrenme kaynak
+- [Sui Dokumantasyonu](https://docs.sui.io) - Sui platform belgeleri
 
-## Community & Support
+## Topluluk ve Destek
 
-Need help or want to connect with other learners?
+Yardima mi ihtiyaciniz var veya diger ogrenenlerle baglaantii kurmak mi istiyorsunuz?
 
-- **WhatsApp Community:** [Join our support group](https://chat.whatsapp.com/DZH6y2XMDQ58NY5DheUhQs?mode=hqrc)
+- **WhatsApp Toplulugu:** [Destek grubumuza katilin](https://chat.whatsapp.com/DZH6y2XMDQ58NY5DheUhQs?mode=hqrc)
 - **X (Twitter):** [@ercandotsui](https://x.com/ercandotsui)
 
-Don't hesitate to ask questions - learning together is better!
+Soru sormaktan cekinmeyin - birlikte ogrenmek daha iyidir!
 
-## Important Notes
+## Onemli Notlar
 
-- **Work in the day's folder**: Each day is self-contained
-- **Read before coding**: Understanding concepts is crucial
-- **Use the learning aids**: TODO comments, hints, and examples are there to help
-- **Try before checking solutions**: Learning happens through struggle!
-- **Follow Related Days links**: They help you understand the learning path
-- **Keep it simple**: This is educational material, not production code
-- **Test often**: Run tests after each change
-- **Use reference docs**: GLOSSARY and TROUBLESHOOTING are your friends
-- **Commit daily**: Track your progress
-- **Clean commits**: The `.gitignore` file is set up to exclude build artifacts - commit only your source code
+- **Gunun klasorunde calisin**: Her gun kendi icinde tamamdir
+- **Kodlamadan once okuyun**: Kavramlari anlamak cok onemlidir
+- **Ogrenme yardimcilarini kullanin**: TODO yorumlari, ipuclari ve ornekler yardimci olmak icin oradadir
+- **Cozumleri kontrol etmeden once deneyin**: Ogrenme ugrasarak gerceklesir!
+- **Ilgili Gunler baglantilarini takip edin**: Ogrenme yolunu anlamaniza yardimci olurlar
+- **Basit tutun**: Bu egitim materyalidir, uretim kodu degil
+- **Sik test edin**: Her degisiklikten sonra testleri calistirin
+- **Referans belgelerini kullanin**: GLOSSARY ve TROUBLESHOOTING en iyi dostlariniz
+- **Her gun commit edin**: Ilerlemenizi takip edin
+- **Temiz commit'ler**: `.gitignore` dosyasi build artefaktlarini haric tutacak sekilde ayarlanmistir - yalnizca kaynak kodunuzu commit edin
 
-🎉 Success!
+🎉 Basari!
 
-After 21 days, you'll have:
-- 21 working Move modules
-- Understanding of Sui Move fundamentals
-- Ability to build your own Move programs
+21 gun sonra elinizde olacaklar:
+- 21 calisan Move module'u
+- Sui Move temellerinin anlayisi
+- Kendi Move programlarinizi olusturma becerisi
 
-**Happy learning!**
+**Iyi ogrenmeler!**

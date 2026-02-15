@@ -1,49 +1,49 @@
-# Troubleshooting Guide
+# Sorun Giderme Rehberi
 
-This guide helps you solve common problems you might encounter during the 21-Day Sui Move Challenge.
+Bu rehber, 21 Gunluk Sui Move Challenge sirasinda karsilasabileceginiz yaygin sorunlari cozmenize yardimci olur.
 
 ---
 
-## Installation Issues
+## Kurulum Sorunlari
 
-### Error: "sui: command not found"
+### Hata: "sui: command not found"
 
-**Problem:** Sui CLI is not installed or not in your PATH.
+**Sorun:** Sui CLI yuklu degil veya PATH'inizde degil.
 
-**Solutions:**
+**Cozumler:**
 
-1. **Verify Rust is installed:**
+1. **Rust'in yuklu oldugunu dogrulayin:**
    ```bash
    rustc --version
    ```
-   If not found, install Rust first:
+   Bulunamazsa, once Rust'i yukleyin:
    ```bash
    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
    ```
 
-2. **Reload your shell configuration:**
+2. **Shell yapilandirmanizi yeniden yukleyin:**
    ```bash
    source $HOME/.cargo/env
    ```
 
-3. **Check if Sui binary exists:**
+3. **Sui binary'sinin var olup olmadigini kontrol edin:**
    ```bash
    ls ~/.cargo/bin/sui
    ```
-   If not found, reinstall:
+   Bulunamazsa, yeniden yukleyin:
    ```bash
    cargo install --locked --git https://github.com/MystenLabs/sui.git --branch mainnet sui
    ```
 
-4. **Restart your terminal** completely (close and reopen).
+4. **Terminalinizi tamamen yeniden baslatin** (kapatip tekrar acin).
 
 ---
 
-## Build & Test Warnings
+## Build ve Test Uyarilari
 
-### Warnings During `sui move build` or `sui move test`
+### `sui move build` veya `sui move test` Sirasinda Uyarilar
 
-**Example:**
+**Ornek:**
 ```
 warning[W09005]: unused function
    ┌─ sources/main.move:8:16
@@ -52,48 +52,48 @@ warning[W09005]: unused function
    │                ^^^^^^^^ ...
 ```
 
-**This is NOT a problem!** Warnings are informational messages from the compiler. They do **not** prevent your code from compiling or your tests from passing. As long as you see `Build successful` at the end, everything is working correctly.
+**Bu bir sorun DEGILDIR!** Uyarilar derleyiciden gelen bilgilendirme mesajlaridir. Kodunuzun derlenmesini veya testlerinizin gecmesini **engellemezler**. Sonunda `Build successful` gordugunuz surece her sey dogru calisiyor demektir.
 
-**Common warnings you may see:**
-- `unused function` - A function exists but isn't called yet (normal during development)
-- `unused variable` - A variable is declared but not used
-- `unused import` - An import exists but isn't referenced
+**Gorebileceginiz yaygin uyarilar:**
+- `unused function` - Bir fonksiyon var ama henuz cagrilmiyor (gelistirme sirasinda normal)
+- `unused variable` - Bir degisken tanimlanmis ama kullanilmiyor
+- `unused import` - Bir import var ama referans verilmiyor
 
-These warnings will naturally disappear as you progress through the days and use the functions in later exercises.
+Bu uyarilar, gunler ilerledikce ve fonksiyonlari sonraki alistarmalarda kullandikca dogal olarak kaybolacaktir.
 
-> **TL;DR:** Warnings = OK. Errors = Fix needed. If the build or test succeeds, you're good!
+> **Kisaca:** Uyarilar = Sorun yok. Hatalar = Duzeltme gerekli. Build veya test basariliysa, her sey yolunda!
 
 ---
 
-### Windows: `Move.lock` Bug
+### Windows: `Move.lock` Hatasi
 
-**Problem:** On **Windows** machines, `sui move build` may fail if a `Move.lock` file already exists from a previous build.
+**Sorun:** **Windows** makinelerde, onceki bir build'den kalan `Move.lock` dosyasi varsa `sui move build` basarisiz olabilir.
 
-**Symptoms:**
-- Build fails unexpectedly even though code is correct
-- Error messages related to dependency resolution or lock file
+**Belirtiler:**
+- Kod dogru olmasina ragmen build beklenmedik sekilde basarisiz olur
+- Bagiimlilik cozumleme veya lock dosyasiyla ilgili hata mesajlari
 
-**Solution:** Delete the `Move.lock` file before building:
+**Cozum:** Build'den once `Move.lock` dosyasini silin:
 
 ```bash
 rm Move.lock
 sui move build
 ```
 
-**Or combine in one command:**
+**Veya tek komutta birlestirin:**
 ```bash
 rm -f Move.lock && sui move build
 ```
 
-> **Note:** This issue is specific to Windows (including WSL). macOS and Linux users generally do not experience this problem. The `Move.lock` file is auto-generated, so deleting it is perfectly safe.
+> **Not:** Bu sorun Windows'a (WSL dahil) ozgudur. macOS ve Linux kullanicilari genellikle bu sorunu yasamaz. `Move.lock` dosyasi otomatik olusturulur, bu yuzden silmek tamamen guvenlidir.
 
 ---
 
-## Build Errors
+## Build Hatalari
 
-### Error: "could not find module"
+### Hata: "could not find module"
 
-**Example:**
+**Ornek:**
 ```
 error[E03002]: unbound module
    ┌─ sources/main.move:1:1
@@ -102,32 +102,32 @@ error[E03002]: unbound module
    │        ^^^^^^^^^ Unbound module or type alias 'challenge'
 ```
 
-**Problem:** You're in the wrong directory or Move.toml is missing.
+**Sorun:** Yanlis dizindesiniz veya Move.toml eksik.
 
-**Solutions:**
+**Cozumler:**
 
-1. **Check you're in the correct day's folder:**
+1. **Dogru gunun klasorunde oldugunuzu kontrol edin:**
    ```bash
    pwd
    ```
-   Should show: `.../21Challenge/day_01` (or day_02, etc.)
+   Sunu gostermelidir: `.../21Challenge/day_01` (veya day_02, vb.)
 
-2. **Navigate to the correct folder:**
+2. **Dogru klasore gidin:**
    ```bash
    cd day_01
    ```
 
-3. **Verify Move.toml exists:**
+3. **Move.toml'un var oldugunu dogrulayin:**
    ```bash
    ls Move.toml
    ```
-   If missing, copy from another day or check the repository.
+   Eksikse, baska bir gunden kopyalayin veya repoyu kontrol edin.
 
 ---
 
-### Error: "syntax error"
+### Hata: "syntax error"
 
-**Example:**
+**Ornek:**
 ```
 error: unexpected token
    ┌─ sources/main.move:10:5
@@ -136,27 +136,27 @@ error: unexpected token
    │     ^^^^^ unexpected token
 ```
 
-**Problem:** Typo in your code (in this case, `pubic` instead of `public`). If you've faced this problem you can check to the solution code.
+**Sorun:** Kodunuzda yazim hatasi (bu ornekte `public` yerine `pubic`). Bu sorunla karsilastiyorsaniz cozum kodunu kontrol edebilirsiniz.
 
-**Solutions:**
+**Cozumler:**
 
-1. **Read the error message carefully** - it shows the line number (10) and what's wrong.
+1. **Hata mesajini dikkatlice okuyun** - satir numarasini (10) ve neyin yanlis oldugunu gosterir.
 
-2. **Common typos:**
+2. **Yaygin yazim hatalari:**
    - `pubic` → `public`
    - `pubilc` → `public`
-   - Missing semicolon `;`
-   - Missing comma `,`
-   - Missing closing brace `}`
+   - Eksik noktali virgul `;`
+   - Eksik virgul `,`
+   - Eksik kapanma susluu parantezi `}`
 
-3. **Use VS Code** - it highlights syntax errors in real-time.
+3. **VS Code kullanin** - sozdizimi hatalarini gercek zamanli olarak vurgular.
 
 
 ---
 
-### Error: "use of moved value"
+### Hata: "use of moved value"
 
-**Example:**
+**Ornek:**
 ```
 error: cannot use value after move
    ┌─ sources/main.move:20:9
@@ -167,17 +167,17 @@ error: cannot use value after move
    │                          ^^^^^ value used here after move
 ```
 
-**Problem:** You're trying to use a value that was already moved (ownership transferred).
+**Sorun:** Zaten tasinmis (sahipligi transfer edilmis) bir degeri kullanmaya calisiyorsunuz.
 
-**Solutions:**
+**Cozumler:**
 
-1. **Understanding the problem:**
+1. **Sorunu anlama:**
    ```move
    add_habit(&mut list, habit);  // habit is moved into the list
    // habit no longer exists here!
    ```
 
-2. **Create a new value:**
+2. **Yeni bir deger olusturun:**
    ```move
    let habit1 = new_habit(b"Run");
    let habit2 = new_habit(b"Swim");
@@ -185,7 +185,7 @@ error: cannot use value after move
    add_habit(&mut list, habit2);
    ```
 
-3. **Or use references if you need to keep the value:**
+3. **Veya degeri saklamak istiyorsaniz referans kullanin:**
    ```move
    // But check if your function accepts references
    add_habit(&mut list, &habit);  // borrow instead of move
@@ -193,11 +193,11 @@ error: cannot use value after move
 
 ---
 
-## Test Errors
+## Test Hatalari
 
-### Error: "test failed"
+### Hata: "test failed"
 
-**Example:**
+**Ornek:**
 ```
 ┌── test_sum ──────────────────────────────────────────────────────
 │ error: assertion failed: result == 3
@@ -205,11 +205,11 @@ error: cannot use value after move
 Test result: FAILED. Total tests: 1; passed: 0; failed: 1
 ```
 
-**Problem:** Your code doesn't produce the expected result.
+**Sorun:** Kodunuz beklenen sonucu uretmiyor.
 
-**Solutions:**
+**Cozumler:**
 
-1. **Check your function logic:**
+1. **Fonksiyon mantiginizi kontrol edin:**
    ```move
    // If test expects sum(1, 2) == 3
    public fun sum(a: u64, b: u64): u64 {
@@ -217,7 +217,7 @@ Test result: FAILED. Total tests: 1; passed: 0; failed: 1
    }
    ```
 
-2. **Add debug output (in tests):**
+2. **Debug ciktisi ekleyin (testlerde):**
    ```move
    #[test]
    fun test_sum() {
@@ -227,103 +227,103 @@ Test result: FAILED. Total tests: 1; passed: 0; failed: 1
    }
    ```
 
-3. **Re-read the day's README** to understand what's expected.
+3. **Gunun README'sini tekrar okuyun** - ne beklendigini anlamak icin.
 
 ---
 
-### Error: "no tests found"
+### Hata: "no tests found"
 
-**Example:**
+**Ornek:**
 ```
 Running Move unit tests
 Test result: OK. Total tests: 0; passed: 0; failed: 0
 ```
 
-**Problem:** No test functions defined, or tests are commented out.
+**Sorun:** Test fonksiyonu tanimlanmamis veya testler yorum satirina alinmis.
 
-**Solutions:**
+**Cozumler:**
 
-1. **Check if tests are commented:**
+1. **Testlerin yorum satirinda olup olmadigini kontrol edin:**
    ```move
-   // #[test]  ← Remove the // to uncomment
+   // #[test]  ← Yorumu kaldirmak icin // isaretini silin
    #[test]
    fun test_sum() {
        // ...
    }
    ```
 
-2. **Verify test syntax:**
-   - Must have `#[test]` attribute
-   - Must be a function
-   - Function name often starts with `test_`
+2. **Test sozdizimini dogrulayin:**
+   - `#[test]` ozelligine sahip olmali
+   - Bir fonksiyon olmali
+   - Fonksiyon adi genellikle `test_` ile baslar
 
 ---
 
-## Git & Version Control Issues
+## Git ve Surum Kontrolu Sorunlari
 
-### Error: "build/ folder keeps showing up in git status"
+### Hata: "build/ klasoru git status'ta gorunmeye devam ediyor"
 
-**Problem:** Build artifacts shouldn't be committed.
+**Sorun:** Build artefaktlari commit edilmemelidir.
 
-**Solution:**
+**Cozum:**
 
-The `.gitignore` file already excludes build files. If you see them:
+`.gitignore` dosyasi build dosyalarini zaten haric tutar. Eger goruyorsaniz:
 
-1. **Check .gitignore exists:**
+1. **.gitignore'un var oldugunu kontrol edin:**
    ```bash
    cat .gitignore
    ```
 
-2. **Remove tracked build files:**
+2. **Takip edilen build dosyalarini kaldirin:**
    ```bash
    git rm -r --cached day_*/build
    git commit -m "Remove build artifacts"
    ```
 
-3. **From now on, build/ folders will be ignored automatically.**
+3. **Bundan sonra build/ klasorleri otomatik olarak goz ardi edilecektir.**
 
 ---
 
-### What Should I Commit?
+### Neleri Commit Etmeliyim?
 
-**✅ Commit these:**
-- `sources/*.move` files (your code)
-- `README.md` files (if you add notes)
-- `Move.toml` (if you modify it)
+**✅ Bunlari commit edin:**
+- `sources/*.move` dosyalari (kodunuz)
+- `README.md` dosyalari (not eklerseniz)
+- `Move.toml` (degistirdiyseniz)
 
-**❌ Don't commit these:**
-- `build/` folders (automatically generated)
-- `Move.lock` files (automatically generated)
-- `.DS_Store` (Mac system files)
-- Editor config files (`.vscode/`, `.idea/`)
+**❌ Bunlari commit etmeyin:**
+- `build/` klasorleri (otomatik olusturulur)
+- `Move.lock` dosyalari (otomatik olusturulur)
+- `.DS_Store` (Mac sistem dosyalari)
+- Editorr yapilandirma dosyalari (`.vscode/`, `.idea/`)
 
-The `.gitignore` file handles this for you!
-
----
-
-## Performance Issues
-
-### Build or Test is Very Slow
-
-**Problem:** First build compiles all dependencies (can take 1-2 minutes).
-
-**Solutions:**
-
-1. **First build is always slower** - subsequent builds are fast.
-
-2. **Be patient** - Move is compiling the entire Sui framework.
-
-3. **Check your system:**
-   - Close other heavy applications
-   - Make sure you have enough disk space (at least 5GB free)
+`.gitignore` dosyasi bunu sizin icin halleder!
 
 ---
 
-## Understanding Error Messages
+## Performans Sorunlari
 
-### How to Read Error Messages
+### Build veya Test Cok Yavas
 
-Move error messages follow this pattern:
+**Sorun:** Ilk build tum bagimliliklari derler (1-2 dakika surebilir).
+
+**Cozumler:**
+
+1. **Ilk build her zaman daha yavas olur** - sonraki build'ler hizlidir.
+
+2. **Sabirl olun** - Move tum Sui framework'unu derliyor.
+
+3. **Sisteminizi kontrol edin:**
+   - Diger agir uygulamalari kapatin
+   - Yeterli disk alaniniz oldugundan emin olun (en az 5GB bos)
+
+---
+
+## Hata Mesajlarini Anlama
+
+### Hata Mesajlari Nasil Okunur
+
+Move hata mesajlari su kalbi takip eder:
 
 ```
 error[E03002]: unbound module
@@ -333,95 +333,95 @@ error[E03002]: unbound module
    │            ^^^^^^^^^ Unbound module or type alias 'challenge'
 ```
 
-**Breaking it down:**
-1. `error[E03002]` - Error code (for searching documentation)
-2. `unbound module` - Short description
-3. `sources/main.move:15:5` - File, line 15, column 5
-4. Visual pointer (`^^^^^^^`) shows exactly where the problem is
-5. Explanation below
+**Parcalara ayirma:**
+1. `error[E03002]` - Hata kodu (dokumantasyon aramak icin)
+2. `unbound module` - Kisa aciklama
+3. `sources/main.move:15:5` - Dosya, satir 15, sutun 5
+4. Gorsel isaretci (`^^^^^^^`) sorunun tam olarak nerede oldugunu gosterir
+5. Asagida aciklama
 
-**Pro tip:** Always look at the line number and the visual pointer first!
-
----
-
-## Editor Issues
-
-### VS Code Not Showing Syntax Highlighting
-
-**Problem:** Move extension not installed or not activated.
-
-**Solutions:**
-
-1. **Install Move extension:**
-   - Open Extensions (Ctrl+Shift+X or Cmd+Shift+X)
-   - Search "Move"
-   - Install "Move" by Mysten Labs
-
-2. **Check file extension:**
-   - Files must end with `.move`
-   - Not `.txt` or `.mv`
-
-3. **Reload VS Code:**
-   - Press Ctrl+Shift+P (or Cmd+Shift+P)
-   - Type "Reload Window"
-   - Press Enter
+**Profesyonel ipucu:** Her zaman once satir numarasina ve gorsel isaretciye bakin!
 
 ---
 
-### VS Code Shows Errors But Build Works
+## Editorr Sorunlari
 
-**Problem:** Extension might be out of sync.
+### VS Code Sozdizimi Vurgulama Gostermiyor
 
-**Solutions:**
+**Sorun:** Move eklentisi yuklu degil veya etkinlestirilmemis.
 
-1. **Trust the build command** - If `sui move build` succeeds, your code is correct.
+**Cozumler:**
 
-2. **Reload the window:**
+1. **Move eklentisini yukleyin:**
+   - Eklentileri acin (Ctrl+Shift+X veya Cmd+Shift+X)
+   - "Move" arayin
+   - Mysten Labs tarafindan yapilan "Move" eklentisini yukleyin
+
+2. **Dosya uzantisini kontrol edin:**
+   - Dosyalar `.move` ile bitmeli
+   - `.txt` veya `.mv` degil
+
+3. **VS Code'u yeniden yukleyin:**
+   - Ctrl+Shift+P (veya Cmd+Shift+P) basin
+   - "Reload Window" yazin
+   - Enter'a basin
+
+---
+
+### VS Code Hata Gosteriyor Ama Build Calisiyor
+
+**Sorun:** Eklenti senkronize olmamis olabilir.
+
+**Cozumler:**
+
+1. **Build komutuna guvenin** - `sui move build` basariliysa, kodunuz dogruduir.
+
+2. **Pencereyi yeniden yukleyin:**
    - Ctrl+Shift+P / Cmd+Shift+P
-   - Type "Reload Window"
+   - "Reload Window" yazin
 
-3. **Update the Move extension** to the latest version.
+3. **Move eklentisini** en son surume guncelleyin.
 
 ---
 
-## Still Stuck?
+## Hala Takildiyseniz?
 
-### Before Asking for Help
+### Yardim Istemeden Once
 
-1. **Re-read the error message** - it usually tells you exactly what's wrong
-2. **Check the day's README** - the solution might be explained there
-3. **Look at the solution file** - `sources/solution.move` in each day
-4. **Try building from scratch** - delete `build/` & `Move.lock` and rebuild:
+1. **Hata mesajini tekrar okuyun** - genellikle tam olarak neyin yanlis oldugunu soyler
+2. **Gunun README'sini kontrol edin** - cozum orada aciklanmis olabilir
+3. **Cozum dosyasina bakin** - her gundeki `sources/solution.move`
+4. **Sifirdan build'lemeyi deneyin** - `build/` ve `Move.lock` dosyalarini silip yeniden build'leyin:
    ```bash
    rm -rf build && rm Move.lock
    sui move build
    ```
 
-### Getting Help
+### Yardim Alma
 
-If none of the above works:
+Yukariadakilerin hicbiri ise yaramazsa:
 
-1. **Check Sui Documentation:**
+1. **Sui Dokumantasyonunu kontrol edin:**
    - https://docs.sui.io
 
-2. **Check Move Book:**
+2. **Move Book'u kontrol edin:**
    - https://move-book.com
 
-3. **Join the Community:**
+3. **Topluluga Katilin:**
    - Sui Discord
    - Sui Forum
 
-### Reporting Bugs in This Challenge
+### Bu Challenge'da Hata Bildirme
 
-If you find an error in the challenge materials:
-- Check if it's a known issue in the repository
-- Create a detailed bug report with:
-  - Which day
-  - What you expected
-  - What actually happened
-  - Error messages (copy-paste the full error)
+Challenge materyallerinde bir hata bulursaniz:
+- Repoda bilinen bir sorun olup olmadigini kontrol edin
+- Asagidakileri iceren ayrintili bir hata raporu olusturun:
+  - Hangi gun
+  - Ne beklediginiiz
+  - Gercekte ne oldugu
+  - Hata mesajlari (tam hatayi kopyala-yapistir)
 
 
 ---
 
-**Remember:** Everyone gets stuck sometimes! Don't give up. Each error is a learning opportunity. If you read this, I'm Ali and I believe in you. You got this.
+**Unutmayin:** Herkes bazen takilir! Pes etmeyin. Her hata bir ogrenme firsatidir. Bunu okuyorsaniz, ben Ali ve size inaniyorum. Basarabilirsiniz.
