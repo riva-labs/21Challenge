@@ -1,15 +1,15 @@
-# Day 17: Ownership of Objects & Simple Entry Function
+# Gun 17: Object'lerin (Nesnelerin) Sahipligi ve Basit Entry Function (Giris Fonksiyonu)
 
-## What You'll Learn Today
+## Bugun Ne Ogreneceksiniz
 
-Today you'll learn:
-- How object ownership works
-- What entry functions are
-- How to transfer objects to users
+Bugun ogrenecekleriniz:
+- Object (nesne) sahipliginin nasil calistigi
+- Entry function'larin (giris fonksiyonlarinin) ne oldugu
+- Object'lerin (nesnelerin) kullanicilara nasil transfer edilecegi
 
-## Understanding Entry Functions
+## Entry Function'lari (Giris Fonksiyonlarini) Anlama
 
-An **entry function** is a function that can be called directly in a transaction. It's marked with the `entry` keyword:
+Bir **entry function** (giris fonksiyonu) bir transaction'da (islemde) dogrudan cagrilabilen bir fonksiyondur. `entry` anahtar kelimesi ile isaretlenir:
 
 ```move
 entry fun create_farm(ctx: &mut TxContext) {
@@ -17,52 +17,52 @@ entry fun create_farm(ctx: &mut TxContext) {
 }
 ```
 
-Entry functions are the "public API" of your module - they're what users call to interact with your code.
+Entry function'lar (giris fonksiyonlari) module'unuzun (modulunuzun) "genel API'sidir" - kullanicilarin kodunuzla etkilesmek icin cagirdigi fonksiyonlardir.
 
-## Understanding Object Transfer
+## Object (Nesne) Transferini Anlama
 
-When you create an object, you need to give it to someone. You can:
+Bir object (nesne) olusturdugunuzda, onu birine vermeniz gerekir. Yapabilecekleriniz:
 
-1. **Transfer ownership** using `transfer::transfer()`:
+1. `transfer::transfer()` kullanarak **sahipligi transfer etme**:
    ```move
    transfer::transfer(farm, ctx.sender())
    ```
-   This transfers ownership of `farm` to the address that sent the transaction.
+   Bu, `farm`'in sahipligini islemi gonderen adrese transfer eder.
 
-2. **Share the object** using `transfer::share_object()`:
+2. `transfer::share_object()` kullanarak **object'i (nesneyi) paylasma**:
    ```move
    transfer::share_object(farm)
    ```
-   This makes the object accessible to everyone on-chain. For this challenge, we use shared objects.
+   Bu, object'i (nesneyi) zincir uzerinde herkes icin erisilebilir kilar. Bu challenge icin paylasilan object'ler (nesneler) kullaniyoruz.
 
-## Farm Updates
+## Farm Guncellemeleri
 
-The farm has been extended with plotId support:
-- **PlotId validation**: PlotIds must be between 1 and 20
-- **Plot tracking**: A vector tracks all planted plots
-- **Duplicate prevention**: Cannot plant the same plotId twice
-- **Limit enforcement**: Maximum of 20 plots
-- **Harvest validation**: Cannot harvest plots that don't exist
-- **Shared objects**: Farm is now a shared object (using `transfer::share_object`)
+Farm, plotId destegi ile genisletilmistir:
+- **PlotId dogrulamasi**: PlotId'ler 1 ile 20 arasinda olmalidir
+- **Plot takibi**: Bir vector ekilen tum plot'lari takip eder
+- **Tekrar onleme**: Ayni plotId iki kez ekilemez
+- **Limit uygulamasi**: Maksimum 20 plot
+- **Hasat dogrulamasi**: Var olmayan plot'lar hasat edilemez
+- **Paylasilan object'ler (nesneler)**: Farm artik paylasilan bir object'tir (nesnedir) (`transfer::share_object` kullanilarak)
 
-All functions now take `plotId: u8` parameters.
+Tum fonksiyonlar artik `plotId: u8` parametresi almaktadir.
 
-## Your Task
+## Goreviniz
 
-1. The code from day_16 is already in `sources/main.move` with plotId support added (you can also check `day_16/sources/solution.move` if needed)
-2. Write an `entry fun create_farm(ctx: &mut TxContext)` that:
-   - Creates a Farm using `new_farm(ctx)`
-   - Shares it using `transfer::share_object(farm)`
-3. Write helper functions:
-   - `plant_on_farm(farm: &mut Farm, plotId: u8)` that calls `plant()` on farm.counters with plotId
-   - `harvest_from_farm(farm: &mut Farm, plotId: u8)` that calls `harvest()` on farm.counters with plotId
+1. day_16'daki kod zaten `sources/main.move` icinde plotId destegi eklenmis olarak mevcuttur (gerekirse `day_16/sources/solution.move` dosyasini da kontrol edebilirsiniz)
+2. Asagidakileri yapan bir `entry fun create_farm(ctx: &mut TxContext)` yazin:
+   - `new_farm(ctx)` kullanarak bir Farm olusturur
+   - `transfer::share_object(farm)` kullanarak paylasilabilir yapar
+3. Yardimci fonksiyonlar yazin:
+   - `plant_on_farm(farm: &mut Farm, plotId: u8)` - farm.counters uzerinde plotId ile `plant()` fonksiyonunu cagirir
+   - `harvest_from_farm(farm: &mut Farm, plotId: u8)` - farm.counters uzerinde plotId ile `harvest()` fonksiyonunu cagirir
 
-## Reading Materials
+## Okuma Materyalleri
 
-1. **Ownership (objects)** - Learn about object ownership:
+1. **Ownership (Sahiplik) (object'ler)** - Object (nesne) sahipligini ogrenin:
    [https://move-book.com/object/ownership/](https://move-book.com/object/ownership/)
 
-2. **Transactions** - Understand entry functions:
+2. **Transaction'lar (Islemler)** - Entry function'lari (giris fonksiyonlarini) anlayin:
    [https://move-book.com/concepts/what-is-a-transaction/](https://move-book.com/concepts/what-is-a-transaction/)
 
 ## Commit
@@ -73,4 +73,3 @@ sui move test
 git add day_17/
 git commit -m "Day 17: add Farm entry function and basic actions"
 ```
-

@@ -1,18 +1,18 @@
-/// DAY 21: Final Tests & Cleanup - SOLUTION
-/// 
-/// This is the solution file for day 21.
-/// Students should complete main.move, not this file.
+/// GUN 21: Final Testleri ve Temizlik - COZUM
+///
+/// Bu cozum dosyasidir.
+/// Ogrenciler main.move dosyasini tamamlamalidir.
 
 module challenge::day_21_solution {
-   
+
     use sui::event;
-  
+
     #[test_only]
     use std::unit_test::assert_eq;
     #[test_only]
     use sui::test_scenario;
 
-    // Copy all code from day_20 with plotId support
+    // day_20'deki tum kodu plotId destegi ile kopyalayin
     const MAX_PLOTS: u64 = 20;
     const E_PLOT_NOT_FOUND: u64 = 1;
     const E_PLOT_LIMIT_EXCEEDED: u64 = 2;
@@ -34,31 +34,31 @@ module challenge::day_21_solution {
     }
 
     fun plant(counters: &mut FarmCounters, plotId: u8) {
-        // Check if plotId is valid (between 1 and 20)
+        // plotId'nin gecerli olup olmadigini kontrol et (1 ile 20 arasinda)
         assert!(plotId >= 1 && plotId <= (MAX_PLOTS as u8), E_INVALID_PLOT_ID);
-        
-        // Check if we've reached the plot limit
+
+        // Plot limitine ulasilip ulasilmadigini kontrol et
         let len = vector::length(&counters.plots);
         assert!(len < MAX_PLOTS, E_PLOT_LIMIT_EXCEEDED);
-        
-        // Check if plot already exists in the vector
+
+        // Plot'un vector'de zaten var olup olmadigini kontrol et
         let mut i = 0;
         while (i < len) {
             let existing_plot = vector::borrow(&counters.plots, i);
             assert!(*existing_plot != plotId, E_PLOT_ALREADY_EXISTS);
             i = i + 1;
         };
-        
+
         counters.planted = counters.planted + 1;
         vector::push_back(&mut counters.plots, plotId);
     }
 
     fun harvest(counters: &mut FarmCounters, plotId: u8) {
         let len = vector::length(&counters.plots);
-                
-        // Check if plot exists in the vector and find its index
+
+        // Plot'un vector'de var olup olmadigini kontrol et ve indeksini bul
         let mut i = 0;
-        let mut found_index = len; 
+        let mut found_index = len;
         while (i < len) {
             let existing_plot = vector::borrow(&counters.plots, i);
             if (*existing_plot == plotId) {
@@ -66,11 +66,11 @@ module challenge::day_21_solution {
             };
             i = i + 1;
         };
-        
-        // Assert that plot was found (found_index < len means we found it)
+
+        // Plot'un bulundugunu dogrula (found_index < len ise bulduk demektir)
         assert!(found_index < len, E_PLOT_NOT_FOUND);
-        
-        // Remove the plot from the vector
+
+        // Plot'u vector'den kaldir
         vector::remove(&mut counters.plots, found_index);
         counters.harvested = counters.harvested + 1;
     }
@@ -124,7 +124,7 @@ module challenge::day_21_solution {
         harvest_from_farm(farm, plotId);
     }
 
-    // Test: Create farm and check initial state
+    // Test: Farm olusturun ve baslangic durumunu kontrol edin
     #[test]
     fun test_create_farm() {
         let mut scenario = test_scenario::begin(@0x1);
@@ -141,7 +141,7 @@ module challenge::day_21_solution {
         test_scenario::end(scenario);
     }
 
-    // Test: Planting increases counter
+    // Test: Ekme islemi sayaci arttirir
     #[test]
     fun test_planting_increases_counter() {
         let mut scenario = test_scenario::begin(@0x1);
@@ -159,7 +159,7 @@ module challenge::day_21_solution {
         test_scenario::end(scenario);
     }
 
-    // Test: Harvesting increases counter
+    // Test: Hasat islemi sayaci arttirir
     #[test]
     fun test_harvesting_increases_counter() {
         let mut scenario = test_scenario::begin(@0x1);
@@ -169,9 +169,9 @@ module challenge::day_21_solution {
         test_scenario::next_tx(&mut scenario, @0x1);
         {
             let mut farm = test_scenario::take_shared<Farm>(&scenario);
-            // Plant first
+            // Once ek
             plant_on_farm(&mut farm, 1);
-            // Then harvest
+            // Sonra hasat et
             harvest_from_farm(&mut farm, 1);
             assert_eq!(total_planted(&farm), 1);
             assert_eq!(total_harvested(&farm), 1);
@@ -180,7 +180,7 @@ module challenge::day_21_solution {
         test_scenario::end(scenario);
     }
 
-    // Test: Multiple operations
+    // Test: Coklu islemler
     #[test]
     fun test_multiple_operations() {
         let mut scenario = test_scenario::begin(@0x1);
@@ -190,13 +190,13 @@ module challenge::day_21_solution {
         test_scenario::next_tx(&mut scenario, @0x1);
         {
             let mut farm = test_scenario::take_shared<Farm>(&scenario);
-            // Plant plotIds 3, 5, 18 (in any order)
+            // plotId'leri 3, 5, 18 ekin (herhangi bir sirada)
             plant_on_farm(&mut farm, 3);
             plant_on_farm(&mut farm, 5);
             plant_on_farm(&mut farm, 18);
-            // Harvest plotId 5
+            // plotId 5'i hasat edin
             harvest_from_farm(&mut farm, 5);
-            
+
             assert_eq!(total_planted(&farm), 3);
             assert_eq!(total_harvested(&farm), 1);
             test_scenario::return_shared(farm);
@@ -204,7 +204,7 @@ module challenge::day_21_solution {
         test_scenario::end(scenario);
     }
 
-    // Test 5: Invalid plot ID (plotId 0)
+    // Test 5: Gecersiz plot ID (plotId 0)
     #[test]
     #[expected_failure(abort_code = E_INVALID_PLOT_ID)]
     fun test_invalid_plot_id_zero() {
@@ -221,7 +221,7 @@ module challenge::day_21_solution {
         test_scenario::end(scenario);
     }
 
-    // Test 5: Invalid plot ID (plotId 21)
+    // Test 5: Gecersiz plot ID (plotId 21)
     #[test]
     #[expected_failure(abort_code = E_INVALID_PLOT_ID)]
     fun test_invalid_plot_id_too_large() {
@@ -238,7 +238,7 @@ module challenge::day_21_solution {
         test_scenario::end(scenario);
     }
 
-    // Test 6: Duplicate plot
+    // Test 6: Tekrarlanan plot
     #[test]
     #[expected_failure(abort_code = E_PLOT_ALREADY_EXISTS)]
     fun test_duplicate_plot() {
@@ -250,13 +250,13 @@ module challenge::day_21_solution {
         {
             let mut farm = test_scenario::take_shared<Farm>(&scenario);
             plant_on_farm(&mut farm, 1);
-            plant_on_farm(&mut farm, 1); // Try to plant same plotId again
+            plant_on_farm(&mut farm, 1); // Ayni plotId'yi tekrar ekmeyi deneyin
             test_scenario::return_shared(farm);
         };
         test_scenario::end(scenario);
     }
 
-    // Test 7: Plot limit exceeded
+    // Test 7: Plot limiti asildi
     #[test]
     #[expected_failure(abort_code = E_PLOT_LIMIT_EXCEEDED)]
     fun test_plot_limit() {
@@ -267,21 +267,21 @@ module challenge::day_21_solution {
         test_scenario::next_tx(&mut scenario, @0x1);
         {
             let mut farm = test_scenario::take_shared<Farm>(&scenario);
-            // Plant 20 plots (valid, plotIds 1-20)
+            // 20 plot ekin (gecerli, plotId'ler 1-20)
             let mut i = 1;
             while (i <= 20) {
                 plant_on_farm(&mut farm, (i as u8));
                 i = i + 1;
             };
-            // Try to plant 21st plot with valid plotId (should abort due to limit)
-            // Note: This will fail at limit check before duplicate check
+            // 21. plot'u gecerli bir plotId ile ekmeyi deneyin (limit nedeniyle iptal olmali)
+            // Not: Bu, tekrar kontrolunden once limit kontrolunde basarisiz olacaktir
             plant_on_farm(&mut farm, 1);
             test_scenario::return_shared(farm);
         };
         test_scenario::end(scenario);
     }
 
-    // Test 8: Harvest nonexistent plot
+    // Test 8: Var olmayan plot'u hasat etme
     #[test]
     #[expected_failure(abort_code = E_PLOT_NOT_FOUND)]
     fun test_harvest_nonexistent_plot() {
@@ -292,7 +292,7 @@ module challenge::day_21_solution {
         test_scenario::next_tx(&mut scenario, @0x1);
         {
             let mut farm = test_scenario::take_shared<Farm>(&scenario);
-            // Try to harvest a plot that doesn't exist
+            // Var olmayan bir plot'u hasat etmeyi deneyin
             harvest_from_farm(&mut farm, 5);
             test_scenario::return_shared(farm);
         };

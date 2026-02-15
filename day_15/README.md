@@ -1,70 +1,70 @@
-# Day 15: Read Object Model & Create FarmState Struct
+# Gun 15: Object Model'i (nesne modeli) Okuyun ve FarmState Struct'i (veri yapisi) Olusturun
 
-## What You'll Learn Today
+## Bugun Ne Ogreneceksiniz
 
-Today you'll start your third project: **Farm Simulator**. You'll learn:
-- What Sui objects are (conceptually)
-- How to create a simple struct for counters
-- Basic increment operations
+Bugun ucuncu projenize baslayacaksiniz: **Farm Simulator**. Ogrenecekleriniz:
+- Sui object'lerinin (nesnelerinin) kavramsal olarak ne oldugu
+- Sayaclar icin basit bir struct (veri yapisi) nasil olusturulur
+- Temel artirma islemleri
 
-## Understanding Sui Objects (Concept)
+## Sui Object'lerini (Nesnelerini) Anlama (Kavram)
 
-A **Sui object** is a special type of struct that:
-- Can be owned by an address
-- Can be transferred between addresses
-- Has a unique ID (UID)
-- Can be stored on-chain
+Bir **Sui object** (nesnesi) ozel bir struct (veri yapisi) turudur ve:
+- Bir adres tarafindan sahiplenilebilir
+- Adresler arasinda transfer edilebilir
+- Benzersiz bir kimlige sahiptir (UID (benzersiz tanimlayici))
+- Zincir uzerinde depolanabilir
 
-**Today's Note:** We're NOT creating a Sui object yet! We're just creating a regular struct. We'll add UID and make it an object tomorrow.
+**Bugunun Notu:** Bugun henuz bir Sui object (nesnesi) OLUSTURMUYORUZ! Sadece normal bir struct (veri yapisi) olusturuyoruz. Yarin UID (benzersiz tanimlayici) ekleyip onu bir object (nesne) yapacagiz.
 
-## Farm Updates
+## Farm Guncellemeleri
 
-The farm includes plotId support:
-- **PlotId validation**: PlotIds must be between 1 and 20
-- **Plot tracking**: A vector tracks all planted plots
-- **Duplicate prevention**: Cannot plant the same plotId twice
-- **Limit enforcement**: Maximum of 20 plots
-- **Harvest validation**: Cannot harvest plots that don't exist
+Farm, plotId destegi icermektedir:
+- **PlotId dogrulamasi**: PlotId'ler 1 ile 20 arasinda olmalidir
+- **Plot takibi**: Bir vector ekilen tum plot'lari takip eder
+- **Tekrar onleme**: Ayni plotId iki kez ekilemez
+- **Limit uygulamasi**: Maksimum 20 plot
+- **Hasat dogrulamasi**: Var olmayan plot'lar hasat edilemez
 
-All functions now take `plotId: u8` parameters.
+Tum fonksiyonlar artik `plotId: u8` parametresi almaktadir.
 
-## Your Task
+## Goreviniz
 
-1. Open `sources/main.move`
-2. Define constants for plotId validation and error codes
-3. Define a `FarmCounters` struct with:
+1. `sources/main.move` dosyasini acin
+2. plotId dogrulamasi ve hata kodlari icin sabitleri tanimlayin
+3. Asagidaki alanlara sahip bir `FarmCounters` struct'i (veri yapisi) tanimlayin:
    - `planted: u64`
    - `harvested: u64`
    - `plots: vector<u8>`
-4. Add `copy`, `drop`, and `store` abilities (store is needed for objects later)
-5. Write `new_counters()`, `plant(plotId: u8)`, and `harvest(plotId: u8)` functions with plotId validation
+4. `copy`, `drop` ve `store` ability'lerini (yeteneklerini) ekleyin (store daha sonra object'ler icin gereklidir)
+5. plotId dogrulamasi ile `new_counters()`, `plant(plotId: u8)` ve `harvest(plotId: u8)` fonksiyonlarini yazin
 
-## Reading Materials
+## Okuma Materyalleri
 
-1. **Object Model** - Learn about Sui objects conceptually:
+1. **Object Model (Nesne Modeli)** - Sui object'lerini kavramsal olarak ogrenin:
    [https://move-book.com/object/](https://move-book.com/object/)
 
-2. **What is an Object?** - Understand the concept:
+2. **Object (Nesne) Nedir?** - Kavramini anlayin:
    [https://move-book.com/object/object-model.html/](https://move-book.com/object/object-model.html/)
 
-## Related Days
+## Ilgili Gunler
 
-- **Day 16** - Creating your first Sui object with UID
-- **Day 17** - Entry functions and object ownership
+- **Gun 16** - UID (benzersiz tanimlayici) ile ilk Sui object'inizi (nesnenizi) olusturma
+- **Gun 17** - Entry function'lar (giris fonksiyonlari) ve object (nesne) sahipligi
 
-## Entry Functions Guide (Coming Up)
+## Entry Function'lar (Giris Fonksiyonlari) Rehberi (Yakinda)
 
-Starting from Day 17, you'll learn about **entry functions** - special functions that can be called directly from explorers(e.g. https://suiscan.xyz). Here's what you need to know:
+Gun 17'den itibaren **entry function'lari (giris fonksiyonlarini)** ogreneceksiniz - explorer'lardan (ornegin https://suiscan.xyz) dogrudan cagrilabilen ozel fonksiyonlar. Bilmeniz gerekenler:
 
-### What are Entry Functions?
+### Entry Function'lar (Giris Fonksiyonlari) Nedir?
 
-Entry functions are the public interface of your Sui module. They:
-- Can be called directly from explorers
-- Are marked with the `entry` keyword
-- Must take `&mut TxContext` as the last parameter (if they create objects)
-- Are what users interact with when using your module
+Entry function'lar (giris fonksiyonlari) Sui module'unuzun (modulunuzun) genel arayuzudur. Ozellikleri:
+- Explorer'lardan dogrudan cagrilabilirler
+- `entry` anahtar kelimesi ile isaretlenirler
+- (Object olusturuyorlarsa) son parametre olarak `&mut TxContext` almalidir
+- Kullanicilarin module'unuzu (modulunuzu) kullanirken etkilestigi fonksiyonlardir
 
-### Basic Entry Function Pattern
+### Temel Entry Function (Giris Fonksiyonu) Deseni
 
 ```move
 entry fun create_something(ctx: &mut TxContext) {
@@ -77,9 +77,9 @@ entry fun create_something(ctx: &mut TxContext) {
 }
 ```
 
-### Entry Functions for Object Operations
+### Object (Nesne) Islemleri icin Entry Function'lar (Giris Fonksiyonlari)
 
-When you want to modify an object, your entry function receives the object:
+Bir object'i (nesneyi) degistirmek istediginizde, entry function'iniz (giris fonksiyonunuz) object'i (nesneyi) alir:
 
 ```move
 entry fun update_object(obj: &mut MyObject) {
@@ -88,11 +88,11 @@ entry fun update_object(obj: &mut MyObject) {
 }
 ```
 
-### Sending Transactions
+### Islem Gonderme
 
 <!-- Screenshots will be added here -->
 
-You'll learn more about entry functions in Days 17-21!
+Entry function'lar (giris fonksiyonlari) hakkinda daha fazlasini Gun 17-21'de ogreneceksiniz!
 
 ## Commit
 
@@ -102,4 +102,3 @@ sui move test
 git add day_15/
 git commit -m "Day 15: start farm_simulator with FarmCounters"
 ```
-

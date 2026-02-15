@@ -1,62 +1,62 @@
-# Day 16: Introduce Object with UID & key
+# Gun 16: UID (Benzersiz Tanimlayici) ve key (anahtar ability) ile Object (Nesne) Tanitimi
 
-## What You'll Learn Today
+## Bugun Ne Ogreneceksiniz
 
-Today you'll learn:
-- What UID (Unique Identifier) is
-- What the `key` ability means
-- How to create your first Sui object
+Bugun ogrenecekleriniz:
+- UID'nin (Benzersiz Tanimlayici) ne oldugu
+- `key` (anahtar ability) ability'sinin ne anlama geldigi
+- Ilk Sui object'inizi (nesnenizi) nasil olusturacaginiz
 
-## Understanding UID
+## UID'yi (Benzersiz Tanimlayici) Anlama
 
-A **UID** (Unique Identifier) is what makes a struct a Sui object. Every Sui object must have:
-- An `id: UID` field
-- The `key` ability
+Bir **UID** (Benzersiz Tanimlayici) bir struct'i (veri yapisini) Sui object'i (nesnesi) yapan seydir. Her Sui object'i (nesnesi) sunlara sahip olmalidir:
+- Bir `id: UID` alani
+- `key` (anahtar) ability'si
 
-The UID is created using `object::new(ctx)` where `ctx` is a transaction context.
+UID, `object::new(ctx)` kullanilarak olusturulur, burada `ctx` bir transaction context'tir (islem baglami).
 
-## Understanding the `key` Ability
+## `key` (Anahtar) Ability'sini Anlama
 
-The `key` ability means:
-- This struct can be used as a key in global storage
-- It can be owned and transferred
-- It can be stored on-chain
+`key` (anahtar) ability'si su anlama gelir:
+- Bu struct (veri yapisi) global depolamada anahtar olarak kullanilabilir
+- Sahiplenilebilir ve transfer edilebilir
+- Zincir uzerinde depolanabilir
 
-## Farm Updates
+## Farm Guncellemeleri
 
-The farm has been extended with plotId support:
-- **PlotId validation**: PlotIds must be between 1 and 20
-- **Plot tracking**: A vector tracks all planted plots
-- **Duplicate prevention**: Cannot plant the same plotId twice
-- **Limit enforcement**: Maximum of 20 plots
-- **Harvest validation**: Cannot harvest plots that don't exist
+Farm, plotId destegi ile genisletilmistir:
+- **PlotId dogrulamasi**: PlotId'ler 1 ile 20 arasinda olmalidir
+- **Plot takibi**: Bir vector ekilen tum plot'lari takip eder
+- **Tekrar onleme**: Ayni plotId iki kez ekilemez
+- **Limit uygulamasi**: Maksimum 20 plot
+- **Hasat dogrulamasi**: Var olmayan plot'lar hasat edilemez
 
-All functions now take `plotId: u8` parameters.
+Tum fonksiyonlar artik `plotId: u8` parametresi almaktadir.
 
-## Your Task
+## Goreviniz
 
-1. The `FarmCounters` from day_15 is already in `sources/main.move` with plotId support added (you can also check `day_15/sources/solution.move` if needed)
-2. Define a `Farm` struct with:
+1. day_15'teki `FarmCounters` zaten `sources/main.move` icinde plotId destegi eklenmis olarak mevcuttur (gerekirse `day_15/sources/solution.move` dosyasini da kontrol edebilirsiniz)
+2. Asagidaki alanlara sahip bir `Farm` struct'i (veri yapisi) tanimlayin:
    - `id: UID`
    - `counters: FarmCounters`
-   - `has key` ability
-3. Write `new_farm()` that creates a UID using `object::new(ctx)`
+   - `has key` ability'si
+3. `object::new(ctx)` kullanarak bir UID (benzersiz tanimlayici) olusturan `new_farm()` fonksiyonunu yazin
 
-## Reading Materials
+## Okuma Materyalleri
 
-1. **Using Objects** - Learn about object creation:
+1. **Object'leri (Nesneleri) Kullanma** - Object (nesne) olusturmayi ogrenin:
    [https://move-book.com/storage/](https://move-book.com/storage/)
 
-2. **Storage Functions** - Understand object::new:
+2. **Storage Functions (Depolama Fonksiyonlari)** - object::new'i anlayin:
    [https://move-book.com/storage/storage-functions/](https://move-book.com/storage/storage-functions/)
 
-3. **UID & ID** - Learn about unique identifiers:
+3. **UID & ID** - Benzersiz tanimlayicilari ogrenin:
    [https://move-book.com/storage/uid-and-id/](https://move-book.com/storage/uid-and-id/)
 
-## Related Days
+## Ilgili Gunler
 
-- **Day 15** - FarmCounters struct (prerequisite)
-- **Day 17** - Entry functions and transferring objects
+- **Gun 15** - FarmCounters struct'i (veri yapisi) (on kosul)
+- **Gun 17** - Entry function'lar (giris fonksiyonlari) ve object'lerin (nesnelerin) transferi
 
 ## Commit
 
@@ -66,4 +66,3 @@ sui move test
 git add day_16/
 git commit -m "Day 16: create Farm object with UID and counters"
 ```
-

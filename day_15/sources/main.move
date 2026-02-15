@@ -1,46 +1,45 @@
-/// DAY 15: Read Object Model & Create FarmState Struct (no UID yet)
-/// 
-/// Today you will:
-/// 1. Learn about Sui objects (conceptually)
-/// 2. Create a simple struct for farm counters
-/// 3. Write basic functions to increment counters
-/// 
-/// NOTE: Today we're NOT creating a Sui object yet, just a regular struct.
-/// We'll add UID and make it an object tomorrow.
+/// GUN 15: Object Model'i (nesne modeli) Okuyun ve FarmState Struct'i (veri yapisi) Olusturun (henuz UID yok)
+///
+/// Bugun yapacaklariniz:
+/// 1. Sui object'lerini (nesnelerini) kavramsal olarak ogrenmek
+/// 2. Farm sayaclari icin basit bir struct (veri yapisi) olusturmak
+/// 3. Sayaclari artirmak icin temel fonksiyonlar yazmak
+///
+/// NOT: Bugun henuz bir Sui object (nesnesi) OLUSTURMUYORUZ, sadece normal bir struct (veri yapisi).
+/// Yarin UID (benzersiz tanimlayici) ekleyip onu bir object (nesne) yapacagiz.
 
 module challenge::day_15 {
-    // TODO: Define constants for plotId validation
+    // TODO: plotId dogrulamasi icin sabitleri tanimlayin
     // const MAX_PLOTS: u64 = 20;
     // const E_PLOT_NOT_FOUND: u64 = 1;
     // const E_PLOT_LIMIT_EXCEEDED: u64 = 2;
     // const E_INVALID_PLOT_ID: u64 = 3;
     // const E_PLOT_ALREADY_EXISTS: u64 = 4;
 
-    // TODO: Define a struct called 'FarmCounters' with:
+    // TODO: Asagidaki alanlara sahip 'FarmCounters' adinda bir struct (veri yapisi) tanimlayin:
     // - planted: u64
     // - harvested: u64
     // - plots: vector<u8>
-    // Add 'copy', 'drop', and 'store' abilities
-    // (store is needed because we'll put this in an object later)
+    // 'copy', 'drop' ve 'store' ability'lerini (yeteneklerini) ekleyin
+    // (store gereklidir cunku bunu daha sonra bir object'in (nesnenin) icine koyacagiz)
     // public struct FarmCounters has copy, drop, store {
-    //     // Your fields here
+    //     // Alanlari buraya yazin
     // }
 
-    // TODO: Write a constructor 'new_counters' that returns counters with zeros
+    // TODO: Sifirlarla sayaclar donduren bir 'new_counters' constructor'i (olusturucusu) yazin
     // fun new_counters(): FarmCounters {
-    //     // Your code here (include plots: vector::empty())
+    //     // Kodunuz buraya (plots: vector::empty() dahil edin)
     // }
 
-    // TODO: Write a function 'plant' that takes plotId: u8 and increments planted counter
+    // TODO: plotId: u8 alan ve planted sayacini artiran bir 'plant' fonksiyonu yazin
     // fun plant(counters: &mut FarmCounters, plotId: u8) {
-    //     // Your code here
-    //     // Validate plotId, check limits, prevent duplicates
+    //     // Kodunuz buraya
+    //     // plotId'yi dogrulayin, limitleri kontrol edin, tekrarlari onleyin
     // }
 
-    // TODO: Write a function 'harvest' that takes plotId: u8 and increments harvested counter
+    // TODO: plotId: u8 alan ve harvested sayacini artiran bir 'harvest' fonksiyonu yazin
     // fun harvest(counters: &mut FarmCounters, plotId: u8) {
-    //     // Your code here
-    //     // Find and remove the plot from the vector
+    //     // Kodunuz buraya
+    //     // Plot'u vector'den bulun ve kaldirin
     // }
 }
-

@@ -1,45 +1,45 @@
-# Day 18: Receiving Objects & Updating State
+# Gun 18: Object'leri (Nesneleri) Alma ve Durumu Guncelleme
 
-## What You'll Learn Today
+## Bugun Ne Ogreneceksiniz
 
-Today you'll learn:
-- How to write entry functions that receive objects
-- How to update object state on-chain
-- How objects are passed in transactions
+Bugun ogrenecekleriniz:
+- Object'leri (nesneleri) alan entry function'lar (giris fonksiyonlari) nasil yazilir
+- Zincir uzerinde object (nesne) durumu nasil guncellenir
+- Transaction'larda (islemlerde) object'ler (nesneler) nasil iletilir
 
-## Understanding Object Parameters in Entry Functions
+## Entry Function'larda (Giris Fonksiyonlarinda) Object (Nesne) Parametrelerini Anlama
 
-Entry functions can receive objects as parameters. When you call an entry function with an object:
-- For owned objects: The object must be owned by the transaction sender
-- For shared objects: The object can be accessed by anyone (shared objects are created with `transfer::share_object()`)
-- The function receives a mutable reference (`&mut Object`)
-- Changes to the object are persisted on-chain
+Entry function'lar (giris fonksiyonlari) parametre olarak object'ler (nesneler) alabilir. Bir entry function'i (giris fonksiyonunu) bir object (nesne) ile cagirdiginizda:
+- Sahipli object'ler (nesneler) icin: Object (nesne) transaction gondereni tarafindan sahiplenilmis olmalidir
+- Paylasilan object'ler (nesneler) icin: Object'e (nesneye) herkes erisebilir (paylasilan object'ler `transfer::share_object()` ile olusturulur)
+- Fonksiyon degistirilebilir bir referans alir (`&mut Object`)
+- Object'teki (nesnedeki) degisiklikler zincir uzerinde kalici olarak kaydedilir
 
-## Farm Updates
+## Farm Guncellemeleri
 
-The farm has been extended with plotId support:
-- **PlotId validation**: PlotIds must be between 1 and 20
-- **Plot tracking**: A vector tracks all planted plots
-- **Duplicate prevention**: Cannot plant the same plotId twice
-- **Limit enforcement**: Maximum of 20 plots
-- **Harvest validation**: Cannot harvest plots that don't exist
-- **Shared objects**: Farm is now a shared object (using `transfer::share_object`)
+Farm, plotId destegi ile genisletilmistir:
+- **PlotId dogrulamasi**: PlotId'ler 1 ile 20 arasinda olmalidir
+- **Plot takibi**: Bir vector ekilen tum plot'lari takip eder
+- **Tekrar onleme**: Ayni plotId iki kez ekilemez
+- **Limit uygulamasi**: Maksimum 20 plot
+- **Hasat dogrulamasi**: Var olmayan plot'lar hasat edilemez
+- **Paylasilan object'ler (nesneler)**: Farm artik paylasilan bir object'tir (nesnedir) (`transfer::share_object` kullanilarak)
 
-All functions now take `plotId: u8` parameters.
+Tum fonksiyonlar artik `plotId: u8` parametresi almaktadir.
 
-## Your Task
+## Goreviniz
 
-1. The code from day_17 is already in `sources/main.move` with plotId support added (you can also check `day_17/sources/solution.move` if needed)
-2. Write an entry function `plant_on_farm_entry(farm: &mut Farm, plotId: u8)` that:
-   - Takes `farm: &mut Farm` and `plotId: u8` as parameters
-   - Calls `plant_on_farm(farm, plotId)` to plant on the specified plot
-3. Write an entry function `harvest_from_farm_entry(farm: &mut Farm, plotId: u8)` that:
-   - Takes `farm: &mut Farm` and `plotId: u8` as parameters
-   - Calls `harvest_from_farm(farm, plotId)` to harvest from the specified plot
+1. day_17'deki kod zaten `sources/main.move` icinde plotId destegi eklenmis olarak mevcuttur (gerekirse `day_17/sources/solution.move` dosyasini da kontrol edebilirsiniz)
+2. Asagidakileri yapan bir entry function (giris fonksiyonu) `plant_on_farm_entry(farm: &mut Farm, plotId: u8)` yazin:
+   - `farm: &mut Farm` ve `plotId: u8` parametreleri alir
+   - Belirtilen plot uzerinde ekim yapmak icin `plant_on_farm(farm, plotId)` fonksiyonunu cagirir
+3. Asagidakileri yapan bir entry function (giris fonksiyonu) `harvest_from_farm_entry(farm: &mut Farm, plotId: u8)` yazin:
+   - `farm: &mut Farm` ve `plotId: u8` parametreleri alir
+   - Belirtilen plot'tan hasat yapmak icin `harvest_from_farm(farm, plotId)` fonksiyonunu cagirir
 
-## Reading Materials
+## Okuma Materyalleri
 
-1. **Receiving as Object** - Learn about object parameters:
+1. **Object (Nesne) Olarak Alma** - Object (nesne) parametrelerini ogrenin:
    [https://move-book.com/storage/transfer-to-object](https://move-book.com/storage/transfer-to-object)
 
 ## Commit
@@ -50,4 +50,3 @@ sui move test
 git add day_18/
 git commit -m "Day 18: add entry functions to plant and harvest on Farm"
 ```
-

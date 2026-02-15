@@ -1,26 +1,26 @@
-/// DAY 21: Final Tests & Cleanup
-/// 
-/// Today you will:
-/// 1. Write comprehensive tests for the farm
-/// 2. Clean up your code
-/// 3. Review what you've learned
+/// GUN 21: Final Testleri ve Temizlik
 ///
-/// Note: You can copy code from day_20/sources/solution.move if needed
+/// Bugun yapacaklariniz:
+/// 1. Farm icin kapsamli testler yazma
+/// 2. Kodunuzu temizleme
+/// 3. Ogrendiklerinizi gozden gecirme
+///
+/// Not: Gerekirse day_20/sources/solution.move dosyasindan kodu kopyalayabilirsiniz
 
 module challenge::day_21 {
     use sui::event;
 
-    // Note: test_scenario is available in Sui framework for testing
-    // You'll need to import it when writing tests: use sui::test_scenario;
+    // Not: test_scenario, Sui framework'unda test icin mevcuttur
+    // Testleri yazarken ice aktarmaniz gerekecektir: use sui::test_scenario;
 
-    // Copy from day_20: All structs and functions
-    
+    // day_20'den kopyalayin: Tum struct'lar ve fonksiyonlar
+
     const MAX_PLOTS: u64 = 20;
     const E_PLOT_NOT_FOUND: u64 = 1;
     const E_PLOT_LIMIT_EXCEEDED: u64 = 2;
     const E_INVALID_PLOT_ID: u64 = 3;
     const E_PLOT_ALREADY_EXISTS: u64 = 4;
-    
+
 
     public struct FarmCounters has copy, drop, store {
         planted: u64,
@@ -37,31 +37,31 @@ module challenge::day_21 {
     }
 
     fun plant(counters: &mut FarmCounters, plotId: u8) {
-        // Check if plotId is valid (between 1 and 20)
+        // plotId'nin gecerli olup olmadigini kontrol et (1 ile 20 arasinda)
         assert!(plotId >= 1 && plotId <= (MAX_PLOTS as u8), E_INVALID_PLOT_ID);
-        
-        // Check if we've reached the plot limit
+
+        // Plot limitine ulasilip ulasilmadigini kontrol et
         let len = vector::length(&counters.plots);
         assert!(len < MAX_PLOTS, E_PLOT_LIMIT_EXCEEDED);
-        
-        // Check if plot already exists in the vector
+
+        // Plot'un vector'de zaten var olup olmadigini kontrol et
         let mut i = 0;
         while (i < len) {
             let existing_plot = vector::borrow(&counters.plots, i);
             assert!(*existing_plot != plotId, E_PLOT_ALREADY_EXISTS);
             i = i + 1;
         };
-        
+
         counters.planted = counters.planted + 1;
         vector::push_back(&mut counters.plots, plotId);
     }
 
     fun harvest(counters: &mut FarmCounters, plotId: u8) {
         let len = vector::length(&counters.plots);
-                
-        // Check if plot exists in the vector and find its index
+
+        // Plot'un vector'de var olup olmadigini kontrol et ve indeksini bul
         let mut i = 0;
-        let mut found_index = len; 
+        let mut found_index = len;
         while (i < len) {
             let existing_plot = vector::borrow(&counters.plots, i);
             if (*existing_plot == plotId) {
@@ -69,11 +69,11 @@ module challenge::day_21 {
             };
             i = i + 1;
         };
-        
-        // Assert that plot was found (found_index < len means we found it)
+
+        // Plot'un bulundugunu dogrula (found_index < len ise bulduk demektir)
         assert!(found_index < len, E_PLOT_NOT_FOUND);
-        
-        // Remove the plot from the vector
+
+        // Plot'u vector'den kaldir
         vector::remove(&mut counters.plots, found_index);
         counters.harvested = counters.harvested + 1;
     }
@@ -107,7 +107,7 @@ module challenge::day_21 {
         farm.counters.planted
     }
 
-    // Used in tests (see solution.move)
+    // Testlerde kullanilir (solution.move dosyasina bakiniz)
     fun total_harvested(farm: &Farm): u64 {
         farm.counters.harvested
     }
@@ -128,45 +128,44 @@ module challenge::day_21 {
         harvest_from_farm(farm, plotId);
     }
 
-    // TODO: Write comprehensive tests:
-    // 
+    // TODO: Kapsamli testler yazin:
+    //
     // Test 1: test_create_farm
-    // - Create a farm (shared object)
-    // - Check initial counters are zero
-    // - Use test_scenario::take_shared to get the farm
-    // 
+    // - Bir farm olusturun (shared object)
+    // - Baslangic sayaclarinin sifir oldugunu kontrol edin
+    // - Farm'i almak icin test_scenario::take_shared kullanin
+    //
     // Test 2: test_planting_increases_counter
-    // - Create farm, plant plotId 1
-    // - Verify planted counter is 1
-    // - Use test_scenario::take_shared and test_scenario::return_shared
-    // 
+    // - Farm olusturun, plotId 1'i ekin
+    // - Ekilen sayacinin 1 oldugunu dogrulayin
+    // - test_scenario::take_shared ve test_scenario::return_shared kullanin
+    //
     // Test 3: test_harvesting_increases_counter
-    // - Create farm, plant plotId 1, then harvest plotId 1
-    // - Verify both counters are 1
-    // 
+    // - Farm olusturun, plotId 1'i ekin, sonra plotId 1'i hasat edin
+    // - Her iki sayacin da 1 oldugunu dogrulayin
+    //
     // Test 4: test_multiple_operations
-    // - Plant plotIds 3, 5, 18 (in any order)
-    // - Harvest plotId 5
-    // - Verify planted counter is 3, harvested counter is 1
-    // 
+    // - plotId'leri 3, 5, 18 ekin (herhangi bir sirada)
+    // - plotId 5'i hasat edin
+    // - Ekilen sayacinin 3, hasat edilen sayacinin 1 oldugunu dogrulayin
+    //
     // Test 5: test_invalid_plot_id
-    // - Try to plant plotId 0 or 21 (should abort)
-    // 
+    // - plotId 0 veya 21'i ekmeyi deneyin (iptal olmali)
+    //
     // Test 6: test_duplicate_plot
-    // - Plant plotId 1, then try to plant plotId 1 again (should abort)
-    // 
+    // - plotId 1'i ekin, sonra plotId 1'i tekrar ekmeyi deneyin (iptal olmali)
+    //
     // Test 7: test_plot_limit
-    // - Try to plant 21 plots (should abort on the 21st)
-    // 
+    // - 21 plot ekmeyi deneyin (21. plot'ta iptal olmali)
+    //
     // Test 8: test_harvest_nonexistent_plot
-    // - Try to harvest a plot that doesn't exist (should abort)
-    // 
-    // Use test_scenario::begin, test_scenario::next_tx, test_scenario::take_shared, etc.
-    // Note: Since farm is a shared object, use test_scenario::take_shared instead of take_from_sender
+    // - Var olmayan bir plot'u hasat etmeyi deneyin (iptal olmali)
+    //
+    // test_scenario::begin, test_scenario::next_tx, test_scenario::take_shared vb. kullanin
+    // Not: Farm bir shared object oldugu icin take_from_sender yerine test_scenario::take_shared kullanin
 
-    // TODO: Review all three projects (habit_tracker, bounty_board, farm_simulator)
-    // Make sure function names are consistent
-    // Remove any unnecessary comments
-    // Ensure all tests pass
+    // TODO: Uc projenin tamamini gozden gecirin (habit_tracker, bounty_board, farm_simulator)
+    // Fonksiyon adlarinin tutarli oldugundan emin olun
+    // Gereksiz yorumlari kaldirin
+    // Tum testlerin gectiginden emin olun
 }
-

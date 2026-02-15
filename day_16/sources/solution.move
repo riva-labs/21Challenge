@@ -1,12 +1,12 @@
-/// DAY 16: Introduce Object with UID & key - SOLUTION
-/// 
-/// This is the solution file for day 16.
-/// Students should complete main.move, not this file.
+/// GUN 16: UID (Benzersiz Tanimlayici) ve key (anahtar ability) ile Object (Nesne) Tanitimi - COZUM
+///
+/// Bu cozum dosyasidir.
+/// Ogrenciler main.move dosyasini tamamlamalidir.
 
 module challenge::day_16_solution {
 
 
-    // Copy FarmCounters from day_15
+    // day_15'ten FarmCounters'i kopyala
     const MAX_PLOTS: u64 = 20;
     const E_PLOT_NOT_FOUND: u64 = 1;
     const E_PLOT_LIMIT_EXCEEDED: u64 = 2;
@@ -28,31 +28,31 @@ module challenge::day_16_solution {
     }
 
     fun plant(counters: &mut FarmCounters, plotId: u8) {
-        // Check if plotId is valid (between 1 and 20)
+        // plotId'nin gecerli olup olmadigini kontrol et (1 ile 20 arasinda)
         assert!(plotId >= 1 && plotId <= (MAX_PLOTS as u8), E_INVALID_PLOT_ID);
-        
-        // Check if we've reached the plot limit
+
+        // Plot limitine ulasilip ulasilmadigini kontrol et
         let len = vector::length(&counters.plots);
         assert!(len < MAX_PLOTS, E_PLOT_LIMIT_EXCEEDED);
-        
-        // Check if plot already exists in the vector
+
+        // Plot'un vector'de zaten var olup olmadigini kontrol et
         let mut i = 0;
         while (i < len) {
             let existing_plot = vector::borrow(&counters.plots, i);
             assert!(*existing_plot != plotId, E_PLOT_ALREADY_EXISTS);
             i = i + 1;
         };
-        
+
         counters.planted = counters.planted + 1;
         vector::push_back(&mut counters.plots, plotId);
     }
 
     fun harvest(counters: &mut FarmCounters, plotId: u8) {
         let len = vector::length(&counters.plots);
-                
-        // Check if plot exists in the vector and find its index
+
+        // Plot'un vector'de var olup olmadigini kontrol et ve indeksini bul
         let mut i = 0;
-        let mut found_index = len; 
+        let mut found_index = len;
         while (i < len) {
             let existing_plot = vector::borrow(&counters.plots, i);
             if (*existing_plot == plotId) {
@@ -60,22 +60,22 @@ module challenge::day_16_solution {
             };
             i = i + 1;
         };
-        
-        // Assert that plot was found (found_index < len means we found it)
+
+        // Plot'un bulundugunu dogrula (found_index < len ise bulduk demektir)
         assert!(found_index < len, E_PLOT_NOT_FOUND);
-        
-        // Remove the plot from the vector
+
+        // Plot'u vector'den kaldir
         vector::remove(&mut counters.plots, found_index);
         counters.harvested = counters.harvested + 1;
     }
 
-    // Farm object - a Sui object that can be owned
+    // Farm object'i (nesnesi) - sahiplenilebilen bir Sui object'i (nesnesi)
     public struct Farm has key {
         id: UID,
         counters: FarmCounters,
     }
 
-    // Create a new Farm object
+    // Yeni bir Farm object'i (nesnesi) olustur
     fun new_farm(ctx: &mut TxContext): Farm {
         Farm {
             id: object::new(ctx),
@@ -83,4 +83,3 @@ module challenge::day_16_solution {
         }
     }
 }
-

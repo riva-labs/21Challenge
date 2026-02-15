@@ -1,57 +1,57 @@
-# Day 20: Events
+# Gun 20: Event'ler (Olaylar)
 
-## What You'll Learn Today
+## Bugun Ne Ogreneceksiniz
 
-Today you'll learn:
+Bugun ogrenecekleriniz:
 
-- What events are and why they're useful
-- How to define an event struct
-- How to emit events
+- Event'lerin (olaylarin) ne oldugu ve neden faydali olduklari
+- Bir event struct'i (veri yapisi) nasil tanimlanir
+- Event'ler nasil yayinlanir (emit edilir)
 
-## Understanding Events
+## Event'leri Anlama
 
-**Events** are messages that your code can send when something happens. They:
+**Event'ler (olaylar)** bir sey oldugunda kodunuzun gonderebilecegi mesajlardir. Ozellikleri:
 
-- Are stored on-chain
-- Can be queried by clients
-- Help track what happened in transactions
+- Zincir uzerinde (on-chain) saklanirlar
+- Istemciler tarafindan sorgulanabilirler
+- Islemlerde neler oldugunu takip etmeye yardimci olurlar
 
-Common use cases:
+Yaygin kullanim alanlari:
 
-- Logging important actions
-- Notifying external systems
-- Building transaction history
+- Onemli eylemleri kaydetme
+- Harici sistemleri bilgilendirme
+- Islem gecmisi olusturma
 
-## Farm Updates
+## Farm Guncellemeleri
 
-The farm has been extended with plotId support:
+Farm, plotId destegi ile genisletilmistir:
 
-- **PlotId validation**: PlotIds must be between 1 and 20
-- **Plot tracking**: A vector tracks all planted plots
-- **Duplicate prevention**: Cannot plant the same plotId twice
-- **Limit enforcement**: Maximum of 20 plots
-- **Harvest validation**: Cannot harvest plots that don't exist
-- **Shared objects**: Farm is now a shared object (using `transfer::share_object`)
+- **PlotId dogrulamasi**: PlotId'ler 1 ile 20 arasinda olmalidir
+- **Plot takibi**: Bir vector tum ekilen plot'lari takip eder
+- **Tekrar onleme**: Ayni plotId iki kez ekilemez
+- **Limit uygulamasi**: Maksimum 20 plot
+- **Hasat dogrulamasi**: Var olmayan plot'lar hasat edilemez
+- **Shared object'ler (paylasilan nesneler)**: Farm artik bir shared object'tir (`transfer::share_object` kullanilarak)
 
-All functions now take `plotId: u8` parameters.
+Tum fonksiyonlar artik `plotId: u8` parametresi almaktadir.
 
-## Your Task
+## Goreviniz
 
-1. The code from day_19 is already in `sources/main.move` (you can also check `day_19/sources/solution.move` if needed)
-2. Import the event module: `use sui::event;`
-3. Define a `PlantEvent` struct with:
-   - Field: `planted_after: u64`
-   - Abilities: `copy, drop`
+1. day_19'daki kod zaten `sources/main.move` dosyasinda mevcuttur (gerekirse `day_19/sources/solution.move` dosyasini da kontrol edebilirsiniz)
+2. event module'unu (modulunu) ice aktarin: `use sui::event;`
+3. Asagidaki ozelliklere sahip bir `PlantEvent` struct'i (veri yapisi) tanimlayin:
+   - Alan: `planted_after: u64`
+   - Yetenekler: `copy, drop`
    - Format: `public struct PlantEvent has copy, drop { planted_after: u64, }`
-4. Update `plant_on_farm_entry(farm: &mut Farm, plotId: u8)` to emit the event after planting:
-   - First, call `plant_on_farm(farm, plotId)` to plant
-   - Get the total planted count using `total_planted(farm)`
-   - Emit the event using `event::emit(PlantEvent { planted_after: planted_count })`
-   - Note: The function signature now includes `plotId: u8` parameter
+4. Ekme isleminden sonra event yayinlamak icin `plant_on_farm_entry(farm: &mut Farm, plotId: u8)` fonksiyonunu guncelleyin:
+   - Oncelikle, ekme islemi icin `plant_on_farm(farm, plotId)` fonksiyonunu cagirin
+   - `total_planted(farm)` kullanarak toplam ekilen sayisini alin
+   - `event::emit(PlantEvent { planted_after: planted_count })` kullanarak event'i yayinlayin
+   - Not: Fonksiyon imzasi artik `plotId: u8` parametresini icermektedir
 
-## Reading Materials
+## Okuma Materyalleri
 
-1. **Events** - Learn about events:
+1. **Event'ler** - Event'ler hakkinda bilgi edinin:
    [https://move-book.com/programmability/events/](https://move-book.com/programmability/events/)
 
 ## Commit

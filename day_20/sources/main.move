@@ -1,15 +1,15 @@
-/// DAY 20: Events (Optional but Small)
-/// 
-/// Today you will:
-/// 1. Learn about events
-/// 2. Define an event struct
-/// 3. Emit events when actions happen
+/// GUN 20: Event'ler (Olaylar) (Istege Bagli ama Kucuk)
 ///
-/// Note: You can copy code from day_19/sources/solution.move if needed
+/// Bugun yapacaklariniz:
+/// 1. Event'ler (olaylar) hakkinda bilgi edinme
+/// 2. Bir event struct'i (veri yapisi) tanimlama
+/// 3. Eylemler gerceklestiginde event'leri yayinlama (emit etme)
+///
+/// Not: Gerekirse day_19/sources/solution.move dosyasindan kodu kopyalayabilirsiniz
 
 module challenge::day_20 {
-    // TODO: Import the event module here
-    // Hint: use sui::event;
+    // TODO: event module'unu (modulunu) buraya ice aktarin
+    // Ipucu: use sui::event;
 
     const MAX_PLOTS: u64 = 20;
     const E_PLOT_NOT_FOUND: u64 = 1;
@@ -32,31 +32,31 @@ module challenge::day_20 {
     }
 
     fun plant(counters: &mut FarmCounters, plotId: u8) {
-        // Check if plotId is valid (between 1 and 20)
+        // plotId'nin gecerli olup olmadigini kontrol et (1 ile 20 arasinda)
         assert!(plotId >= 1 && plotId <= (MAX_PLOTS as u8), E_INVALID_PLOT_ID);
-        
-        // Check if we've reached the plot limit
+
+        // Plot limitine ulasilip ulasilmadigini kontrol et
         let len = vector::length(&counters.plots);
         assert!(len < MAX_PLOTS, E_PLOT_LIMIT_EXCEEDED);
-        
-        // Check if plot already exists in the vector
+
+        // Plot'un vector'de zaten var olup olmadigini kontrol et
         let mut i = 0;
         while (i < len) {
             let existing_plot = vector::borrow(&counters.plots, i);
             assert!(*existing_plot != plotId, E_PLOT_ALREADY_EXISTS);
             i = i + 1;
         };
-        
+
         counters.planted = counters.planted + 1;
         vector::push_back(&mut counters.plots, plotId);
     }
 
     fun harvest(counters: &mut FarmCounters, plotId: u8) {
         let len = vector::length(&counters.plots);
-                
-        // Check if plot exists in the vector and find its index
+
+        // Plot'un vector'de var olup olmadigini kontrol et ve indeksini bul
         let mut i = 0;
-        let mut found_index = len; 
+        let mut found_index = len;
         while (i < len) {
             let existing_plot = vector::borrow(&counters.plots, i);
             if (*existing_plot == plotId) {
@@ -64,11 +64,11 @@ module challenge::day_20 {
             };
             i = i + 1;
         };
-        
-        // Assert that plot was found (found_index < len means we found it)
+
+        // Plot'un bulundugunu dogrula (found_index < len ise bulduk demektir)
         assert!(found_index < len, E_PLOT_NOT_FOUND);
-        
-        // Remove the plot from the vector
+
+        // Plot'u vector'den kaldir
         vector::remove(&mut counters.plots, found_index);
         counters.harvested = counters.harvested + 1;
     }
@@ -102,24 +102,23 @@ module challenge::day_20 {
         farm.counters.planted
     }
 
-    // Used in tests (see solution.move)
+    // Testlerde kullanilir (solution.move dosyasina bakiniz)
     fun total_harvested(farm: &Farm): u64 {
         farm.counters.harvested
     }
 
-    // TODO: Define an event struct called 'PlantEvent' that:
-    // - Has a field 'planted_after' of type u64
-    // - Has 'copy' and 'drop' abilities (required for events)
-    // - Is marked as 'public struct'
+    // TODO: Asagidaki ozelliklere sahip 'PlantEvent' adinda bir event struct'i (veri yapisi) tanimlayin:
+    // - u64 turunde 'planted_after' alanina sahip olmali
+    // - 'copy' ve 'drop' yeteneklerine sahip olmali (event'ler icin gereklidir)
+    // - 'public struct' olarak isaretlenmeli
 
-    // TODO: Create/update the entry function 'plant_on_farm_entry' that:
-    // - Takes farm: &mut Farm and plotId: u8 as parameters
-    // - Calls plant_on_farm(farm, plotId) to plant
-    // - Gets the total planted count using total_planted(farm)
-    // - Emits a PlantEvent using event::emit() with the planted_after value
+    // TODO: Asagidaki ozelliklere sahip 'plant_on_farm_entry' entry function'ini (giris fonksiyonunu) olusturun/guncelleyin:
+    // - Parametre olarak farm: &mut Farm ve plotId: u8 alir
+    // - Ekme islemi icin plant_on_farm(farm, plotId) fonksiyonunu cagirir
+    // - total_planted(farm) kullanarak toplam ekilen sayisini alir
+    // - planted_after degeri ile event::emit() kullanarak PlantEvent yayinlar
 
-    // TODO: Create the entry function 'harvest_from_farm_entry' that:
-    // - Takes farm: &mut Farm and plotId: u8 as parameters
-    // - Calls harvest_from_farm(farm, plotId) to harvest
+    // TODO: Asagidaki ozelliklere sahip 'harvest_from_farm_entry' entry function'ini (giris fonksiyonunu) olusturun:
+    // - Parametre olarak farm: &mut Farm ve plotId: u8 alir
+    // - Hasat islemi icin harvest_from_farm(farm, plotId) fonksiyonunu cagirir
 }
-
