@@ -1,77 +1,77 @@
-# Day 0: Setup & Getting Started
+# Gun 0: Kurulum ve Baslangic
 
-Welcome to the 21-Day Sui Move Challenge! Before you start coding, let's set up your development environment.
+21 Gunluk Sui Move Challenge'ina hos geldiniz! Kodlamaya baslamadan once gelistirme ortaminizi kuralim.
 
-## What You'll Set Up
+## Ne Kuracaksiniz
 
-- ✅ Sui CLI (command-line tool)
-- ✅ Code editor (VS Code recommended)
-- ✅ Terminal basics
-- ✅ Your first build and test
+- ✅ Sui CLI (komut satiri araci)
+- ✅ Kod editorru (VS Code onerilir)
+- ✅ Terminal temelleri
+- ✅ Ilk build ve testiniz
 
-**Time needed:** 20-30 minutes
+**Gereken sure:** 20-30 dakika
 
 ---
 
-## Step 1: Install Sui CLI
+## Adim 1: Sui CLI Kurulumu
 
-The Sui CLI is the main tool you'll use to build and test Move code.
+Sui CLI, Move kodunu build'lemek ve test etmek icin kullanacaginiz ana aractir.
 
-### Recommended Method: Using suiup (All Platforms)
+### Onerilen Yontem: suiup Kullanarak (Tum Platformlar)
 
-**suiup** is the official Sui installer and version manager. It works on macOS, Linux, and Windows (via WSL).
+**suiup**, Sui'nin resmi yukleyicisi ve surum yoneticisidir. macOS, Linux ve Windows'ta (WSL uzerinden) calisir.
 
-#### Step 1.1: Install suiup
+#### Adim 1.1: suiup'i Yukleyin
 
-Open Terminal and run:
+Terminal'i acin ve calistirin:
 
 ```bash
 curl -sSfL https://raw.githubusercontent.com/Mystenlabs/suiup/main/install.sh | sh
 ```
 
-This downloads and installs the `suiup` tool.
+Bu, `suiup` aracini indirip yukler.
 
-#### Step 1.2: Install Sui CLI
+#### Adim 1.2: Sui CLI'yi Yukleyin
 
-After suiup is installed, run:
+suiup yuklendikten sonra calistirin:
 
 ```bash
 suiup install sui@testnet
 ```
 
-**Note:** This installs Sui for testnet. If you need a different version, check the [suiup repository](https://github.com/MystenLabs/suiup).
+**Not:** Bu, testnet icin Sui'yi yukler. Farkli bir surume ihtiyaciniz varsa [suiup reposunu](https://github.com/MystenLabs/suiup) kontrol edin.
 
-### Windows-Specific Instructions
+### Windows'a Ozel Talimatlar
 
-**Windows users:** First install WSL2 (Windows Subsystem for Linux):
+**Windows kullanicilari:** Once WSL2'yi (Windows Subsystem for Linux) yukleyin:
 
-1. Open PowerShell as Administrator
-2. Run: `wsl --install`
-3. Restart your computer
-4. Open Ubuntu from Start menu
-5. Follow the suiup installation steps above in Ubuntu terminal
+1. PowerShell'i Yonetici olarak acin
+2. Calistirin: `wsl --install`
+3. Bilgisayarinizi yeniden baslatin
+4. Baslat menusunden Ubuntu'yu acin
+5. Ubuntu terminalinde yukaridaki suiup kurulum adimlarini takip edin
 
-### NixOS-Specific Instructions
+### NixOS'a Ozel Talimatlar
 
-**NixOS users:** Instead of using suiup, you can use the `flake.nix` shipped with this repository.
+**NixOS kullanicilari:** suiup kullanmak yerine, bu repo ile birlikte gelen `flake.nix` dosyasini kullanabilirsiniz.
 
-Easiest way to use the flake is running the command `nix develop`.
+Flake'i kullanmanin en kolay yolu `nix develop` komutunu calistirmaktir.
 
-### Verify Installation
+### Kurulumu Dogrulama
 
-After installation, verify it worked:
+Kurulumdan sonra calistigini dogrulayin:
 
 ```bash
 sui --version
 ```
 
-You should see something like: `sui 1.x.x-testnet`
+Suna benzer bir sey gormelisiniz: `sui 1.x.x-testnet`
 
-### Troubleshooting
+### Sorun Giderme
 
-**"command not found" error?**
+**"command not found" hatasi mi?**
 
-The Sui binaries directory might not be in your PATH. Try:
+Sui binary dizini PATH'inizde olmayabilir. Deneyin:
 
 ```bash
 # Reload your shell configuration
@@ -83,14 +83,14 @@ source ~/.zshrc    # For zsh
 sui --version
 ```
 
-**Still not working?**
-1. Close and reopen your terminal completely
-2. Check if suiup installed correctly: `which suiup`
-3. See detailed troubleshooting: [Sui Installation Docs](https://docs.sui.io/build/install)
+**Hala calismiyor mu?**
+1. Terminalinizi tamamen kapatip yeniden acin
+2. suiup'in dogru yuklenip yuklenmedigini kontrol edin: `which suiup`
+3. Ayrintili sorun giderme icin bakin: [Sui Kurulum Belgeleri](https://docs.sui.io/build/install)
 
-### Alternative: Manual Installation (Advanced)
+### Alternatif: Manuel Kurulum (Ileri Seviye)
 
-If suiup doesn't work, you can install via cargo:
+suiup calismiyorsa, cargo ile yukleyebilirsiniz:
 
 ```bash
 # Install Rust first
@@ -101,52 +101,52 @@ source $HOME/.cargo/env
 cargo install --locked --git https://github.com/MystenLabs/sui.git --branch testnet sui
 ```
 
-**Note:** This method takes 10-15 minutes and requires more disk space.
+**Not:** Bu yontem 10-15 dakika surer ve daha fazla disk alani gerektirir.
 
 ---
 
-## Step 2: Install VS Code (Code Editor)
+## Adim 2: VS Code Kurulumu (Kod Editorru)
 
-VS Code is a free code editor that works great with Move.
+VS Code, Move ile harika calisan ucretsiz bir kod editorrudur.
 
-### Download & Install
+### Indirme ve Kurulum
 
-1. Go to: https://code.visualstudio.com/
-2. Download for your operating system
-3. Install and open VS Code
+1. Su adrese gidin: https://code.visualstudio.com/
+2. Isletim sisteminiz icin indirin
+3. Yukleyin ve VS Code'u acin
 
-### Install Move Extension
+### Move Eklentisini Yukleyin
 
-1. Open VS Code
-2. Click the Extensions icon (4 squares) on the left sidebar
-3. Search for "Move"
-4. Install the "Move" extension by Mysten Labs
+1. VS Code'u acin
+2. Sol kenardaki Eklentiler simgesine (4 kare) tiklayin
+3. "Move" arayin
+4. Mysten Labs tarafindan yapilan "Move" eklentisini yukleyin
 
-**Benefits:**
-- Syntax highlighting (colors for code)
-- Auto-completion
-- Error detection
+**Faydalari:**
+- Sozdizimi vurgulama (kod icin renkler)
+- Otomatik tamamlama
+- Hata tespiti
 
 ---
 
-## Step 3: Understanding Terminal Basics
+## Adim 3: Terminal Temellerini Anlama
 
-The terminal (also called command line) is where you'll run commands.
+Terminal (komut satiri olarak da adlandirilir), komutlari calistiracaginiz yerdir.
 
-### Opening Terminal
+### Terminali Acma
 
 **macOS:**
-- Press `Cmd + Space`
-- Type "Terminal"
-- Press Enter
+- `Cmd + Space` basin
+- "Terminal" yazin
+- Enter'a basin
 
 **Linux:**
-- Press `Ctrl + Alt + T`
+- `Ctrl + Alt + T` basin
 
 **Windows (WSL):**
-- Open "Ubuntu" from Start menu
+- Baslat menusunden "Ubuntu" acin
 
-### Basic Commands
+### Temel Komutlar
 
 ```bash
 # Show current directory
@@ -165,9 +165,9 @@ cd ..
 cd ~
 ```
 
-### Practice
+### Pratik
 
-Try these commands:
+Bu komutlari deneyin:
 ```bash
 # Navigate to your Desktop
 cd ~/Desktop
@@ -181,11 +181,11 @@ ls
 
 ---
 
-## Step 4: Clone or Download This Project
+## Adim 4: Bu Projeyi Klonlayin veya Indirin
 
-### Option A: Using Git (Recommended)
+### Secenek A: Git Kullanarak (Onerilen)
 
-If you have Git installed:
+Git yukluyse:
 
 ```bash
 cd ~/Desktop
@@ -193,98 +193,98 @@ git clone [repository-url]
 cd 21Challenge
 ```
 
-### Option B: Download ZIP
+### Secenek B: ZIP Indirme
 
-1. Download the project as ZIP
-2. Extract to your Desktop
-3. Open Terminal and navigate:
+1. Projeyi ZIP olarak indirin
+2. Masaustunuze cikartin
+3. Terminal'i acin ve gidin:
    ```bash
    cd ~/Desktop/21Challenge
    ```
 
 ---
 
-## Step 5: Your First Build & Test
+## Adim 5: Ilk Build ve Testiniz
 
-Let's make sure everything works!
+Her seyin calistigindan emin olalim!
 
-### Navigate to Day 1
+### Gun 1'e Gidin
 
 ```bash
 cd day_01
 ```
 
-**Understanding this command:**
-- `cd` = change directory (move to a folder)
-- `day_01` = the folder name
+**Bu komutu anlama:**
+- `cd` = change directory (bir klasore git)
+- `day_01` = klasor adi
 
-### Build the Code
+### Kodu Build'leyin
 
 ```bash
 sui move build
 ```
 
-**What this does:** Compiles (translates) your Move code into a format Sui can understand.
+**Ne yapar:** Move kodunuzu Sui'nin anlayabilecegi bir formata derler (cevirir).
 
-**Expected output:**
+**Beklenen cikti:**
 ```
 BUILDING day_01
 Build successful
 ```
 
-> **You may see warnings — this is normal!** Warnings like `unused function` or `unused variable` are NOT errors. As long as you see `Build successful` at the end, your code is correct. These warnings will disappear as you use the functions in later days.
+> **Uyarilar gorebilirsiniz — bu normaldir!** `unused function` veya `unused variable` gibi uyarilar hata DEGILDIR. Sonunda `Build successful` gordugunuz surece kodunuz dogrudur. Bu uyarilar, fonksiyonlari ilerleyen gunlerde kullandikca kaybolacaktir.
 
-> **Windows users:** If the build fails, try deleting the `Move.lock` file and rebuilding:
+> **Windows kullanicilari:** Build basarisiz olursa, `Move.lock` dosyasini silip yeniden build'lemeyi deneyin:
 > ```bash
 > rm Move.lock
 > sui move build
 > ```
-> This is a known Windows-specific issue. See TROUBLESHOOTING.md for details.
+> Bu bilinen bir Windows'a ozgu sorundur. Ayrintilar icin TROUBLESHOOTING.md dosyasina bakin.
 
-**If you see errors:** Check TROUBLESHOOTING.md in the project root.
+**Hata goruyorsaniz:** Proje kokundeki TROUBLESHOOTING.md dosyasini kontrol edin.
 
-### Run Tests
+### Testleri Calistirin
 
 ```bash
 sui move test
 ```
 
-**What this does:** Runs all test functions to verify code works correctly.
+**Ne yapar:** Kodun dogru calistigini dogrulamak icin tum test fonksiyonlarini calistirir.
 
-**Expected output:**
+**Beklenen cikti:**
 ```
 Running Move unit tests
 Test result: OK. Total tests: 0; passed: 0; failed: 0
 ```
 
-> **You may see warnings — this is normal!** You may also see warnings when running tests. If the tests pass (shows `OK`), your code is working correctly.
+> **Uyarilar gorebilirsiniz — bu normaldir!** Testleri calistirirken de uyarilar gorebilirsiniz. Testler geciyorsa (`OK` gosteriyorsa), kodunuz dogru calisiyor demektir.
 
-**Note:** Day 1 has no tests yet, that's normal!
+**Not:** Gun 1'de henuz test yok, bu normaldir!
 
 ---
 
-## Step 6: Open Project in VS Code
+## Adim 6: Projeyi VS Code'da Acin
 
-### Open from Terminal
+### Terminalden Acma
 
-While in the `21Challenge` folder:
+`21Challenge` klasorundeyken:
 
 ```bash
 code .
 ```
 
-**Note:** The `.` means "current directory"
+**Not:** `.` "mevcut dizin" anlamina gelir
 
-### Or Open Manually
+### Veya Manuel Olarak Acin
 
-1. Open VS Code
-2. Click "File" → "Open Folder"
-3. Navigate to `21Challenge`
-4. Click "Open"
+1. VS Code'u acin
+2. "File" → "Open Folder" tiklayin
+3. `21Challenge` klasorune gidin
+4. "Open" tiklayin
 
-### Explore the Structure
+### Yapiyi Kesffedin
 
-In VS Code's sidebar, you'll see:
+VS Code'un kenar cubugunda sunlari goreceksiniz:
 ```
 21Challenge/
 ├── README.md
@@ -299,52 +299,52 @@ In VS Code's sidebar, you'll see:
 
 ---
 
-## Step 7: Understanding the Workflow
+## Adim 7: Is Akisini Anlama
 
-For each day, you'll follow this pattern:
+Her gun su kalbi takip edeceksiniz:
 
-### 1. Navigate to the Day's Folder
+### 1. Gunun Klasorune Gidin
 
 ```bash
 cd day_01
 ```
 
-### 2. Read the README
+### 2. README'yi Okuyun
 
 ```bash
 cat README.md
 ```
 
-Or open it in VS Code.
+Veya VS Code'da acin.
 
-### 3. Open the Code File
+### 3. Kod Dosyasini Acin
 
-Open `sources/main.move` in VS Code.
+VS Code'da `sources/main.move` dosyasini acin.
 
-### 4. Complete the TODOs
+### 4. TODO'lari Tamamlayin
 
-Look for comments like:
+Su sekildeki yorumlari arayin:
 ```move
 // TODO: Your task here
 ```
 
-### 5. Build After Changes
+### 5. Degisikliklerden Sonra Build'leyin
 
 ```bash
 sui move build
 ```
 
-**Fix any errors** before moving to the next step.
+Sonraki adima gecmeden once **hatalari duzeltin**.
 
-### 6. Run Tests
+### 6. Testleri Calistirin
 
 ```bash
 sui move test
 ```
 
-All tests should pass ✅
+Tum testler gecmeli ✅
 
-### 7. Commit Your Work
+### 7. Calismanizi Commit Edin
 
 ```bash
 git add .
@@ -353,72 +353,72 @@ git commit -m "Day 1: completed"
 
 ---
 
-## Common Questions
+## Sik Sorulan Sorular
 
-### Q: Which terminal should I use?
+### S: Hangi terminali kullanmaliyim?
 
-**macOS/Linux:** Built-in Terminal is perfect
-**Windows:** WSL Ubuntu terminal (after installing WSL)
+**macOS/Linux:** Yerlesik Terminal mukemmeldir
+**Windows:** WSL Ubuntu terminali (WSL yuklendikten sonra)
 
-### Q: Do I need to know Rust?
+### S: Rust bilmem gerekiyor mu?
 
-**No!** Move has some similarities to Rust, but you'll learn Move from scratch.
+**Hayir!** Move'un Rust ile bazi benzerlikleri var, ama Move'u sifirdan ogreneceksiniz.
 
-### Q: Can I use a different editor?
+### S: Farkli bir editor kullanabilir miyim?
 
-**Yes!** VS Code is recommended, but you can use:
-- Vim/Neovim with Move plugins
-- Any text editor (but no syntax highlighting)
+**Evet!** VS Code onerilir, ama sunlari da kullanabilirsiniz:
+- Move eklentileriyle Vim/Neovim
+- Herhangi bir metin editorru (ama sozdizimi vurgulama olmaz)
 
-### Q: How much time per day?
+### S: Gunde ne kadar zaman gerekiyor?
 
-Plan for **1-2 hours per day**:
-- 15-30 min reading
-- 30-60 min coding
-- 5-10 min testing
+**Gunde 1-2 saat** planlayin:
+- 15-30 dk okuma
+- 30-60 dk kodlama
+- 5-10 dk test
 
-### Q: Can I skip days?
+### S: Gunleri atlayabilir miyim?
 
-**Not recommended!** Each day builds on previous days. If you skip, you'll miss important concepts.
+**Onerilmez!** Her gun onceki gunlerin uzerine insa eder. Atlarsaniz onemli kavramlari kacirirsiniz.
 
-### Q: What if I get stuck?
+### S: Takildiysam ne yapmaliyim?
 
-1. Re-read the day's README
-2. Check TROUBLESHOOTING.md
-3. Look at `sources/solution.move` (but try first!)
-4. Check Move Book links provided
-
----
-
-## Checklist: Are You Ready?
-
-Before starting Day 1, make sure:
-
-- [ ] `sui --version` works
-- [ ] VS Code is installed with Move extension
-- [ ] You can navigate with `cd` in terminal
-- [ ] `sui move build` works in day_01
-- [ ] You understand the daily workflow
-
-**All checked?** You're ready! Go to `day_01/README.md` and start learning!
+1. Gunun README'sini tekrar okuyun
+2. TROUBLESHOOTING.md dosyasini kontrol edin
+3. `sources/solution.move` dosyasina bakin (ama once deneyin!)
+4. Saglanan Move Book baglantilarini kontrol edin
 
 ---
 
-## Next Steps
+## Kontrol Listesi: Hazir misiniz?
 
-1. Go to day_01 folder: `cd day_01`
-2. Read the README: `cat README.md` or open in VS Code
-3. Start coding!
+Gun 1'e baslamadan once sunlardan emin olun:
+
+- [ ] `sui --version` calisiyor
+- [ ] Move eklentisiyle VS Code yuklu
+- [ ] Terminalde `cd` ile gezinebiliyorsunuz
+- [ ] day_01'de `sui move build` calisiyor
+- [ ] Gunluk is akisini anliyorsunuz
+
+**Hepsi tamam mi?** Hazirsiniz! `day_01/README.md` klasorune gidin ve ogrenmeye baslayin!
 
 ---
 
-## Need Help?
+## Sonraki Adimlar
 
-If you get stuck or have questions:
+1. day_01 klasorune gidin: `cd day_01`
+2. README'yi okuyun: `cat README.md` veya VS Code'da acin
+3. Kodlamaya baslayin!
 
-- **WhatsApp Community:** [Join our support group](https://chat.whatsapp.com/DZH6y2XMDQ58NY5DheUhQs?mode=hqrc)
+---
+
+## Yardima mi Ihtiyaciniz Var?
+
+Takildiysaniz veya sorulariniz varsa:
+
+- **WhatsApp Toplulugu:** [Destek grubumuza katilin](https://chat.whatsapp.com/DZH6y2XMDQ58NY5DheUhQs?mode=hqrc)
 - **X (Twitter):** [@ercandotsui](https://x.com/ercandotsui)
 
-Don't hesitate to ask questions - we're here to help!
+Soru sormaktan cekinmeyin - yardim etmek icin buradayiz!
 
-**Happy learning!**
+**Iyi ogrenmeler!**
