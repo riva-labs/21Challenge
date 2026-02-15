@@ -1,21 +1,21 @@
-# Day 2: Primitive Types & Simple Functions
+# Gun 2: Ilkel Tipler ve Basit Fonksiyonlar
 
-## What You'll Learn Today
+## Bugun Ne Ogreneceksiniz
 
-Today you'll learn:
-- How to write functions in Move
-- How to use primitive types (u64) in functions
-- How to write your first test
+Bugun ogrenecekleriniz:
+- Move'da function (fonksiyon) yazmak
+- Fonksiyonlarda ilkel tipleri (u64) kullanmak
+- Ilk testinizi yazmak
 
-## Understanding Functions
+## Fonksiyonlari Anlamak
 
-A **function** is a block of code that performs a specific task. In Move, functions:
-- Have a name
-- Can take parameters (inputs)
-- Can return a value
-- Can be marked as `public` (callable from outside) or `fun` (private)
+Bir **function (fonksiyon)**, belirli bir gorevi yerine getiren bir kod bloklardir. Move'da fonksiyonlar:
+- Bir isme sahiptir
+- Parametre (girdi) alabilir
+- Bir deger dondurebilir
+- `public` (disaridan cagrilabilir) veya `fun` (ozel) olarak isaretlenebilir
 
-Basic function syntax:
+Temel fonksiyon sozdizimi:
 ```move
 public fun function_name(param1: Type1, param2: Type2): ReturnType {
     // code here
@@ -23,47 +23,47 @@ public fun function_name(param1: Type1, param2: Type2): ReturnType {
 }
 ```
 
-Note: In Move, the last expression is automatically returned (no `return` keyword needed).
+Not: Move'da son ifade otomatik olarak dondurulur (`return` anahtar kelimesine gerek yoktur).
 
-## Understanding Tests
+## Testleri Anlamak
 
-Tests in Move are functions marked with `#[test]`. They:
-- Run when you execute `sui move test`
-- Help verify your code works correctly
-- Use assertions to check expected values
+Move'da testler `#[test]` ile isaretlenmis fonksiyonlardir. Testler:
+- `sui move test` komutunu calistirdiginizda calisir
+- Kodunuzun dogru calistigini dogrulamaniza yardimci olur
+- Beklenen degerleri kontrol etmek icin assertion'lar (dogrulama ifadeleri) kullanir
 
-Basic test syntax:
+Temel test sozdizimi:
 ``` move
 fun test_name() {
     assert_eq!(1 + 1, 2)
 }
 ```
 
-`assert_eq!` has to be called with the exclamation mark because it's a macro rather than a function. If you don't know what is macro, you can think that it's cooler function. It copy-pasted the actual code instead of calling the function.
+`assert_eq!` bir fonksiyon degil, bir macro (makro) oldugu icin unlem isaretiyle cagrilmalidir. Macro'nun ne oldugunu bilmiyorsaniz, onu daha gelismis bir fonksiyon olarak dusunebilirsiniz. Fonksiyonu cagirmak yerine, gercek kodu oldugu yere kopyalar-yapistirir.
 
-Note: In Move, you have to import the `assert_eq` from `std::unit_test` inside your module to use it. You can do it like:
+Not: Move'da `assert_eq`'i kullanabilmek icin module (modul) icerisinde `std::unit_test`'ten ice aktarmaniz gerekir. Bunu su sekilde yapabilirsiniz:
 ``` move
 #[test_only]
 use std::unit_test::assert_eq;
 ```
 
-The good people tend to use `#[test_only]` to not pollute scope with test related things to speed up compiler performance. Also, it's good to declare it's not related with actual code.
+Iyi gelistiriciler, derleyici performansini artirmak icin kapsami test ile ilgili seylerle kirletmemek amaciyla `#[test_only]` kullanmayi tercih ederler. Ayrica, bunun gercek kodla ilgili olmadigini belirtmek icin de iyi bir uygulamadir.
 
-## Your Task
+## Goreviniz
 
-1. Open `sources/main.move`
-2. Write a `sum` function that adds two u64 numbers
-3. Write a test that verifies `sum(1, 2) == 3`
+1. `sources/main.move` dosyasini acin
+2. Iki u64 sayisini toplayan bir `sum` fonksiyonu yazin
+3. `sum(1, 2) == 3` ifadesini dogrulayan bir test yazin
 
-## Reading Materials
+## Okuma Materyalleri
 
-1. **Primitive Types** - Review basic types:
+1. **Ilkel Tipler** - Temel tipleri inceleyin:
    [https://move-book.com/move-basics/primitive-types/](https://move-book.com/move-basics/primitive-types/)
 
-2. **Functions** - Learn function syntax and usage:
+2. **Fonksiyonlar** - Fonksiyon sozdizimini ve kullanimini ogrenin:
    [https://move-book.com/move-basics/function/](https://move-book.com/move-basics/function/)
 
-3. **Testing** - Learn testing fundamentals:
+3. **Test** - Test temellerini ogrenin:
    [https://move-book.com/move-basics/testing/](https://move-book.com/move-basics/testing/)
 
 ## Commit

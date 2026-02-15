@@ -1,43 +1,43 @@
-# Day 7: Unit Tests for Habit Tracker
+# Gun 7: Habit Tracker icin Birim Testleri
 
-## What You'll Learn Today
+## Bugun Ne Ogreneceksiniz
 
-Today you'll learn:
-- How to write tests in Move
-- How to use assertions
-- How to organize your tests
+Bugun ogrenecekleriniz:
+- Move'da test yazmayi
+- Assertion (dogrulama) kullanmayi
+- Testlerinizi nasil organize edeceginizi
 
-## Understanding Tests
+## Testleri Anlamak
 
-Tests in Move are functions marked with `#[test]`. They:
-- Run when you execute `sui move test`
-- Help verify your code works correctly
-- Use assertions to check expected values
+Move'da testler `#[test]` ile isaretlenmis function (fonksiyon)'lardir. Testler:
+- `sui move test` komutunu calistirdiginizda calisir
+- Kodunuzun dogru calistigini dogrulamaniza yardimci olur
+- Beklenen degerleri kontrol etmek icin assertion (dogrulama) kullanir
 
-Common assertions:
-- `assert!(condition)` - Check if condition is true (built-in macro)
-- `assert_eq!(value1, value2)` - Check if two values are equal (from unit_test module)
+Yaygin assertion'lar:
+- `assert!(kosul)` - Kosulun dogru olup olmadigini kontrol eder (yerlesik makro)
+- `assert_eq!(deger1, deger2)` - Iki degerin esit olup olmadigini kontrol eder (unit_test module'unden)
 
-**Note:** `assert!` is a built-in macro in Move 2024 edition, so you don't need to import it. Just use it directly!
+**Not:** `assert!` Move 2024 surmunde yerlesik bir makrodur, bu nedenle ice aktarmaniza gerek yoktur. Dogrudan kullanabilirsiniz!
 
-## Test Organization
+## Test Organizasyonu
 
-Good tests:
-- Test one thing at a time
-- Have clear names that describe what they test
-- Use meaningful test data
-- Check both success and failure cases
+Iyi testler:
+- Bir seferde tek bir seyi test eder
+- Neyi test ettigini aciklayan net isimlere sahiptir
+- Anlamli test verileri kullanir
+- Hem basarili hem de basarisiz durumlari kontrol eder
 
-## Your Task
+## Goreviniz
 
-1. The code from day_06 is already in `sources/main.move` (you can also check `day_06/sources/solution.move` if needed)
-2. Write at least 2 tests:
-   - Test adding habits to a list
-   - Test completing a habit
+1. day_06'daki kod zaten `sources/main.move` dosyasinda bulunmaktadir (gerekirse `day_06/sources/solution.move` dosyasini da kontrol edebilirsiniz)
+2. En az 2 test yazin:
+   - Listeye aliskanlik eklemeyi test edin
+   - Bir aliskanligi tamamlamayi test edin
 
-## Reading Materials
+## Okuma Materyalleri
 
-1. **Testing** - Learn how to write tests:
+1. **Testing (Test Yazimi)** - Test yazmayi ogrenin:
    [https://move-book.com/move-basics/testing/](https://move-book.com/move-basics/testing/)
 
 ## Commit

@@ -1,13 +1,13 @@
-/// DAY 7: Unit Tests for Habit Tracker - SOLUTION
-/// 
-/// This is the solution file for day 7.
-/// Students should complete main.move, not this file.
+/// GUN 7: Habit Tracker icin Birim Testleri - COZUM
+///
+/// Bu, gun 7'nin cozum dosyasidir.
+/// Ogrenciler bu dosyayi degil, main.move dosyasini tamamlamalidir.
 
 module challenge::day_07_solution {
     use std::vector;
     use std::string::{Self, String};
 
-    // Copy final code from day_06
+    // day_06'dan son kodu kopyalayın
     public struct Habit has copy, drop {
         name: String,
         completed: bool,
@@ -43,33 +43,32 @@ module challenge::day_07_solution {
     }
 
 
-    // Test: Create list and add habits
+    // Test: Liste olusturun ve aliskanlik ekleyin
     #[test]
     fun test_add_habits() {
         let mut list = empty_list();
-        // b"...".to_string() converts byte literals (b"...") to String
-        // This is the standard way to create String values in Move
+        // b"...".to_string() byte literallerini (b"...") String'e donusturur
+        // Bu, Move'da String degerleri olusturmanin standart yoludur
         let habit1 = new_habit(b"Exercise".to_string());
         let habit2 = new_habit(b"Read".to_string());
-        
+
         add_habit(&mut list, habit1);
         add_habit(&mut list, habit2);
-        
+
         let len = vector::length(&list.habits);
         assert!(len == 2, 0);
     }
 
-    // Test: Complete a habit
+    // Test: Bir aliskanligi tamamlayin
     #[test]
     fun test_complete_habit() {
         let mut list = empty_list();
         let habit = new_habit(string::utf8(b"Exercise"));
         add_habit(&mut list, habit);
-        
+
         complete_habit(&mut list, 0);
-        
+
         let completed_habit = vector::borrow(&list.habits, 0);
         assert!(completed_habit.completed == true);
     }
 }
-

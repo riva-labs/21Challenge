@@ -1,19 +1,19 @@
-/// DAY 6: String Type for Habit Names - SOLUTION
-/// 
-/// This is the solution file for day 6.
-/// Students should complete main.move, not this file.
+/// GUN 6: Aliskanlik Isimleri icin String Tipi - COZUM
+///
+/// Bu, gun 6 icin cozum dosyasidir.
+/// Ogrenciler bu dosyayi degil, main.move dosyasini tamamlamalidir.
 
 module challenge::day_06_solution {
     use std::vector;
     use std::string::{Self, String};
 
-    // Habit struct using String instead of vector<u8>
+    // vector<u8> yerine String kullanan Habit struct'i
     public struct Habit has copy, drop {
         name: String,
         completed: bool,
     }
 
-    // Constructor that accepts String
+    // String kabul eden constructor (yapilandirici)
     public fun new_habit(name: String): Habit {
         Habit {
             name,
@@ -21,10 +21,9 @@ module challenge::day_06_solution {
         }
     }
 
-    // Helper function to create a habit from bytes
+    // Byte'lardan aliskanlik olusturan yardimci fonksiyon
     public fun make_habit(name_bytes: vector<u8>): Habit {
         let name = string::utf8(name_bytes);
         new_habit(name)
     }
 }
-

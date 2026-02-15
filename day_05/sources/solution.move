@@ -1,12 +1,12 @@
-/// DAY 5: Control Flow & Mark Habit as Done - SOLUTION
-/// 
-/// This is the solution file for day 5.
-/// Students should complete main.move, not this file.
+/// GUN 5: Control Flow (Kontrol Akisi) & Aliskanligi Tamamlanmis Olarak Isaretleme - COZUM
+///
+/// Bu, gun 5'in cozum dosyasidir.
+/// Ogrenciler bu dosyayi degil, main.move dosyasini tamamlamalidir.
 
 module challenge::day_05_solution {
     use std::vector;
 
-    // Copy from day_04
+    // day_04'ten kopyalandi
     public struct Habit has copy, drop {
         name: vector<u8>,
         completed: bool,
@@ -33,15 +33,14 @@ module challenge::day_05_solution {
         vector::push_back(&mut list.habits, habit);
     }
 
-    // Mark a habit as completed by index
+    // Bir aliskanligi index'e gore tamamlanmis olarak isaretler
     public fun complete_habit(list: &mut HabitList, index: u64) {
         let len = vector::length(&list.habits);
         if (index < len) {
             let habit = vector::borrow_mut(&mut list.habits, index);
             habit.completed = true;
         }
-        // Note: In a real app, you might want to abort if index is invalid
-        // For simplicity, we just do nothing if index is out of bounds
+        // Not: Gercek bir uygulamada, index gecersizse abort etmek isteyebilirsiniz
+        // Basitlik acisindan, index sinir disindaysa hicbir sey yapmiyoruz
     }
 }
-

@@ -1,24 +1,23 @@
-/// DAY 2: Primitive Types & Simple Functions
-/// 
-/// Today you will:
-/// 1. Practice with primitive types (u64, bool)
-/// 2. Write your first function
-/// 3. Write your first test
+/// GUN 2: Ilkel Tipler ve Basit Fonksiyonlar
+///
+/// Bugun yapacaklariniz:
+/// 1. Ilkel tiplerle (u64, bool) pratik yapma
+/// 2. Ilk function (fonksiyon) yazma
+/// 3. Ilk testinizi yazma
 
 module challenge::day_02 {
     #[test_only]
     use std::unit_test::assert_eq;
 
-    // TODO: Write a function called 'sum' that takes two u64 numbers
-    // and returns their sum
+    // TODO: Iki u64 sayisi alan ve toplamlarini donduren
+    // 'sum' adinda bir fonksiyon yazin
     // public fun sum(a: u64, b: u64): u64 {
-    //     // Your code here
+    //     // Kodunuz buraya
     // }
 
-    // TODO: Write a test function that checks sum(1, 2) == 3
+    // TODO: sum(1, 2) == 3 ifadesini kontrol eden bir test fonksiyonu yazin
     // #[test]
     // fun test_sum() {
-    //     // Your code here
+    //     // Kodunuz buraya
     // }
 }
-

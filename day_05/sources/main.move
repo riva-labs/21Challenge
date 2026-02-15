@@ -1,14 +1,14 @@
-/// DAY 5: Control Flow & Mark Habit as Done
-/// 
-/// Today you will:
-/// 1. Learn if/else statements
-/// 2. Learn how to access vector elements
-/// 3. Write a function to mark a habit as completed
+/// GUN 5: Control Flow (Kontrol Akisi) & Aliskanligi Tamamlanmis Olarak Isaretleme
+///
+/// Bugun yapacaklariniz:
+/// 1. if/else ifadelerini ogrenme
+/// 2. Vector (dinamik dizi) elemanlarina nasil erisilecegini ogrenme
+/// 3. Bir aliskanligi tamamlanmis olarak isaretleyen bir function (fonksiyon) yazma
 
 module challenge::day_05 {
     use std::vector;
 
-    // Copy from day_04
+    // day_04'ten kopyalayin
     public struct Habit has copy, drop {
         name: vector<u8>,
         completed: bool,
@@ -35,15 +35,14 @@ module challenge::day_05 {
         vector::push_back(&mut list.habits, habit);
     }
 
-    // TODO: Write a function 'complete_habit' that:
-    // - Takes list: &mut HabitList and index: u64
-    // - Checks if index is valid (less than vector length)
-    // - If valid, marks that habit's completed field as true
-    // Use vector::length() to get the length
-    // Use vector::borrow_mut() to get a mutable reference to an element
+    // TODO: Asagidakileri yapan bir 'complete_habit' function'i yazin:
+    // - list: &mut HabitList ve index: u64 parametrelerini alir
+    // - index'in gecerli olup olmadigini kontrol eder (vector uzunlugundan kucuk olmali)
+    // - Gecerliyse, o aliskanligin completed alanini true olarak isaretler
+    // Uzunlugu almak icin vector::length() kullanin
+    // Bir elemana degistirilebilir referans almak icin vector::borrow_mut() kullanin
     // public fun complete_habit(list: &mut HabitList, index: u64) {
-    //     // Your code here
-    //     // Hint: if (index < length) { ... }
+    //     // Kodunuz buraya
+    //     // Ipucu: if (index < length) { ... }
     // }
 }
-

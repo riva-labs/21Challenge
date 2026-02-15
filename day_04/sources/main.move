@@ -1,14 +1,14 @@
-/// DAY 4: Vector + Ownership Basics
-/// 
-/// Today you will:
-/// 1. Learn about vectors
-/// 2. Create a list of habits
-/// 3. Understand basic ownership concepts
+/// GUN 4: Vector + Ownership Temelleri
+///
+/// Bugun yapacaklariniz:
+/// 1. Vector'ler (dinamik dizi) hakkinda bilgi edinmek
+/// 2. Bir aliskanlik listesi olusturmak
+/// 3. Temel ownership (sahiplik) kavramlarini anlamak
 
 module challenge::day_04 {
     use std::vector;
 
-    // Copy the Habit struct from day_03
+    // day_03'ten Habit struct'ini (veri yapisi) kopyalayin
     public struct Habit has copy, drop {
         name: vector<u8>,
         completed: bool,
@@ -21,24 +21,23 @@ module challenge::day_04 {
         }
     }
 
-    // TODO: Create a struct called 'HabitList' with:
+    // TODO: Asagidaki ozelliklere sahip 'HabitList' adinda bir struct olusturun:
     // - habits: vector<Habit>
-    // Add 'drop' ability (not copy, because vectors can't be copied)
+    // 'drop' ability (yetenek) ekleyin (copy degil, cunku vector'ler kopyalanamaz)
     // public struct HabitList has drop {
-    //     // Your field here
+    //     // Alaniniz buraya
     // }
 
-    // TODO: Write a function 'empty_list' that returns an empty HabitList
+    // TODO: Bos bir HabitList donduren 'empty_list' function'i (fonksiyon) yazin
     // public fun empty_list(): HabitList {
-    //     // Use vector::empty() to create an empty vector
+    //     // Bos bir vector olusturmak icin vector::empty() kullanin
     // }
 
-    // TODO: Write a function 'add_habit' that takes:
-    // - list: &mut HabitList (mutable reference)
-    // - habit: Habit (by value, transfers ownership)
-    // Use vector::push_back to add the habit
+    // TODO: Asagidakileri alan 'add_habit' function'i yazin:
+    // - list: &mut HabitList (degistirilebilir referans)
+    // - habit: Habit (deger ile, ownership'i aktarir)
+    // Aliskanlik eklemek icin vector::push_back kullanin
     // public fun add_habit(list: &mut HabitList, habit: Habit) {
-    //     // Your code here
+    //     // Kodunuz buraya
     // }
 }
-

@@ -1,32 +1,32 @@
-# Day 4: Vector + Ownership Basics
+# Gun 4: Vector + Ownership Temelleri
 
-## What You'll Learn Today
+## Bugun Ne Ogreneceksiniz
 
-Today you'll learn:
-- What vectors are and how to use them
-- Basic ownership concepts in Move
-- How to create a list of habits
+Bugun ogrenecekleriniz:
+- Vector (dinamik dizi) nedir ve nasil kullanilir
+- Move'da temel ownership (sahiplik) kavramlari
+- Bir aliskanlik listesi nasil olusturulur
 
-## Understanding Vectors
+## Vector'leri Anlamak
 
-A **vector** is a list that can grow or shrink. It's like an array, but dynamic.
+Bir **vector (dinamik dizi)** buyuyup kuculebilen bir listedir. Bir array gibidir, ancak dinamiktir.
 
-Basic vector operations:
-- `vector::empty<T>()` - Create an empty vector
-- `vector::push_back(&mut vec, item)` - Add an item to the end
-- `vector::length(&vec)` - Get the number of items
-- `vector::borrow(&vec, index)` - Get a read-only reference to an item
-- `vector::borrow_mut(&mut vec, index)` - Get a mutable reference to an item
+Temel vector islemleri:
+- `vector::empty<T>()` - Bos bir vector olusturur
+- `vector::push_back(&mut vec, item)` - Sona bir eleman ekler
+- `vector::length(&vec)` - Eleman sayisini dondurur
+- `vector::borrow(&vec, index)` - Bir elemana salt okunur referans dondurur
+- `vector::borrow_mut(&mut vec, index)` - Bir elemana degistirilebilir referans dondurur
 
-## Understanding Ownership
+## Ownership'i Anlamak
 
-**Ownership** is a fundamental concept in Move. Every value has exactly one owner at a time.
+**Ownership (sahiplik)** Move'da temel bir kavramdir. Her degerin ayni anda yalnizca bir sahibi vardir.
 
-When you pass a value to a function:
-- **By value** (without `&`): You **transfer ownership** to the function
-- **By reference** (`&` or `&mut`): You **borrow** the value (the function doesn't own it)
+Bir degeri bir function'a (fonksiyon) aktardiginizda:
+- **Deger ile** (`&` olmadan): Function'a **ownership aktarirsiniz**
+- **Referans ile** (`&` veya `&mut`): Degeri **borrow (odunc alma)** edersiniz (function'in sahipligi yoktur)
 
-Examples:
+Ornekler:
 ```move
 // Transfer ownership - 'habit' is moved into the function
 add_habit(list, habit)  // After this, 'habit' can't be used anymore
@@ -35,16 +35,16 @@ add_habit(list, habit)  // After this, 'habit' can't be used anymore
 add_habit(&mut list, habit)  // 'list' can still be used after this
 ```
 
-**Key points:**
-- `&` = read-only borrow
-- `&mut` = mutable borrow (can modify)
-- No `&` = transfer ownership (move)
+**Onemli noktalar:**
+- `&` = salt okunur borrow (odunc alma)
+- `&mut` = degistirilebilir borrow (degistirebilir)
+- `&` yok = ownership aktarimi (move)
 
-## Note: Using String for Text
+## Not: Metin Icin String Kullanimi
 
-**Important change from Day 3:**
+**Gun 3'ten onemli degisiklik:**
 
-In Day 3, you used `vector<u8>` for habit names. Starting from Day 4, we're using `String` instead!
+Gun 3'te aliskanlik isimleri icin `vector<u8>` kullandiniz. Gun 4'ten itibaren `String` kullaniyoruz!
 
 ```move
 // Day 3 (old way)
@@ -54,29 +54,29 @@ name: vector<u8>
 name: String
 ```
 
-**Why the change?**
-- `String` is more readable and semantic
-- Clearly indicates "this is text"
-- Standard library provides String-specific functions
-- This is the recommended way for new Move code
+**Neden degisiklik?**
+- `String` daha okunabilir ve anlamlidir
+- "Bu bir metindir" ifadesini acikca belirtir
+- Standart kutuphane, String'e ozel function'lar saglar
+- Yeni Move kodu icin onerilen yontemdir
 
-**Both work, but `String` is preferred.** You'll learn more about `String` in Day 6!
+**Her ikisi de calisir, ancak `String` tercih edilir.** Gun 6'da `String` hakkinda daha fazla sey ogreneceksiniz!
 
-## Your Task
+## Goreviniz
 
-1. Copy your `Habit` struct from day_03 into `sources/main.move`
-2. **Update it to use `String` instead of `vector<u8>`** (see `main.move` for example)
-3. Create a `HabitList` struct with a `vector<Habit>` field
-4. Write `empty_list()` and `add_habit()` functions
+1. day_03'teki `Habit` struct'inizi (veri yapisi) `sources/main.move` dosyasina kopyalayin
+2. **`vector<u8>` yerine `String` kullanacak sekilde guncelleyin** (ornek icin `main.move` dosyasina bakin)
+3. `vector<Habit>` alanina sahip bir `HabitList` struct'i olusturun
+4. `empty_list()` ve `add_habit()` function'larini yazin
 
-**Note:** The code in `sources/main.move` already uses `String` - you can follow that pattern!
+**Not:** `sources/main.move` dosyasindaki kod zaten `String` kullaniyor - bu kaliba uyabilirsiniz!
 
-## Reading Materials
+## Okuma Materyalleri
 
-1. **Vector** - Learn about vectors and their operations:
+1. **Vector** - Vector'ler ve islemleri hakkinda bilgi edinin:
    [https://move-book.com/move-basics/vector/](https://move-book.com/move-basics/vector/)
 
-2. **Ownership & Scope** - Understand ownership in Move:
+2. **Ownership & Scope** - Move'da ownership'i anlayin:
    [https://move-book.com/move-basics/ownership-and-scope/](https://move-book.com/move-basics/ownership-and-scope/)
 
 ## Commit
@@ -87,4 +87,3 @@ sui move test
 git add day_04/
 git commit -m "Day 4: add HabitList and push habits into vector"
 ```
-

@@ -1,20 +1,20 @@
-# Day 5: Control Flow & Mark Habit as Done
+# Gun 5: Control Flow (Kontrol Akisi) & Aliskanligi Tamamlanmis Olarak Isaretleme
 
-## What You'll Learn Today
+## Bugun Ne Ogreneceksiniz
 
-Today you'll learn:
-- How to use if/else statements
-- How to access vector elements
-- How to modify struct fields
+Bugun ogrenecekleriniz:
+- if/else ifadelerini nasil kullanacaginizi
+- Vector (dinamik dizi) elemanlarına nasil erisecaginizi
+- Struct (veri yapisi) alanlarini nasil degistirecaginizi
 
-## Understanding Control Flow
+## Control Flow'u (Kontrol Akisi) Anlama
 
-**Control flow** lets your code make decisions and repeat actions:
-- `if/else` - Make decisions based on conditions
-- `while` - Repeat code while a condition is true
-- `loop` - Repeat code forever (until break)
+**Control flow (kontrol akisi)** kodunuzun karar vermesini ve islemleri tekrarlamasini saglar:
+- `if/else` - Kosullara gore karar verme
+- `while` - Bir kosul dogru oldugu surece kodu tekrarlama
+- `loop` - Kodu sonsuza kadar tekrarlama (break ile durdurana kadar)
 
-Basic syntax:
+Temel soz dizimi:
 ```move
 if (condition) {
     // do something
@@ -23,24 +23,24 @@ if (condition) {
 }
 ```
 
-## Understanding Vector Access
+## Vector Erisimini Anlama
 
-To access elements in a vector:
-- `vector::length(&vec)` - Get the number of items
-- `vector::borrow(&vec, index)` - Get a read-only reference (use `&`)
-- `vector::borrow_mut(&mut vec, index)` - Get a mutable reference (use `&mut`)
+Bir vector'deki elemanlara erismek icin:
+- `vector::length(&vec)` - Eleman sayisini alma
+- `vector::borrow(&vec, index)` - Salt okunur bir referans alma (`&` kullanilir)
+- `vector::borrow_mut(&mut vec, index)` - Degistirilebilir bir referans alma (`&mut` kullanilir)
 
-**Important:** Always check if the index is valid before accessing!
+**Onemli:** Erisimden once index'in gecerli olup olmadigini her zaman kontrol edin!
 
-## Your Task
+## Goreviniz
 
-1. Copy your code from day_04 into `sources/main.move`
-2. Write a `complete_habit()` function that marks a habit as completed by index
-3. Check if the index is valid before accessing
+1. day_04'teki kodunuzu `sources/main.move` dosyasina kopyalayin
+2. Bir aliskanligi index'e gore tamamlanmis olarak isaretleyen `complete_habit()` function'i (fonksiyon) yazin
+3. Erisimden once index'in gecerli olup olmadigini kontrol edin
 
-## Reading Materials
+## Okuma Materyalleri
 
-1. **Control Flow** - Learn if/else, while, and loops:
+1. **Control Flow (Kontrol Akisi)** - if/else, while ve donguler hakkinda bilgi edinin:
    [https://move-book.com/move-basics/control-flow/](https://move-book.com/move-basics/control-flow/)
 
 ## Commit

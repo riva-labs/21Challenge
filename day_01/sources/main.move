@@ -1,22 +1,21 @@
-/// DAY 1: Modules + Primitive Types
-/// 
-/// Today you will:
-/// 1. Create a basic module
-/// 2. Learn about primitive types
-/// 
-/// Task: Verify the module builds correctly
+/// GUN 1: Module (Modul) + Primitive Types (Ilkel Tipler)
+///
+/// Bugun yapacaklariniz:
+/// 1. Temel bir module olusturmak
+/// 2. Primitive types hakkinda bilgi edinmek
+///
+/// Gorev: Module'un dogru sekilde derlendigini dogrulayin
 
 module challenge::day_01 {
-    // Day 1: Basic module structure + primitive types
+    // Gun 1: Temel module yapisi + primitive types
 
-    // TODO: Define three constants to practice primitive types
+    // TODO: Primitive types'i pratik etmek icin uc constant tanimlayin
     //
-    // Example format:
+    // Ornek format:
     // const NUMBER: u64 = 42;
     // const FLAG: bool = true;
     // const MY_ADDRESS: address = @0x1;
     //
-    // Remember: Constants must be named in UPPERCASE!
+    // Hatirlatma: Constant'lar BUYUK HARF ile isimlendirilmelidir!
 
 }
-

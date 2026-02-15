@@ -1,18 +1,17 @@
-/// DAY 1: Modules + Primitive Types - SOLUTION
+/// GUN 1: Module (Modul) + Primitive Types (Ilkel Tipler) - COZUM
 ///
-/// This is the solution file for day 1.
-/// Students should complete main.move, not this file.
+/// Bu cozum dosyasidir.
+/// Ogrenciler main.move dosyasini tamamlamalidir, bu dosyayi degil.
 ///
-/// To test this solution, temporarily rename main.move and use this file.
+/// Bu cozumu test etmek icin main.move dosyasini gecici olarak yeniden adlandirin ve bu dosyayi kullanin.
 
 module challenge::day_01_solution {
-    // Day 1: Basic module structure + primitive types
+    // Gun 1: Temel module yapisi + primitive types
 
-    // Constants in Move are defined at module level
-    // They must be immutable and named in UPPERCASE
+    // Move'da constant'lar module seviyesinde tanimlanir
+    // Degistirilemez (immutable) olmalidir ve BUYUK HARF ile isimlendirilmelidir
 
-    const NUMBER: u64 = 42;           // 64-bit unsigned integer
+    const NUMBER: u64 = 42;           // 64-bit isaretsiz tam sayi
     const FLAG: bool = true;          // Boolean
-    const MY_ADDRESS: address = @0x1; // Blockchain address
+    const MY_ADDRESS: address = @0x1; // Blockchain adresi
 }
-
