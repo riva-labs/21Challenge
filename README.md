@@ -77,6 +77,7 @@ sui move test
 ├── README.md              # Bu dosya
 ├── GLOSSARY.md            # Terimler ve tanimlar referansi
 ├── TROUBLESHOOTING.md     # Yaygin sorunlarin cozumleri
+├── CONTRIBUTING.md        # Ceviri duzeltmelerine katki rehberi
 ├── day_00_setup/          # Kurulum talimatlari (yeniyseniz buradan baslayin!)
 │   └── README.md
 ├── day_01/
@@ -104,6 +105,7 @@ sui move test
 
 - **GLOSSARY.md** - Move terimleri icin hizli basvuru (module, struct, ownership, vb.)
 - **TROUBLESHOOTING.md** - Yaygin hatalarin cozumleri
+- **CONTRIBUTING.md** - Ceviri duzeltmelerine katki rehberi
 - **day_00_setup/** - Ayrintili kurulum rehberi (Sui CLI, VS Code, terminal temelleri)
 - **sources/main.move** - TODO'larla birlikte kod dosyaniz
 - **sources/solution.move** - Tam cozum (once deneyin, sonra kontrol edin!)
