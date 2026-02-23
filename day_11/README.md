@@ -16,7 +16,7 @@ Move'da bir **address** (adres), bir blockchain adresini temsil eder (`0x123...`
 
 ## Adreslerle Sahipligi Anlama
 
-`owner: address` ile bir `TaskBoard` olusturdugunnuzda:
+`owner: address` ile bir `TaskBoard` olusturdugunuzda:
 - Pano o adrese "aittir"
 - Birinin sahip olup olmadigini kontrol edebilirsiniz
 - Bu, blockchain programlamada yaygin bir kaliptir

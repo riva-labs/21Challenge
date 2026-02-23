@@ -4,8 +4,8 @@
 
 Bugun ogrenecekleriniz:
 - if/else ifadelerini nasil kullanacaginizi
-- Vector (dinamik dizi) elemanlarına nasil erisecaginizi
-- Struct (veri yapisi) alanlarini nasil degistirecaginizi
+- Vector (dinamik dizi) elemanlarına nasil eriseceginizi
+- Struct (veri yapisi) alanlarini nasil degistireceginizi
 
 ## Control Flow'u (Kontrol Akisi) Anlama
 

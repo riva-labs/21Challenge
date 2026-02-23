@@ -4,7 +4,7 @@
 
 Bugun ogrenecekleriniz:
 - `Option<T>` nedir ve ne zaman kullanilir
-- "Belki bulundu, belki bulunmadi" durumlarini nasil ele alinir
+- "Belki bulundu, belki bulunmadi" durumlari nasil ele alinir
 - `Some(value)` veya `None` nasil dondurulur
 
 ## Option'i Anlama

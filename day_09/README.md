@@ -9,7 +9,7 @@ Bugun ogrenecekleriniz:
 
 ## Enum'lari Anlama
 
-Bir **enum** (numaralandirma), birden fazla varyantttan biri olabilen bir tiptir. Durumlari veya kategorileri temsil etmek icin mukemmeldir.
+Bir **enum** (numaralandirma), birden fazla varyanttan biri olabilen bir tiptir. Durumlari veya kategorileri temsil etmek icin mukemmeldir.
 
 "Yapildi mi yapilmadi mi" icin `bool` kullanmak yerine bir enum kullanabiliriz:
 ```move

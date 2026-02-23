@@ -10,7 +10,7 @@ Bugun ogrenecekleriniz:
 ## Visibility'yi Anlama
 
 Move'da fonksiyonlar su sekilde olabilir:
-- **`public fun`** - Modul disindaan cagrilabilir
+- **`public fun`** - Modul disindan cagrilabilir
 - **`fun`** (public yok) - Yalnizca ayni modul icinden cagrilabilir (private)
 
 **API Tasarim Ilkesi:**

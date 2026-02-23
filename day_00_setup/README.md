@@ -5,7 +5,7 @@
 ## Ne Kuracaksiniz
 
 - ✅ Sui CLI (komut satiri araci)
-- ✅ Kod editorru (VS Code onerilir)
+- ✅ Kod editoru (VS Code onerilir)
 - ✅ Terminal temelleri
 - ✅ Ilk build ve testiniz
 
@@ -105,9 +105,9 @@ cargo install --locked --git https://github.com/MystenLabs/sui.git --branch test
 
 ---
 
-## Adim 2: VS Code Kurulumu (Kod Editorru)
+## Adim 2: VS Code Kurulumu (Kod Editoru)
 
-VS Code, Move ile harika calisan ucretsiz bir kod editorrudur.
+VS Code, Move ile harika calisan ucretsiz bir kod editorudur.
 
 ### Indirme ve Kurulum
 
@@ -282,7 +282,7 @@ code .
 3. `21Challenge` klasorune gidin
 4. "Open" tiklayin
 
-### Yapiyi Kesffedin
+### Yapiyi Kesfedin
 
 VS Code'un kenar cubugunda sunlari goreceksiniz:
 ```
@@ -368,7 +368,7 @@ git commit -m "Day 1: completed"
 
 **Evet!** VS Code onerilir, ama sunlari da kullanabilirsiniz:
 - Move eklentileriyle Vim/Neovim
-- Herhangi bir metin editorru (ama sozdizimi vurgulama olmaz)
+- Herhangi bir metin editoru (ama sozdizimi vurgulama olmaz)
 
 ### S: Gunde ne kadar zaman gerekiyor?
 
