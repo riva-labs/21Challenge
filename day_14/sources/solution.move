@@ -1,7 +1,7 @@
-/// DAY 14: Tests for Bounty Board - SOLUTION
-/// 
-/// This is the solution file for day 14.
-/// Students should complete main.move, not this file.
+/// GUN 14: Bounty Board icin Testler - COZUM
+///
+/// Bu, gun 14'un cozum dosyasidir.
+/// Ogrenciler bu dosyayi degil, main.move dosyasini tamamlamalidir.
 
 module challenge::day_14_solution {
     use std::vector;
@@ -12,7 +12,7 @@ module challenge::day_14_solution {
     use std::unit_test::assert_eq;
     use std::string;
 
-    // Copy all code from previous days
+    // Onceki gunlerden tum kodlar kopyalandi
     public enum TaskStatus has copy, drop {
         Open,
         Completed,
@@ -78,52 +78,52 @@ module challenge::day_14_solution {
         count
     }
 
-    // Test: Create board and add task
+    // Test: Pano olusturma ve gorev ekleme
     #[test]
     fun test_create_board_and_add_task() {
         let owner = @0x1;
         let mut board = new_board(owner);
-        
+
         let task = new_task(string::utf8(b"Fix bug"), 100);
         add_task(&mut board, task);
-        
+
         let len = vector::length(&board.tasks);
         assert_eq!(len, 1);
     }
 
-    // Test: Complete a task
+    // Test: Gorev tamamlama
     #[test]
     fun test_complete_task() {
         let owner = @0x1;
         let mut board = new_board(owner);
-        
+
         let task1 = new_task(string::utf8(b"Task 1"), 50);
         let task2 = new_task(string::utf8(b"Task 2"), 100);
-        
+
         add_task(&mut board, task1);
         add_task(&mut board, task2);
-        
-        // Complete first task
+
+        // Ilk gorevi tamamla
         let task = vector::borrow_mut(&mut board.tasks, 0);
         complete_task(task);
-        
+
         assert_eq!(completed_count(&board), 1);
     }
 
-    // Test: Total reward calculation
+    // Test: Toplam odul hesaplama
     #[test]
     fun test_total_reward() {
         let owner = @0x1;
         let mut board = new_board(owner);
-        
+
         let task1 = new_task(string::utf8(b"Task 1"), 50);
         let task2 = new_task(string::utf8(b"Task 2"), 100);
         let task3 = new_task(string::utf8(b"Task 3"), 25);
-        
+
         add_task(&mut board, task1);
         add_task(&mut board, task2);
         add_task(&mut board, task3);
-        
+
         let total = total_reward(&board);
         assert_eq!(total, 175);
     }

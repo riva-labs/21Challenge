@@ -1,13 +1,13 @@
-/// DAY 11: TaskBoard & Address Type - SOLUTION
-/// 
-/// This is the solution file for day 11.
-/// Students should complete main.move, not this file.
+/// GUN 11: TaskBoard ve Address Tipi - COZUM
+///
+/// Bu, gun 11'in cozum dosyasidir.
+/// Ogrenciler bu dosyayi degil, main.move dosyasini tamamlamalidir.
 
 module challenge::day_11_solution {
     use std::vector;
     use std::string::String;
 
-    // Copy Task and TaskStatus from previous days
+    // Onceki gunlerden Task ve TaskStatus kopyalandi
     public enum TaskStatus has copy, drop {
         Open,
         Completed,
@@ -27,13 +27,13 @@ module challenge::day_11_solution {
         }
     }
 
-    // TaskBoard struct with owner and tasks
+    // Sahip ve gorevleri olan TaskBoard struct'i
     public struct TaskBoard has drop {
         owner: address,
         tasks: vector<Task>,
     }
 
-    // Create a new task board
+    // Yeni bir gorev panosu olusturma
     public fun new_board(owner: address): TaskBoard {
         TaskBoard {
             owner,
@@ -41,7 +41,7 @@ module challenge::day_11_solution {
         }
     }
 
-    // Add a task to the board (transfers ownership)
+    // Panoya gorev ekleme (sahipligi transfer eder)
     public fun add_task(board: &mut TaskBoard, task: Task) {
         vector::push_back(&mut board.tasks, task);
     }

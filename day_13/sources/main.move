@@ -1,18 +1,18 @@
-/// DAY 13: Simple Aggregations (Total Reward, Completed Count)
-/// 
-/// Today you will:
-/// 1. Write functions that iterate over vectors
-/// 2. Calculate totals and counts
-/// 3. Practice with control flow
+/// GUN 13: Basit Aggregation'lar (Toplam Odul, Tamamlanan Sayisi)
 ///
-/// Note: You can copy code from day_12/sources/solution.move if needed
+/// Bugun yapacaklariniz:
+/// 1. Vector'ler uzerinde dongu yapan fonksiyonlar yazma
+/// 2. Toplam ve sayim hesaplama
+/// 3. Kontrol akisi ile pratik yapma
+///
+/// Not: Gerekirse day_12/sources/solution.move dosyasindan kod kopyalayabilirsiniz
 
 module challenge::day_13 {
     use std::vector;
     use std::string::String;
     use std::option::{Self, Option};
 
-    // Copy from day_12: All structs and functions
+    // day_12'den kopyalandi: Tum struct'lar ve fonksiyonlar
     public enum TaskStatus has copy, drop {
         Open,
         Completed,
@@ -61,22 +61,22 @@ module challenge::day_13 {
         option::none()
     }
 
-    // TODO: Write a function 'total_reward' that:
-    // - Takes board: &TaskBoard
-    // - Returns u64 (sum of all task rewards)
-    // - Loops through all tasks and sums their rewards
+    // TODO: Su ozelliklere sahip bir 'total_reward' fonksiyonu yazin:
+    // - board: &TaskBoard parametresi alir
+    // - u64 dondurur (tum gorev odullerinin toplami)
+    // - Tum gorevler uzerinde dongu yapar ve odullerini toplar
     // public fun total_reward(board: &TaskBoard): u64 {
-    //     // Your code here
-    //     // Initialize total = 0
-    //     // Loop through tasks, add each reward to total
+    //     // Kodunuz buraya
+    //     // total = 0 olarak baslatin
+    //     // Gorevler uzerinde dongu yapin, her odulu toplama ekleyin
     // }
 
-    // TODO: Write a function 'completed_count' that:
-    // - Takes board: &TaskBoard
-    // - Returns u64 (count of completed tasks)
-    // - Loops through tasks and counts those with status == Completed
+    // TODO: Su ozelliklere sahip bir 'completed_count' fonksiyonu yazin:
+    // - board: &TaskBoard parametresi alir
+    // - u64 dondurur (tamamlanan gorevlerin sayisi)
+    // - Gorevler uzerinde dongu yapar ve status == Completed olanlari sayar
     // public fun completed_count(board: &TaskBoard): u64 {
-    //     // Your code here
+    //     // Kodunuz buraya
     // }
 }
 

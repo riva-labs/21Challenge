@@ -1,5 +1,5 @@
 {
-  description = "21Challenge – dev env with Sui CLI";
+  description = "21Challenge – Sui CLI ile gelistirme ortami";
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";

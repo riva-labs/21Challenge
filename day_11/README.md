@@ -1,51 +1,51 @@
-# Day 11: TaskBoard & Ownership Ideas (Address Type)
+# Gun 11: TaskBoard ve Sahiplik Fikirleri (Address Tipi)
 
-## What You'll Learn Today
+## Bugun Ne Ogreneceksiniz
 
-Today you'll learn:
-- What the `address` type is
-- How to track ownership in your data structures
-- How ownership works with structs containing addresses
+Bugun ogrenecekleriniz:
+- `address` tipinin ne oldugu
+- Veri yapilarinizda sahipligin nasil takip edilecegi
+- Adres iceren struct'larda sahipligin nasil calistigi
 
-## Understanding Address
+## Address'i Anlama
 
-An **address** in Move represents a blockchain address (like `0x123...`). It's used to:
-- Identify who owns something
-- Track who created something
-- Control access to resources
+Move'da bir **address** (adres), bir blockchain adresini temsil eder (`0x123...` gibi). Su amaclarla kullanilir:
+- Bir seyin kime ait oldugunu belirleme
+- Bir seyi kimin olusturdugunu takip etme
+- Kaynaklara erisimi kontrol etme
 
-## Understanding Ownership with Addresses
+## Adreslerle Sahipligi Anlama
 
-When you create a `TaskBoard` with an `owner: address`:
-- The board "belongs" to that address
-- You can check if someone is the owner
-- This is a common pattern in blockchain programming
+`owner: address` ile bir `TaskBoard` olusturdugunuzda:
+- Pano o adrese "aittir"
+- Birinin sahip olup olmadigini kontrol edebilirsiniz
+- Bu, blockchain programlamada yaygin bir kaliptir
 
-**Ownership Reminder:**
-- When you add a task to the board, you transfer ownership of the task
-- The board now "owns" the task in its vector
-- This is similar to what we learned in day_04
+**Sahiplik Hatirlatmasi:**
+- Panoya bir gorev eklediginizde, gorevin sahipligini transfer edersiniz
+- Pano artik vector'undeki gorevi "sahiplenir"
+- Bu, day_04'te ogrendigimize benzer
 
-## Your Task
+## Goreviniz
 
-1. The code from day_10 is already in `sources/main.move` (you can also check `day_10/sources/solution.move` if needed)
-2. Define a `TaskBoard` struct with:
+1. day_10'daki kod zaten `sources/main.move` dosyasinda (gerekirse `day_10/sources/solution.move` dosyasini da kontrol edebilirsiniz)
+2. Asagidakilere sahip bir `TaskBoard` struct'i tanimlayin:
    - `owner: address`
    - `tasks: vector<Task>`
-3. Write `new_board()` and `add_task()` functions
+3. `new_board()` ve `add_task()` fonksiyonlarini yazin
 
-## Reading Materials
+## Okuma Materyalleri
 
-1. **Address Type** - Learn about addresses:
+1. **Address Tipi** - Adresler hakkinda bilgi edinin:
    [https://move-book.com/move-basics/address/](https://move-book.com/move-basics/address/)
 
-2. **Ownership & Scope** - Review ownership concepts:
+2. **Sahiplik ve Kapsam** - Sahiplik kavramlarini gozden gecirin:
    [https://move-book.com/move-basics/ownership-and-scope/](https://move-book.com/move-basics/ownership-and-scope/)
 
-## Related Days
+## Ilgili Gunler
 
-- **Day 10** - Visibility modifiers (prerequisite)
-- **Day 12** - Building on TaskBoard with more functions
+- **Gun 10** - Visibility degistiricileri (on kosul)
+- **Gun 12** - Daha fazla fonksiyonla TaskBoard uzerine insa etme
 
 ## Commit
 

@@ -1,25 +1,24 @@
-/// DAY 3: Structs (Habit Model Skeleton)
-/// 
-/// Today you will:
-/// 1. Learn about structs
-/// 2. Create a Habit struct
-/// 3. Write a constructor function
+/// GUN 3: Struct'lar (Aliskanlik Modeli Iskeleti)
+///
+/// Bugun yapacaklariniz:
+/// 1. Struct'lar (veri yapilari) hakkinda bilgi edinmek
+/// 2. Bir Habit struct'i olusturmak
+/// 3. Bir constructor function (yapici fonksiyon) yazmak
 
 module challenge::day_03 {
     use std::vector;
 
-    // TODO: Define a struct called 'Habit' with:
-    // - name: vector<u8> (we'll use String later)
+    // TODO: 'Habit' adinda bir struct tanimlayin:
+    // - name: vector<u8> (String'i daha sonra kullanacagiz)
     // - completed: bool
-    // Add 'copy' and 'drop' abilities
+    // 'copy' ve 'drop' ability'lerini (yeteneklerini) ekleyin
     // public struct Habit has copy, drop {
-    //     // Your fields here
+    //     // Alanlariniz buraya
     // }
 
-    // TODO: Write a constructor function 'new_habit'
-    // that takes a name (vector<u8>) and returns a Habit
+    // TODO: Bir isim (vector<u8>) alan ve Habit donduren
+    // 'new_habit' constructor function'i yazin
     // public fun new_habit(name: vector<u8>): Habit {
-    //     // Your code here
+    //     // Kodunuz buraya
     // }
 }
-

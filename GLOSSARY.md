@@ -1,23 +1,23 @@
-# Move & Sui Glossary
+# Move & Sui Sozlugu
 
-A quick reference guide for all the terms you'll encounter in this challenge.
+Bu challenge boyunca karsilasacaginiz tum terimlerin hizli basvuru rehberi.
 
 ---
 
 ## A
 
-### Ability
+### Ability (Yetenek)
 
-Capabilities that tell Move what operations are allowed on a type.
+Move'da bir tip uzerinde hangi islemlerin yapilabilecegini belirleyen yetenekler.
 
-**The four abilities:**
+**Dort ability:**
 
-- `copy` - Value can be copied
-- `drop` - Value can be discarded/deleted
-- `store` - Value can be stored inside other structs
-- `key` - Value can be a object (needs `id: UID`)
+- `copy` - Deger kopyalanabilir
+- `drop` - Deger atilabilir/silinebilir
+- `store` - Deger baska struct'larin icinde saklanabilir
+- `key` - Deger bir object (nesne) olabilir (`id: UID` gerektirir)
 
-**Example:**
+**Ornek:**
 
 ```move
 public struct MyStruct has copy, drop, store {
@@ -25,83 +25,83 @@ public struct MyStruct has copy, drop, store {
 }
 ```
 
-**Where you'll use it:** Day 3 (structs), Day 16 (objects)
+**Nerede kullanacaksiniz:** Gun 3 (struct'lar), Gun 16 (object'ler)
 
 ---
 
-### Address
+### Address (Adres)
 
-A type representing a blockchain address (like an account ID).
+Blockchain adresini temsil eden bir tip (hesap kimligi gibi).
 
-**Format:** `0x` followed by hexadecimal digits (0-9, a-f)
+**Format:** `0x` ve ardindan onaltilik rakamlar (0-9, a-f)
 
-**Example:**
+**Ornek:**
 
 ```move
 let owner: address = @0x1;
 let user: address = @0xA1B2C3D4;
 ```
 
-**Where you'll use it:** Day 11 (TaskBoard)
+**Nerede kullanacaksiniz:** Gun 11 (TaskBoard)
 
 ---
 
-### Assert
+### Assert (Dogrulama)
 
-A way to check conditions in tests. If the condition is false, the test fails.
+Testlerde kosullari kontrol etmenin bir yolu. Kosul yanlis ise test basarisiz olur.
 
-**Examples:**
+**Ornekler:**
 
 ```move
 assert!(x > 0, error_code);         // Check condition
 assert_eq!(result, expected);      // Check equality
 ```
 
-**Where you'll use it:** Day 2 (first test), Day 7 (comprehensive tests)
+**Nerede kullanacaksiniz:** Gun 2 (ilk test), Gun 7 (kapsamli testler)
 
 ---
 
 ## B
 
-### Borrow
+### Borrow (Odunc Alma)
 
-Temporarily accessing a value without taking ownership.
+Sahiplik almadan bir degere gecici olarak erismek.
 
-**Two types:**
+**Iki turu:**
 
-- `&T` - Immutable borrow (read-only)
-- `&mut T` - Mutable borrow (can modify)
+- `&T` - Degismez (immutable) odunc alma (sadece okuma)
+- `&mut T` - Degisebilir (mutable) odunc alma (degisiklik yapilabilir)
 
-**Example:**
+**Ornek:**
 
 ```move
 add_habit(&mut list, habit);  // Borrow list mutably
 let len = length(&list);      // Borrow list immutably
 ```
 
-**Where you'll use it:** Day 4 (ownership), used throughout
+**Nerede kullanacaksiniz:** Gun 4 (ownership), tum challenge boyunca kullanilir
 
 ---
 
-### Build
+### Build (Derleme)
 
-Compiling your Move code into bytecode that Sui can execute.
+Move kodunuzu Sui'nin calistirabilecegi bytecode'a derleme.
 
-**Command:** `sui move build`
+**Komut:** `sui move build`
 
-**What it does:** Checks syntax, type safety, and generates executable code.
+**Ne yapar:** Sozdizimi, tip guvenligini kontrol eder ve calistirilabilir kod uretir.
 
 ---
 
 ## C
 
-### Constructor
+### Constructor (Yapici Fonksiyon)
 
-A function that creates a new instance of a struct.
+Bir struct'in yeni bir ornegini olusturan fonksiyon.
 
-**Convention:** Usually named `new_*` or `create_*`
+**Gelenek:** Genellikle `new_*` veya `create_*` olarak adlandirilir
 
-**Example:**
+**Ornek:**
 
 ```move
 public fun new_habit(name: String): Habit {
@@ -112,20 +112,20 @@ public fun new_habit(name: String): Habit {
 }
 ```
 
-**Where you'll use it:** Day 3 (Habit constructor), used throughout
+**Nerede kullanacaksiniz:** Gun 3 (Habit constructor'i), tum challenge boyunca kullanilir
 
 ---
 
 ## D
 
-### Drop
+### Drop (Atma)
 
-An ability that allows a value to be discarded or destroyed.
+Bir degerin atilmasina veya yok edilmesine izin veren ability.
 
-**Without drop:** Values must be explicitly consumed or returned.
-**With drop:** Values can be ignored or go out of scope.
+**drop olmadan:** Degerler acikca tuketilmeli veya dondurulmelidir.
+**drop ile:** Degerler goz ardi edilebilir veya kapsam disi kalabilir.
 
-**Example:**
+**Ornek:**
 
 ```move
 public struct CanDrop has drop {
@@ -138,23 +138,23 @@ fun example() {
 }
 ```
 
-**Where you'll use it:** Day 3 onwards (most structs need this)
+**Nerede kullanacaksiniz:** Gun 3'ten itibaren (cogu struct buna ihtiyac duyar)
 
 ---
 
 ## E
 
-### Entry Function
+### Entry Function (Giris Fonksiyonu)
 
-A function that can be called directly from transactions/explorers.
+Dogrudan transaction'lardan/explorer'lardan cagrilabilen fonksiyon.
 
-**Requirements:**
+**Gereksinimler:**
 
-- Marked with `entry` keyword
-- Can only be at module level
-- Often takes `&mut TxContext` as last parameter
+- `entry` anahtar kelimesiyle isaretlenir
+- Yalnizca modul seviyesinde olabilir
+- Genellikle son parametre olarak `&mut TxContext` alir
 
-**Example:**
+**Ornek:**
 
 ```move
 entry fun create_farm(ctx: &mut TxContext) {
@@ -163,15 +163,15 @@ entry fun create_farm(ctx: &mut TxContext) {
 }
 ```
 
-**Where you'll use it:** Day 17-21 (Sui objects and transactions)
+**Nerede kullanacaksiniz:** Gun 17-21 (Sui object'leri ve transaction'lar)
 
 ---
 
-### Enum
+### Enum (Numaralandirma)
 
-A type that can be one of several variants.
+Birden fazla varyanttan biri olabilen bir tip.
 
-**Example:**
+**Ornek:**
 
 ```move
 public enum TaskStatus has copy, drop {
@@ -180,15 +180,15 @@ public enum TaskStatus has copy, drop {
 }
 ```
 
-**Where you'll use it:** Day 9 (TaskStatus)
+**Nerede kullanacaksiniz:** Gun 9 (TaskStatus)
 
 ---
 
-### Event
+### Event (Olay)
 
-A message emitted during execution that can be queried later.
+Yurutme sirasinda yayinlanan ve daha sonra sorgulanabilen bir mesaj.
 
-**Example:**
+**Ornek:**
 
 ```move
 public struct PlantEvent has copy, drop {
@@ -199,23 +199,23 @@ public struct PlantEvent has copy, drop {
 event::emit(PlantEvent { planted_after: 5 });
 ```
 
-**Where you'll use it:** Day 20 (events)
+**Nerede kullanacaksiniz:** Gun 20 (event'ler)
 
 ---
 
 ## F
 
-### Function
+### Function (Fonksiyon)
 
-A named block of code that performs a specific task.
+Belirli bir gorevi gerceklestiren adlandirilmis kod blogu.
 
-**Types:**
+**Turleri:**
 
-- `fun` - Private (module only)
-- `public fun` - Can be called from other modules
-- `entry fun` - Can be called from explorers
+- `fun` - Ozel (sadece modul icinden)
+- `public fun` - Diger modullerden cagrilabilir
+- `entry fun` - Explorer'lardan cagrilabilir
 
-**Example:**
+**Ornek:**
 
 ```move
 public fun add(a: u64, b: u64): u64 {
@@ -223,23 +223,23 @@ public fun add(a: u64, b: u64): u64 {
 }
 ```
 
-**Where you'll use it:** Day 2 onwards (everywhere!)
+**Nerede kullanacaksiniz:** Gun 2'den itibaren (her yerde!)
 
 ---
 
 ## K
 
-### Key
+### Key (Anahtar)
 
-An ability that allows a struct to be a Sui object.
+Bir struct'in Sui object'i olmasini saglayan ability.
 
-**Requirements:**
+**Gereksinimler:**
 
-- Must have `id: UID` field
-- Can be owned and transferred
-- Can be stored on-chain
+- `id: UID` alanina sahip olmali
+- Sahiplenilebilir ve transfer edilebilir
+- Zincir uzerinde (on-chain) saklanabilir
 
-**Example:**
+**Ornek:**
 
 ```move
 public struct Farm has key {
@@ -248,17 +248,17 @@ public struct Farm has key {
 }
 ```
 
-**Where you'll use it:** Day 16 (first Sui object)
+**Nerede kullanacaksiniz:** Gun 16 (ilk Sui object'i)
 
 ---
 
 ## M
 
-### Module
+### Module (Modul)
 
-A container for Move code. Like a file or package in other languages.
+Move kodu icin bir kapsayici. Diger dillerdeki dosya veya paket gibi.
 
-**Structure:**
+**Yapi:**
 
 ```move
 module package_name::module_name {
@@ -266,7 +266,7 @@ module package_name::module_name {
 }
 ```
 
-**Example:**
+**Ornek:**
 
 ```move
 module challenge::day_01 {
@@ -274,31 +274,31 @@ module challenge::day_01 {
 }
 ```
 
-**Where you'll use it:** Day 1 onwards (every day has a module)
+**Nerede kullanacaksiniz:** Gun 1'den itibaren (her gun bir module icerir)
 
 ---
 
 ### Move
 
-The programming language you're learning! Designed for safe asset management on blockchain.
+Ogrendiginiz programlama dili! Blockchain uzerinde guvenli varlik yonetimi icin tasarlanmistir.
 
-**Key features:**
+**Temel ozellikleri:**
 
-- Object-centric
-- Type-safe
+- Nesne merkezli (object-centric)
+- Tip guvenli (type-safe)
 
 ---
 
-### Mutable
+### Mutable (Degisebilir)
 
-Can be changed/modified.
+Degistirilebilir/duzenlenebilir.
 
-**Usage:**
+**Kullanim:**
 
-- Variables: `let mut x = 5;` (can be reassigned)
-- References: `&mut T` (can modify the borrowed value)
+- Degiskenler: `let mut x = 5;` (yeniden atanabilir)
+- Referanslar: `&mut T` (odunc alinan deger degistirilebilir)
 
-**Example:**
+**Ornek:**
 
 ```move
 let mut counter = 0;
@@ -311,18 +311,18 @@ add_habit(&mut list, habit);  // Mutable borrow
 
 ## O
 
-### Object
+### Object (Nesne)
 
-In Sui, a struct with `key` ability and a `UID` field.
+Sui'de `key` ability'sine ve `UID` alanina sahip bir struct.
 
-**Properties:**
+**Ozellikleri:**
 
-- Stored on-chain
-- Can be owned by addresses (or other ownership models)
-- Can be transferred
-- Has a unique ID
+- Zincir uzerinde (on-chain) saklanir
+- Adresler tarafindan sahiplenilebilir (veya diger sahiplik modelleri)
+- Transfer edilebilir
+- Benzersiz bir kimlige (ID) sahiptir
 
-**Example:**
+**Ornek:**
 
 ```move
 public struct Farm has key {
@@ -331,35 +331,35 @@ public struct Farm has key {
 }
 ```
 
-**Where you'll use it:** Day 15-21 (Sui objects)
+**Nerede kullanacaksiniz:** Gun 15-21 (Sui object'leri)
 
 ---
 
-### Option
+### Option (Opsiyonel)
 
-A type that represents "maybe has a value, maybe doesn't".
+"Belki bir degere sahip, belki degil" ifadesini temsil eden bir tip.
 
-**Variants:**
+**Varyantlari:**
 
-- `Some(value)` - Has a value
-- `None` - No value
+- `Some(value)` - Bir degere sahip
+- `None` - Deger yok
 
-**Example:**
+**Ornek:**
 
 ```move
 let maybe_index: Option<u64> = option::some(5);
 let nothing: Option<u64> = option::none();
 ```
 
-**Where you'll use it:** Day 12 (finding tasks)
+**Nerede kullanacaksiniz:** Gun 12 (gorev bulma)
 
 ---
 
-### Ownership
+### Ownership (Sahiplik)
 
-Every value in Move has exactly one owner. When ownership transfers (moves), the original owner can't use it anymore.
+Move'da her degerin tam olarak bir sahibi vardir. Sahiplik transfer edildiginde (tasindiginda), orijinal sahip degeri artik kullanamazler.
 
-**Example:**
+**Ornek:**
 
 ```move
 let habit = new_habit(b"Run");
@@ -367,23 +367,23 @@ add_habit(&mut list, habit);  // habit moves into list
 // Can't use habit here anymore!
 ```
 
-**Where you'll use it:** Day 4 (explicitly taught), used everywhere
+**Nerede kullanacaksiniz:** Gun 4 (acikca ogretilir), her yerde kullanilir
 
 ---
 
 ## P
 
-### Primitive Type
+### Primitive Type (Ilkel Tip)
 
-Built-in basic types in Move.
+Move'daki yerlesik temel tipler.
 
-**Common primitives:**
+**Yaygin ilkel tipler:**
 
-- `u8`, `u64`, `u128`, `u256` - Unsigned integers
+- `u8`, `u64`, `u128`, `u256` - Isaretsiz tam sayilar (unsigned integer)
 - `bool` - Boolean (true/false)
-- `address` - Blockchain address
+- `address` - Blockchain adresi
 
-**Example:**
+**Ornek:**
 
 ```move
 let count: u64 = 42;
@@ -391,19 +391,19 @@ let flag: bool = true;
 let owner: address = @0x1;
 ```
 
-**Where you'll use it:** Day 1 (introduction), used everywhere
+**Nerede kullanacaksiniz:** Gun 1 (giris), her yerde kullanilir
 
 ---
 
-### Public
+### Public (Genel Erisim)
 
-Visible and callable from outside the module.
+Modul disindandan gorulebilir ve cagrilabilir.
 
-**Usage:**
+**Kullanim:**
 
-- `public fun` - Function can be called from other modules and addresses
+- `public fun` - Fonksiyon diger modullerden ve adreslerden cagrilabilir
 
-**Example:**
+**Ornek:**
 
 ```move
 public fun get_count(counter: &Counter): u64 {
@@ -411,39 +411,39 @@ public fun get_count(counter: &Counter): u64 {
 }
 ```
 
-**Where you'll use it:** Day 10 (visibility)
+**Nerede kullanacaksiniz:** Gun 10 (gorunurluk)
 
 ---
 
 ## R
 
-### Reference
+### Reference (Referans)
 
-A way to access a value without taking ownership.
+Sahiplik almadan bir degere erisme yolu.
 
-**Types:**
+**Turleri:**
 
-- `&T` - Immutable reference (read-only)
-- `&mut T` - Mutable reference (can modify)
+- `&T` - Degismez referans (sadece okuma)
+- `&mut T` - Degisebilir referans (degistirme yapilabilir)
 
-**Example:**
+**Ornek:**
 
 ```move
 fun read_value(x: &u64): u64 { *x }        // Read only
 fun increment(x: &mut u64) { *x = *x + 1 } // Can modify
 ```
 
-**Where you'll use it:** Day 4 onwards (everywhere!)
+**Nerede kullanacaksiniz:** Gun 4'ten itibaren (her yerde!)
 
 ---
 
-### Return Type
+### Return Type (Donus Tipi)
 
-The type of value a function returns.
+Bir fonksiyonun dondurdugu degerin tipi.
 
-**Syntax:** `fun name(params): ReturnType { ... }`
+**Sozdizimi:** `fun name(params): ReturnType { ... }`
 
-**Example:**
+**Ornek:**
 
 ```move
 public fun sum(a: u64, b: u64): u64 {  // Returns u64
@@ -451,18 +451,18 @@ public fun sum(a: u64, b: u64): u64 {  // Returns u64
 }
 ```
 
-**Note:** In Move, the last expression is automatically returned (no `return` keyword needed).
-**Note:** In Move, when you're returning any variable you shoudlnt put `;` at the end
+**Not:** Move'da son ifade otomatik olarak dondurulur (`return` anahtar kelimesine gerek yoktur).
+**Not:** Move'da bir degisken dondururken satir sonuna `;` koymamalisiniz.
 
 ---
 
 ## S
 
-### Struct
+### Struct (Veri Yapisi)
 
-A custom data type that groups related fields together.
+Ilgili alanlari bir araya getiren ozel bir veri tipi.
 
-**Example:**
+**Ornek:**
 
 ```move
 public struct Habit has copy, drop {
@@ -471,13 +471,13 @@ public struct Habit has copy, drop {
 }
 ```
 
-**Where you'll use it:** Day 3 onwards (core concept)
+**Nerede kullanacaksiniz:** Gun 3'ten itibaren (temel kavram)
 
 ---
 
 ### Sui
 
-The blockchain platform you're building for(it's basically the Ferrari of other blockchains). Known for high performance and object-centric design.
+Uzerine gelistirme yaptiginiz blockchain platformu (temelde diger blockchain'lerin Ferrari'si). Yuksek performansi ve nesne merkezli tasarimiyla bilinir.
 
 ---
 
@@ -485,11 +485,11 @@ The blockchain platform you're building for(it's basically the Ferrari of other 
 
 ### Test
 
-A function that verifies your code works correctly.
+Kodunuzun dogru calistigini dogrulayan fonksiyon.
 
-**Marked with:** `#[test]` attribute
+**Isaretlenir:** `#[test]` ozelligiyle
 
-**Example:**
+**Ornek:**
 
 ```move
 #[test]
@@ -499,23 +499,23 @@ fun test_sum() {
 }
 ```
 
-**Run with:** `sui move test`
+**Calistirilir:** `sui move test`
 
-**Where you'll use it:** Day 2 onwards (testing your code)
+**Nerede kullanacaksiniz:** Gun 2'den itibaren (kodunuzu test etme)
 
 ---
 
-### Transaction Context (TxContext)
+### Transaction Context (Islem Baglami) (TxContext)
 
-Information about the current transaction (who sent it, when, etc.).
+Mevcut transaction hakkinda bilgi (kim gonderdi, ne zaman, vb.).
 
-**Common uses:**
+**Yaygin kullanimlar:**
 
-- `object::new(ctx)` - Create a UID
-- `ctx.sender()` - Get sender's address
-- `ctx.epoch()` - Get current epoch
+- `object::new(ctx)` - Bir UID olusturma
+- `ctx.sender()` - Gonderenin adresini alma
+- `ctx.epoch()` - Mevcut epoch'u (donem) alma
 
-**Example:**
+**Ornek:**
 
 ```move
 entry fun create_something(ctx: &mut TxContext) {
@@ -525,22 +525,22 @@ entry fun create_something(ctx: &mut TxContext) {
 }
 ```
 
-**Where you'll use it:** Day 16-21 (objects and entry functions)
+**Nerede kullanacaksiniz:** Gun 16-21 (object'ler ve entry function'lar)
 
 ---
 
-### Type Annotation
+### Type Annotation (Tip Aciklamasi)
 
-Explicitly specifying the type of a variable or expression.
+Bir degiskenin veya ifadenin tipini acikca belirtme.
 
-**Example:**
+**Ornek:**
 
 ```move
 let x: u64 = 5;        // Type annotation
 let name: String = b"Alice".to_string();
 ```
 
-**Where you'll use it:** Day 1 onwards (Move requires types)
+**Nerede kullanacaksiniz:** Gun 1'den itibaren (Move tipler gerektirir)
 
 ---
 
@@ -548,11 +548,11 @@ let name: String = b"Alice".to_string();
 
 ### UID
 
-Unique Identifier - what makes a struct a Sui object.
+Unique Identifier (Benzersiz Tanimlayici) - bir struct'i Sui object'i yapan sey.
 
-**Created with:** `object::new(ctx)`
+**Olusturulur:** `object::new(ctx)`
 
-**Example:**
+**Ornek:**
 
 ```move
 public struct Farm has key {
@@ -568,25 +568,25 @@ fun create_farm(ctx: &mut TxContext): Farm {
 }
 ```
 
-**Where you'll use it:** Day 16 onwards (Sui objects)
+**Nerede kullanacaksiniz:** Gun 16'dan itibaren (Sui object'leri)
 
 ---
 
 ## V
 
-### Vector
+### Vector (Dinamik Dizi)
 
-A dynamic array - a list that can grow or shrink.
+Boyutu buyuyup kuculebilen bir liste.
 
-**Common operations:**
+**Yaygin islemler:**
 
-- `vector::empty<T>()` - Create empty vector
-- `vector::push_back(&mut vec, item)` - Add to end
-- `vector::length(&vec)` - Get size
-- `vector::borrow(&vec, index)` - Read element
-- `vector::borrow_mut(&mut vec, index)` - Modify element
+- `vector::empty<T>()` - Bos vector olusturma
+- `vector::push_back(&mut vec, item)` - Sona ekleme
+- `vector::length(&vec)` - Boyut alma
+- `vector::borrow(&vec, index)` - Eleman okuma
+- `vector::borrow_mut(&mut vec, index)` - Eleman degistirme
 
-**Example:**
+**Ornek:**
 
 ```move
 let mut numbers: vector<u64> = vector::empty();
@@ -594,59 +594,59 @@ vector::push_back(&mut numbers, 1);
 vector::push_back(&mut numbers, 2);
 ```
 
-**Where you'll use it:** Day 4 (vectors and lists)
+**Nerede kullanacaksiniz:** Gun 4 (vector'ler ve listeler)
 
 ---
 
-### Visibility
+### Visibility (Gorunurluk)
 
-Controls who can access/call functions or structs.
+Fonksiyonlara veya struct'lara kimin erisebilecegini/cagirabilecegini kontrol eder.
 
-**Levels:**
+**Seviyeler:**
 
-- `fun` - Private (module only)
-- `public fun` - Other modules & addresses can call
-- `entry fun` - Can be called from explorers
+- `fun` - Ozel (sadece modul icinden)
+- `public fun` - Diger moduller ve adresler cagirabilir
+- `entry fun` - Explorer'lardan cagrilabilir
 
-**Where you'll use it:** Day 10 (explicitly taught)
+**Nerede kullanacaksiniz:** Gun 10 (acikca ogretilir)
 
 ---
 
-## Quick Reference Tables
+## Hizli Basvuru Tablolari
 
-### Abilities Quick Reference
+### Ability'ler Hizli Basvuru
 
-| Ability | Meaning                 | Common Use        |
-| ------- | ----------------------- | ----------------- |
-| `copy`  | Can be duplicated       | Simple data types |
-| `drop`  | Can be discarded        | Most structs      |
-| `store` | Can be in other structs | Nested data       |
-| `key`   | Can be an object        | Top-level objects |
+| Ability | Anlami                        | Yaygin Kullanim     |
+| ------- | ----------------------------- | ------------------- |
+| `copy`  | Cogaltiilabilir               | Basit veri tipleri  |
+| `drop`  | Atilabilir                    | Cogu struct         |
+| `store` | Diger struct'larda saklanabilir| Ic ice veri         |
+| `key`   | Object olabilir               | Ust duzey object'ler|
 
-### Primitive Types Quick Reference
+### Ilkel Tipler Hizli Basvuru
 
-| Type      | Range              | Example                  |
+| Tip       | Aralik             | Ornek                    |
 | --------- | ------------------ | ------------------------ |
-| `u8`      | 0 to 255           | `let x: u8 = 200;`       |
-| `u64`     | 0 to 2^64-1        | `let x: u64 = 1000;`     |
-| `u128`    | 0 to 2^128-1       | `let x: u128 = 1000000;` |
+| `u8`      | 0 ile 255          | `let x: u8 = 200;`       |
+| `u64`     | 0 ile 2^64-1       | `let x: u64 = 1000;`     |
+| `u128`    | 0 ile 2^128-1      | `let x: u128 = 1000000;` |
 | `bool`    | true/false         | `let x: bool = true;`    |
-| `address` | Blockchain address | `let x: address = @0x1;` |
+| `address` | Blockchain adresi  | `let x: address = @0x1;` |
 
-### Reference Types Quick Reference
+### Referans Tipleri Hizli Basvuru
 
-| Type     | Meaning             | Can Modify?        |
-| -------- | ------------------- | ------------------ |
-| `&T`     | Immutable reference | No (read-only)     |
-| `&mut T` | Mutable reference   | Yes                |
-| `T`      | By value (move)     | Transfer ownership |
+| Tip      | Anlami                  | Degistirebilir mi?      |
+| -------- | ----------------------- | ----------------------- |
+| `&T`     | Degismez referans       | Hayir (sadece okuma)    |
+| `&mut T` | Degisebilir referans    | Evet                    |
+| `T`      | Deger olarak (tasima)   | Sahipligi transfer eder |
 
 ---
 
-**Using This Glossary:**
+**Bu Sozlugu Kullanma:**
 
-- Press `Ctrl+F` / `Cmd+F` to search for terms
-- Bookmark this page for quick reference
-- Terms are linked to the days where you'll learn them
+- Terimleri aramak icin `Ctrl+F` / `Cmd+F` tuslarini kullanin
+- Hizli erisim icin bu sayfayi yer imlerine ekleyin
+- Terimler, ogrenecceginiz gunlerle iliskilendirilmistir
 
-**Learning Tip:** Don't try to memorize everything! Refer back to this glossary as you encounter new terms during the challenge.
+**Ogrenme Ipucu:** Her seyi ezberlemeye calismayin! Challenge boyunca yeni terimlerle karsilastiginizda bu sozluge geri donun.

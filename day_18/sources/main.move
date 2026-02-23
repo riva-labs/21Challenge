@@ -1,19 +1,19 @@
-/// DAY 18: Receiving Objects & Updating State
-/// 
-/// Today you will:
-/// 1. Write entry functions that receive objects
-/// 2. Update object state on-chain
-/// 3. Understand how objects are passed in transactions
+/// GUN 18: Object'leri (Nesneleri) Alma ve Durumu Guncelleme
 ///
-/// Note: The code includes plotId support. You can copy code from 
-/// day_17/sources/solution.move if needed (note: plotId functionality has been added)
+/// Bugun yapacaklariniz:
+/// 1. Object'leri (nesneleri) alan entry function'lar (giris fonksiyonlari) yazmak
+/// 2. Zincir uzerinde object (nesne) durumunu guncellemek
+/// 3. Transaction'larda (islemlerde) object'lerin (nesnelerin) nasil iletildigini anlamak
+///
+/// Not: Kod plotId destegi icermektedir. Gerekirse
+/// day_17/sources/solution.move dosyasindan kod kopyalayabilirsiniz (not: plotId islevi eklenmistir)
 
 module challenge::day_18 {
     use sui::object::{Self, UID};
     use sui::transfer;
     use sui::tx_context::TxContext;
 
-    // Copy from day_17: All structs and functions
+    // day_17'den kopyala: Tum struct'lar (veri yapilari) ve fonksiyonlar
     const MAX_PLOTS: u64 = 20;
     const E_PLOT_NOT_FOUND: u64 = 1;
     const E_PLOT_LIMIT_EXCEEDED: u64 = 2;
@@ -35,31 +35,31 @@ module challenge::day_18 {
     }
 
     fun plant(counters: &mut FarmCounters, plotId: u8) {
-        // Check if plotId is valid (between 1 and 20)
+        // plotId'nin gecerli olup olmadigini kontrol et (1 ile 20 arasinda)
         assert!(plotId >= 1 && plotId <= (MAX_PLOTS as u8), E_INVALID_PLOT_ID);
-        
-        // Check if we've reached the plot limit
+
+        // Plot limitine ulasilip ulasilmadigini kontrol et
         let len = vector::length(&counters.plots);
         assert!(len < MAX_PLOTS, E_PLOT_LIMIT_EXCEEDED);
-        
-        // Check if plot already exists in the vector
+
+        // Plot'un vector'de zaten var olup olmadigini kontrol et
         let mut i = 0;
         while (i < len) {
             let existing_plot = vector::borrow(&counters.plots, i);
             assert!(*existing_plot != plotId, E_PLOT_ALREADY_EXISTS);
             i = i + 1;
         };
-        
+
         counters.planted = counters.planted + 1;
         vector::push_back(&mut counters.plots, plotId);
     }
 
     fun harvest(counters: &mut FarmCounters, plotId: u8) {
         let len = vector::length(&counters.plots);
-                
-        // Check if plot exists in the vector and find its index
+
+        // Plot'un vector'de var olup olmadigini kontrol et ve indeksini bul
         let mut i = 0;
-        let mut found_index = len; 
+        let mut found_index = len;
         while (i < len) {
             let existing_plot = vector::borrow(&counters.plots, i);
             if (*existing_plot == plotId) {
@@ -67,11 +67,11 @@ module challenge::day_18 {
             };
             i = i + 1;
         };
-        
-        // Assert that plot was found (found_index < len means we found it)
+
+        // Plot'un bulundugunu dogrula (found_index < len ise bulduk demektir)
         assert!(found_index < len, E_PLOT_NOT_FOUND);
-        
-        // Remove the plot from the vector
+
+        // Plot'u vector'den kaldir
         vector::remove(&mut counters.plots, found_index);
         counters.harvested = counters.harvested + 1;
     }
@@ -101,18 +101,17 @@ module challenge::day_18 {
         harvest(&mut farm.counters, plotId);
     }
 
-    // TODO: Write an entry function 'plant_on_farm_entry' that:
-    // - Takes farm: &mut Farm, plotId: u8
-    // - Calls plant_on_farm(farm, plotId)
+    // TODO: Asagidakileri yapan bir 'plant_on_farm_entry' entry function'i (giris fonksiyonu) yazin:
+    // - farm: &mut Farm, plotId: u8 parametreleri alir
+    // - plant_on_farm(farm, plotId) fonksiyonunu cagirir
     // entry fun plant_on_farm_entry(farm: &mut Farm, plotId: u8) {
-    //     // Your code here
+    //     // Kodunuz buraya
     // }
 
-    // TODO: Write an entry function 'harvest_from_farm_entry' that:
-    // - Takes farm: &mut Farm, plotId: u8
-    // - Calls harvest_from_farm(farm, plotId)
+    // TODO: Asagidakileri yapan bir 'harvest_from_farm_entry' entry function'i (giris fonksiyonu) yazin:
+    // - farm: &mut Farm, plotId: u8 parametreleri alir
+    // - harvest_from_farm(farm, plotId) fonksiyonunu cagirir
     // entry fun harvest_from_farm_entry(farm: &mut Farm, plotId: u8) {
-    //     // Your code here
+    //     // Kodunuz buraya
     // }
 }
-

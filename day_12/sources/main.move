@@ -1,18 +1,18 @@
-/// DAY 12: Option for Task Lookup
-/// 
-/// Today you will:
-/// 1. Learn about Option<T> type
-/// 2. Write a function to find tasks by title
-/// 3. Handle the case when task is not found
+/// GUN 12: Gorev Arama icin Option
 ///
-/// Note: You can copy code from day_11/sources/solution.move if needed
+/// Bugun yapacaklariniz:
+/// 1. Option<T> tipi hakkinda bilgi edinme
+/// 2. Gorevleri basliga gore bulan bir fonksiyon yazma
+/// 3. Gorev bulunamadigi durumu ele alma
+///
+/// Not: Gerekirse day_11/sources/solution.move dosyasindan kod kopyalayabilirsiniz
 
 module challenge::day_12 {
     use std::vector;
     use std::string::String;
     use std::option::{Self, Option};
 
-    // Copy from day_11: TaskStatus, Task, and TaskBoard
+    // day_11'den kopyalandi: TaskStatus, Task ve TaskBoard
     public enum TaskStatus has copy, drop {
         Open,
         Completed,
@@ -48,15 +48,15 @@ module challenge::day_12 {
         vector::push_back(&mut board.tasks, task);
     }
 
-    // TODO: Write a function 'find_task_by_title' that:
-    // - Takes board: &TaskBoard and title: &String
-    // - Returns Option<u64> (the index if found, None if not found)
-    // - Loops through tasks and compares titles
+    // TODO: Su ozelliklere sahip bir 'find_task_by_title' fonksiyonu yazin:
+    // - board: &TaskBoard ve title: &String parametreleri alir
+    // - Option<u64> dondurur (bulunursa index, bulunmazsa None)
+    // - Gorevler arasinda dongu yapip basliklari karsilastirir
     // public fun find_task_by_title(board: &TaskBoard, title: &String): Option<u64> {
-    //     // Your code here
-    //     // Use a while loop to iterate
-    //     // Use option::some(index) if found
-    //     // Use option::none() if not found
+    //     // Kodunuz buraya
+    //     // Dongu icin while kullanin
+    //     // Bulunursa option::some(index) kullanin
+    //     // Bulunmazsa option::none() kullanin
     // }
 }
 

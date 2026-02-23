@@ -1,19 +1,19 @@
-/// DAY 8: New Module & Simple Task Struct - SOLUTION
-/// 
-/// This is the solution file for day 8.
-/// Students should complete main.move, not this file.
+/// GUN 8: Yeni Module & Basit Task Struct - COZUM
+///
+/// Bu, gun 8 icin cozum dosyasidir.
+/// Ogrenciler bu dosya yerine main.move dosyasini tamamlamalidir.
 
 module challenge::day_08_solution {
     use std::string::String;
 
-    // Task struct with title, reward, and completion status
+    // Baslik, odul ve tamamlanma durumuna sahip Task struct'i
     public struct Task has copy, drop {
         title: String,
         reward: u64,
         done: bool,
     }
 
-    // Constructor function to create a new task
+    // Yeni bir gorev olusturmak icin constructor function (yapici fonksiyon)
     public fun new_task(title: String, reward: u64): Task {
         Task {
             title,
@@ -22,4 +22,3 @@ module challenge::day_08_solution {
         }
     }
 }
-

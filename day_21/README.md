@@ -1,111 +1,111 @@
-# Day 21: Final Tests & Cleanup
+# Gun 21: Final Testleri ve Temizlik
 
-## What You'll Learn Today
+## Bugun Ne Ogreneceksiniz
 
-Today is your final day! You'll:
+Bugun son gununuz! Yapacaklariniz:
 
-- Write comprehensive tests for the farm
-- Test error conditions and edge cases
-- Clean up your code
-- Review everything you've learned
+- Farm icin kapsamli testler yazma
+- Hata kosullarini ve sinir durumlarini test etme
+- Kodunuzu temizleme
+- Ogrendiginiz her seyi gozden gecirme
 
-## Understanding Test Coverage
+## Test Kapsamini Anlama
 
-Good test coverage includes:
+Iyi bir test kapsami sunlari icerir:
 
-- **Happy path** - Normal operations work
-- **State changes** - Counters update correctly
-- **Multiple operations** - Complex scenarios work
-- **Edge cases** - Boundary conditions
-- **Error handling** - Invalid inputs are rejected
+- **Mutlu yol** - Normal islemler calisir
+- **Durum degisiklikleri** - Sayaclar dogru guncellenir
+- **Coklu islemler** - Karmasik senaryolar calisir
+- **Sinir durumlari** - Sinir kosullari
+- **Hata yonetimi** - Gecersiz girdiler reddedilir
 
-## Farm Features to Test
+## Test Edilecek Farm Ozellikleri
 
-The farm now includes:
+Farm artik su ozellikleri icermektedir:
 
-- **PlotId validation**: PlotIds must be between 1 and 20
-- **Plot tracking**: A vector tracks all planted plots
-- **Duplicate prevention**: Cannot plant the same plotId twice
-- **Limit enforcement**: Maximum of 20 plots
-- **Harvest validation**: Cannot harvest plots that don't exist
+- **PlotId dogrulamasi**: PlotId'ler 1 ile 20 arasinda olmalidir
+- **Plot takibi**: Bir vector tum ekilen plot'lari takip eder
+- **Tekrar onleme**: Ayni plotId iki kez ekilemez
+- **Limit uygulamasi**: Maksimum 20 plot
+- **Hasat dogrulamasi**: Var olmayan plot'lar hasat edilemez
 
-## Your Task
+## Goreviniz
 
-1. The code from day_20 is already in `sources/main.move` (you can also check `day_20/sources/solution.move` if needed)
-2. Write comprehensive tests (8 tests total):
+1. day_20'deki kod zaten `sources/main.move` dosyasinda mevcuttur (gerekirse `day_20/sources/solution.move` dosyasini da kontrol edebilirsiniz)
+2. Kapsamli testler yazin (toplam 8 test):
 
    **Test 1: test_create_farm**
 
-   - Create a farm (shared object)
-   - Check initial counters are zero
-   - Use `test_scenario::take_shared` to get the farm
+   - Bir farm olusturun (shared object)
+   - Baslangic sayaclarinin sifir oldugunu kontrol edin
+   - Farm'i almak icin `test_scenario::take_shared` kullanin
 
    **Test 2: test_planting_increases_counter**
 
-   - Create farm, plant plotId 1
-   - Verify planted counter is 1
-   - Use `test_scenario::take_shared` and `test_scenario::return_shared`
+   - Farm olusturun, plotId 1'i ekin
+   - Ekilen sayacinin 1 oldugunu dogrulayin
+   - `test_scenario::take_shared` ve `test_scenario::return_shared` kullanin
 
    **Test 3: test_harvesting_increases_counter**
 
-   - Create farm, plant plotId 1, then harvest plotId 1
-   - Verify both counters are 1
+   - Farm olusturun, plotId 1'i ekin, sonra plotId 1'i hasat edin
+   - Her iki sayacin da 1 oldugunu dogrulayin
 
    **Test 4: test_multiple_operations**
 
-   - Plant plotIds 3, 5, 18 (in any order)
-   - Harvest plotId 5
-   - Verify planted counter is 3, harvested counter is 1
+   - plotId'leri 3, 5, 18 ekin (herhangi bir sirada)
+   - plotId 5'i hasat edin
+   - Ekilen sayacinin 3, hasat edilen sayacinin 1 oldugunu dogrulayin
 
    **Test 5: test_invalid_plot_id**
 
-   - Try to plant plotId 0 (should abort with `E_INVALID_PLOT_ID`)
-   - Try to plant plotId 21 (should abort with `E_INVALID_PLOT_ID`)
-   - Use `#[expected_failure(abort_code = E_INVALID_PLOT_ID)]`
+   - plotId 0'i ekmeyi deneyin (`E_INVALID_PLOT_ID` ile iptal olmali)
+   - plotId 21'i ekmeyi deneyin (`E_INVALID_PLOT_ID` ile iptal olmali)
+   - `#[expected_failure(abort_code = E_INVALID_PLOT_ID)]` kullanin
 
    **Test 6: test_duplicate_plot**
 
-   - Plant plotId 1, then try to plant plotId 1 again
-   - Should abort with `E_PLOT_ALREADY_EXISTS`
-   - Use `#[expected_failure(abort_code = E_PLOT_ALREADY_EXISTS)]`
+   - plotId 1'i ekin, sonra plotId 1'i tekrar ekmeyi deneyin
+   - `E_PLOT_ALREADY_EXISTS` ile iptal olmali
+   - `#[expected_failure(abort_code = E_PLOT_ALREADY_EXISTS)]` kullanin
 
    **Test 7: test_plot_limit**
 
-   - Plant 20 plots (plotIds 1-20)
-   - Try to plant a 21st plot
-   - Should abort with `E_PLOT_LIMIT_EXCEEDED`
-   - Use `#[expected_failure(abort_code = E_PLOT_LIMIT_EXCEEDED)]`
+   - 20 plot ekin (plotId'ler 1-20)
+   - 21. bir plot ekmeyi deneyin
+   - `E_PLOT_LIMIT_EXCEEDED` ile iptal olmali
+   - `#[expected_failure(abort_code = E_PLOT_LIMIT_EXCEEDED)]` kullanin
 
    **Test 8: test_harvest_nonexistent_plot**
 
-   - Try to harvest a plot that doesn't exist
-   - Should abort with `E_PLOT_NOT_FOUND`
-   - Use `#[expected_failure(abort_code = E_PLOT_NOT_FOUND)]`
+   - Var olmayan bir plot'u hasat etmeyi deneyin
+   - `E_PLOT_NOT_FOUND` ile iptal olmali
+   - `#[expected_failure(abort_code = E_PLOT_NOT_FOUND)]` kullanin
 
-3. Clean up your code (remove unnecessary comments, ensure consistency)
+3. Kodunuzu temizleyin (gereksiz yorumlari kaldirin, tutarliligi saglayin)
 
-## Testing Shared Objects
+## Shared Object'leri Test Etme
 
-Since the farm is now a shared object (using `transfer::share_object`), you need to use:
+Farm artik bir shared object (paylasilan nesne) oldugu icin (`transfer::share_object` kullanilarak), su fonksiyonlari kullanmaniz gerekmektedir:
 
-- `test_scenario::take_shared<Farm>(&scenario)` instead of `take_from_sender`
-- `test_scenario::return_shared(farm)` instead of `return_to_sender`
+- `take_from_sender` yerine `test_scenario::take_shared<Farm>(&scenario)`
+- `return_to_sender` yerine `test_scenario::return_shared(farm)`
 
-## Testing Error Conditions
+## Hata Kosullarini Test Etme
 
-Use the `#[expected_failure]` attribute to test that functions abort correctly:
+Fonksiyonlarin dogru sekilde iptal olduklarini test etmek icin `#[expected_failure]` niteligi kullanin:
 
 ```move
 #[test]
 #[expected_failure(abort_code = E_INVALID_PLOT_ID)]
 fun test_invalid_plot_id() {
-    // Test code that should abort
+    // Iptal olmasi gereken test kodu
 }
 ```
 
-## Reading Materials
+## Okuma Materyalleri
 
-1. **Code Quality Checklist** - Review best practices:
+1. **Kod Kalitesi Kontrol Listesi** - En iyi uygulamalari gozden gecirin:
    [https://move-book.com/guides/code-quality-checklist/](https://move-book.com/guides/code-quality-checklist/)
 
 ## Commit
@@ -117,15 +117,15 @@ git add day_21/
 git commit -m "Day 21: polish code and finalize 3 projects"
 ```
 
-## 🎉 Congratulations!
+## Tebrikler!
 
-You've completed the 21-day Sui Move challenge! You now understand:
+21 gunluk Sui Move meydan okumasini basariyla tamamladiniz! Artik su konulari anliyorsunuz:
 
-- Move syntax and basics
-- Structs, enums, vectors
-- Ownership concepts
-- Sui object model
-- Entry functions
-- Events
+- Move sozdizimi ve temelleri
+- struct'lar (veri yapilari), enum'lar, vector'ler
+- Sahiplik kavramlari
+- Sui object (nesne) modeli
+- Entry function'lar (giris fonksiyonlari)
+- Event'ler (olaylar)
 
-Keep practicing and building!
+Harika bir is cikardiniz! Pratik yapmayi ve gelistirmeyi surdurun!

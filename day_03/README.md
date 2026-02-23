@@ -1,21 +1,21 @@
-# Day 3: Structs (Habit Model Skeleton)
+# Gun 3: Struct'lar (Aliskanlik Modeli Iskeleti)
 
-## What You'll Learn Today
+## Bugun Ne Ogreneceksiniz
 
-Today you'll learn:
-- What structs are and how to define them
-- How to create custom data types
-- How to write constructor functions
+Bugun ogrenecekleriniz:
+- Struct (veri yapisi) nedir ve nasil tanimlanir
+- Ozel veri tipleri nasil olusturulur
+- Constructor (yapici) function'lar (fonksiyonlar) nasil yazilir
 
-## Understanding Structs
+## Struct'lari Anlamak
 
-A **struct** is a custom data type that groups related data together. Think of it as a container that holds multiple pieces of information.
+Bir **struct** (veri yapisi), birbiriyle iliskili verileri bir arada gruplayan ozel bir veri tipidir. Birden fazla bilgiyi barindiran bir kapsayici olarak dusunebilirsiniz.
 
-For example, a `Habit` struct might contain:
-- The habit's name
-- Whether it's completed or not
+Ornegin, bir `Habit` struct'i sunlari icerebilir:
+- Aliskanligin adi
+- Tamamlanip tamamlanmadigi
 
-Basic struct syntax:
+Temel struct sozdizimi:
 ```move
 public struct Habit has copy, drop {
     name: vector<u8>,
@@ -23,19 +23,19 @@ public struct Habit has copy, drop {
 }
 ```
 
-## Understanding Abilities
+## Ability'leri Anlamak
 
-Abilities tell Move what you can do with a type:
-- `copy` - Can be copied
-- `drop` - Can be discarded
-- `store` - Can be stored in global storage (we'll learn this later)
-- `key` - Can be used as a key in global storage (we'll learn this later)
+Ability'ler (yetenekler) Move'a bir tip ile neler yapilabilecegini soyler:
+- `copy` - Kopyalanabilir
+- `drop` - Atilabilir (bellekten silinebilir)
+- `store` - Global depolamada saklanabilir (bunu daha sonra ogrenecegiz)
+- `key` - Global depolamada anahtar olarak kullanilabilir (bunu daha sonra ogrenecegiz)
 
-For now, use `copy` and `drop` for simple structs.
+Simdilik basit struct'lar icin `copy` ve `drop` kullanin.
 
-## Understanding Constructor Functions
+## Constructor Fonksiyonlarini Anlamak
 
-A **constructor** is a function that creates a new instance of a struct. It's a common pattern to name it `new_*`:
+Bir **constructor** (yapici fonksiyon), bir struct'in yeni bir ornegini olusturan function'dir (fonksiyondur). Bunu `new_*` seklinde adlandirmak yaygin bir kaliptir:
 
 ```move
 public fun new_habit(name: vector<u8>): Habit {
@@ -46,18 +46,18 @@ public fun new_habit(name: vector<u8>): Habit {
 }
 ```
 
-## Your Task
+## Goreviniz
 
-1. Open `sources/main.move`
-2. Define a `Habit` struct with `name: vector<u8>` and `completed: bool`
-3. Write a `new_habit` constructor function
+1. `sources/main.move` dosyasini acin
+2. `name: vector<u8>` ve `completed: bool` alanlarina sahip bir `Habit` struct'i tanimlayin
+3. Bir `new_habit` constructor function'i yazin
 
-## Reading Materials
+## Okuma Materyalleri
 
-1. **Structs** - Learn how to define and use structs:
+1. **Struct'lar** - Struct'lari tanimlama ve kullanma hakkinda bilgi edinin:
    [https://move-book.com/move-basics/struct/](https://move-book.com/move-basics/struct/)
 
-2. **Abilities** - Understand copy, drop, store, key:
+2. **Ability'ler** - copy, drop, store, key kavramlarini anlayin:
    [https://move-book.com/move-basics/abilities/](https://move-book.com/move-basics/abilities/)
 
 ## Commit
@@ -68,4 +68,3 @@ sui move test
 git add day_03/
 git commit -m "Day 3: add Habit struct and constructor"
 ```
-

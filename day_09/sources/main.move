@@ -1,40 +1,40 @@
-/// DAY 9: Enums & TaskStatus
-/// 
-/// Today you will:
-/// 1. Learn about enums
-/// 2. Replace bool with an enum
-/// 3. Use match expressions
+/// GUN 9: Enum'lar ve TaskStatus
+///
+/// Bugun yapacaklariniz:
+/// 1. Enum'lar hakkinda bilgi edinme
+/// 2. bool'u bir enum ile degistirme
+/// 3. Match ifadelerini kullanma
 
 module challenge::day_09 {
     use std::string::String;
 
-    // Copy Task struct from day_08, but we'll update it
+    // day_08'den Task struct'ini kopyalayin, ama guncelleyecegiz
 
-    // TODO: Define an enum called 'TaskStatus' with two variants:
+    // TODO: Iki varyantli 'TaskStatus' adinda bir enum tanimlayin:
     // - Open
     // - Completed
-    // Add 'copy' and 'drop' abilities
+    // 'copy' ve 'drop' ability'lerini ekleyin
     // public enum TaskStatus has copy, drop {
     //     Open,
     //     Completed,
     // }
 
-    // TODO: Update Task struct to use TaskStatus instead of done: bool
+    // TODO: done: bool yerine TaskStatus kullanmak icin Task struct'ini guncelleyin
     // public struct Task has copy, drop {
     //     title: String,
     //     reward: u64,
-    //     status: TaskStatus,  // Changed from done: bool
+    //     status: TaskStatus,  // done: bool'dan degistirildi
     // }
 
-    // TODO: Update new_task to set status = TaskStatus::Open
+    // TODO: new_task fonksiyonunu status = TaskStatus::Open olarak ayarlayacak sekilde guncelleyin
     // public fun new_task(title: String, reward: u64): Task {
-    //     // Your code here
+    //     // Kodunuz buraya
     // }
 
-    // TODO: Write a function 'is_open' that checks if task.status == TaskStatus::Open
+    // TODO: task.status == TaskStatus::Open olup olmadigini kontrol eden 'is_open' fonksiyonu yazin
     // public fun is_open(task: &Task): bool {
-    //     // Your code here
-    //     // Hint: task.status == TaskStatus::Open
+    //     // Kodunuz buraya
+    //     // Ipucu: task.status == TaskStatus::Open
     // }
 }
 

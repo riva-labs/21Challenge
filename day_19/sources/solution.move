@@ -1,12 +1,12 @@
-/// DAY 19: Simple Query Functions - SOLUTION
-/// 
-/// This is the solution file for day 19.
-/// Students should complete main.move, not this file.
+/// GUN 19: Basit Sorgu Fonksiyonlari - COZUM
+///
+/// Bu cozum dosyasidir.
+/// Ogrenciler main.move dosyasini tamamlamalidir.
 
 module challenge::day_19_solution {
-   
 
-    // Copy Farm and all functions from day_18
+
+    // Farm ve tum fonksiyonlari day_18'den kopyalayin
     const MAX_PLOTS: u64 = 20;
     const E_PLOT_NOT_FOUND: u64 = 1;
     const E_PLOT_LIMIT_EXCEEDED: u64 = 2;
@@ -28,31 +28,31 @@ module challenge::day_19_solution {
     }
 
     fun plant(counters: &mut FarmCounters, plotId: u8) {
-        // Check if plotId is valid (between 1 and 20)
+        // plotId'nin gecerli olup olmadigini kontrol et (1 ile 20 arasinda)
         assert!(plotId >= 1 && plotId <= (MAX_PLOTS as u8), E_INVALID_PLOT_ID);
-        
-        // Check if we've reached the plot limit
+
+        // Plot limitine ulasilip ulasilmadigini kontrol et
         let len = vector::length(&counters.plots);
         assert!(len < MAX_PLOTS, E_PLOT_LIMIT_EXCEEDED);
-        
-        // Check if plot already exists in the vector
+
+        // Plot'un vector'de zaten var olup olmadigini kontrol et
         let mut i = 0;
         while (i < len) {
             let existing_plot = vector::borrow(&counters.plots, i);
             assert!(*existing_plot != plotId, E_PLOT_ALREADY_EXISTS);
             i = i + 1;
         };
-        
+
         counters.planted = counters.planted + 1;
         vector::push_back(&mut counters.plots, plotId);
     }
 
     fun harvest(counters: &mut FarmCounters, plotId: u8) {
         let len = vector::length(&counters.plots);
-                
-        // Check if plot exists in the vector and find its index
+
+        // Plot'un vector'de var olup olmadigini kontrol et ve indeksini bul
         let mut i = 0;
-        let mut found_index = len; 
+        let mut found_index = len;
         while (i < len) {
             let existing_plot = vector::borrow(&counters.plots, i);
             if (*existing_plot == plotId) {
@@ -60,11 +60,11 @@ module challenge::day_19_solution {
             };
             i = i + 1;
         };
-        
-        // Assert that plot was found (found_index < len means we found it)
+
+        // Plot'un bulundugunu dogrula (found_index < len ise bulduk demektir)
         assert!(found_index < len, E_PLOT_NOT_FOUND);
-        
-        // Remove the plot from the vector
+
+        // Plot'u vector'den kaldir
         vector::remove(&mut counters.plots, found_index);
         counters.harvested = counters.harvested + 1;
     }
@@ -102,14 +102,13 @@ module challenge::day_19_solution {
         harvest_from_farm(farm, plotId);
     }
 
-    // Get total planted count
+    // Toplam ekilen sayisini al
     fun total_planted(farm: &Farm): u64 {
         farm.counters.planted
     }
 
-    // Get total harvested count
+    // Toplam hasat edilen sayisini al
     fun total_harvested(farm: &Farm): u64 {
         farm.counters.harvested
     }
 }
-

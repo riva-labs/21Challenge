@@ -1,11 +1,11 @@
-/// DAY 14: Tests for Bounty Board
-/// 
-/// Today you will:
-/// 1. Write comprehensive tests
-/// 2. Test all the functions you've created
-/// 3. Practice test organization
+/// GUN 14: Bounty Board icin Testler
 ///
-/// Note: You can copy code from day_13/sources/solution.move if needed
+/// Bugun yapacaklariniz:
+/// 1. Kapsamli testler yazma
+/// 2. Olusturdugunnuz tum fonksiyonlari test etme
+/// 3. Test organizasyonu pratigi
+///
+/// Not: Gerekirse day_13/sources/solution.move dosyasindan kod kopyalayabilirsiniz
 
 module challenge::day_14 {
     use std::vector;
@@ -16,7 +16,7 @@ module challenge::day_14 {
     use std::unit_test::assert_eq;
     use std::string;
 
-    // Copy from day_13: All structs and functions
+    // day_13'ten kopyalandi: Tum struct'lar ve fonksiyonlar
     public enum TaskStatus has copy, drop {
         Open,
         Completed,
@@ -82,27 +82,27 @@ module challenge::day_14 {
         count
     }
 
-    // Note: assert! is a built-in macro in Move 2024 - no import needed!
+    // Not: assert! Move 2024'te yerlesik bir makrodur - import gerekmez!
 
-    // TODO: Write at least 3 tests:
-    // 
+    // TODO: En az 3 test yazin:
+    //
     // Test 1: test_create_board_and_add_task
-    // - Create a board with an owner
-    // - Add a task
-    // - Verify the task was added
-    // 
+    // - Bir sahip ile pano olusturun
+    // - Gorev ekleyin
+    // - Gorevin eklendigini dogrulayin
+    //
     // Test 2: test_complete_task
-    // - Create board, add tasks
-    // - Complete a task
-    // - Verify completed_count is correct
-    // 
+    // - Pano olusturun, gorevler ekleyin
+    // - Bir gorevi tamamlayin
+    // - completed_count'un dogru oldugunu dogrulayin
+    //
     // Test 3: test_total_reward
-    // - Create board, add multiple tasks with different rewards
-    // - Verify total_reward is correct
-    // 
+    // - Pano olusturun, farkli odullerle birden fazla gorev ekleyin
+    // - total_reward'un dogru oldugunu dogrulayin
+    //
     // #[test]
     // fun test_create_board_and_add_task() {
-    //     // Your code here
+    //     // Kodunuz buraya
     // }
 }
 

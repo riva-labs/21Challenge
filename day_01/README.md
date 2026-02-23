@@ -1,40 +1,40 @@
-# Day 1: Modules + Primitive Types
+# Gun 1: Module (Modul) + Primitive Types (Ilkel Tipler)
 
-## What You'll Learn Today
+## Bugun Ne Ogreneceksiniz
 
-Today is your first day learning Move! You'll learn:
-- How to create a Move module
-- What primitive types are (u64, bool, address, etc.)
-- Basic Move syntax
+Bugun Move ogrenmeye basladiginiz ilk gun! Ogrenecekleriniz:
+- Bir Move module (modul) nasil olusturulur
+- Primitive types (ilkel tipler) nelerdir (u64, bool, address, vb.)
+- Temel Move sozdizimi
 
-## Understanding Modules
+## Module'leri Anlamak
 
-A **module** in Move is like a container for your code. Think of it as a file that groups related functions and data structures together.
+Move'da bir **module** kodunuz icin bir kapsayici gibidir. Birbiriyle iliskili fonksiyonlari ve veri yapilarini bir arada gruplayan bir dosya olarak dusunebilirsiniz.
 
-In Move, every module has:
-- A name (like `challenge::day_01`)
-- Functions (code that does something)
-- Structs (data structures)
+Move'da her module'un sunlari vardir:
+- Bir isim (ornegin `challenge::day_01`)
+- Fonksiyonlar (bir islem yapan kodlar)
+- Struct'lar (veri yapilari)
 
-The basic structure looks like this:
+Temel yapi su sekilde gorunur:
 ```move
 module challenge::day_01 {
     // Your code goes here
 }
 ```
 
-## Understanding Primitive Types
+## Primitive Types'i Anlamak
 
-Move has several built-in types called **primitive types**:
-- `u64` - Unsigned 64-bit integer (0, 1, 2, 3, ...)
-- `u8` - Unsigned 8-bit integer (0-255)
-- `bool` - Boolean (true or false)
-- `address` - A blockchain address (like 0x123...)
-- `vector<T>` - A list of items (we'll learn this later)
+Move'da **primitive types** adi verilen bircok yerlesik tip bulunur:
+- `u64` - Isaretsiz 64-bit tam sayi (0, 1, 2, 3, ...)
+- `u8` - Isaretsiz 8-bit tam sayi (0-255)
+- `bool` - Boolean (true veya false)
+- `address` - Bir blockchain adresi (ornegin 0x123...)
+- `vector<T>` - Bir oge listesi (bunu daha sonra ogrenecegiz)
 
-## Understanding Constants
+## Constant'lari (Sabitler) Anlamak
 
-In Move, you can define **constants** at the module level:
+Move'da module seviyesinde **constant** (sabit) tanimlayabilirsiniz:
 
 ```move
 const NUMBER: u64 = 42;
@@ -42,33 +42,33 @@ const FLAG: bool = true;
 const MY_ADDRESS: address = @0x1;
 ```
 
-**Rules:**
-- Use `const` keyword
-- Names must be UPPERCASE
-- Constants are immutable
+**Kurallar:**
+- `const` anahtar kelimesi kullanin
+- Isimler BUYUK HARF olmalidir
+- Constant'lar degistirilemezdir (immutable)
 
-## Why Is Day 1 So Simple?
+## Gun 1 Neden Bu Kadar Basit?
 
-You might notice there's not much code to write today. That's intentional!
+Bugun yazacak fazla kod olmadigini fark edebilirsiniz. Bu kasitlidir!
 
-**Day 1 is about:**
-- ✅ Setting up your environment
-- ✅ Running your first commands (`sui move build`, `sui move test`)
-- ✅ Understanding the project structure
-- ✅ Getting familiar with Move syntax
-- ✅ Building confidence!
+**Gun 1'in amaci:**
+- Gelistirme ortaminizi kurmak
+- Ilk komutlarinizi calistirmak (`sui move build`, `sui move test`)
+- Proje yapisini anlamak
+- Move sodzidimine asina olmak
+- Ozguven kazanmak!
 
-**Tomorrow (Day 2)** you'll write your first function. For today, focus on getting comfortable with the tools and workflow.
+**Yarin (Gun 2)** ilk fonksiyonunuzu yazacaksiniz. Bugun araclar ve is akisi ile rahat olmaya odaklanin.
 
-## Understanding Move.toml
+## Move.toml Dosyasini Anlamak
 
-Every Move project needs a `Move.toml` file. Let's look at what's inside:
+Her Move projesi bir `Move.toml` dosyasina ihtiyac duyar. Icinde ne olduguna bakalim:
 
 ```toml
 [package]
-name = "day_01"           # Your package name
-version = "1.0.0"         # Version number
-edition = "2024"          # Move language edition
+name = "day_01"           # Paket adiniz
+version = "1.0.0"         # Versiyon numarasi
+edition = "2024"          # Move dil surumu
 
 [dependencies]
 Sui = { git = "https://github.com/MystenLabs/sui.git",
@@ -76,54 +76,54 @@ Sui = { git = "https://github.com/MystenLabs/sui.git",
         rev = "framework/mainnet" }
 
 [addresses]
-challenge = "0x0"         # Your module address
+challenge = "0x0"         # Module adresiniz
 ```
 
-**What each part means:**
-- **[package]** - Basic information about your project
-- **[dependencies]** - External libraries (here, the Sui framework)
-- **[addresses]** - Named addresses (here, `challenge` is an alias for `0x0`)
+**Her bolumun anlami:**
+- **[package]** - Projeniz hakkinda temel bilgiler
+- **[dependencies]** - Harici kutuphaneler (burada Sui framework'u)
+- **[addresses]** - Adlandirilmis adresler (burada `challenge`, `0x0` icin bir takma addir)
 
-**Do you need to modify this?** Not for this challenge! It's already set up correctly for you.
+**Bunu degistirmeniz gerekiyor mu?** Bu challenge icin hayir! Sizin icin zaten dogru sekilde ayarlanmis durumda.
 
-**What is `challenge::day_01`?**
-- `challenge` comes from `[addresses]` (it's `0x0`)
-- `day_01` is the module name
-- Together: `challenge::day_01` = the full module path
+**`challenge::day_01` nedir?**
+- `challenge`, `[addresses]` bolumunden gelir (`0x0`'dir)
+- `day_01` module adidir
+- Birlikte: `challenge::day_01` = tam module yolu
 
-## Your Task
+## Goreviniz
 
-1. Open `sources/main.move`
-2. Define three constants using primitive types (follow the TODO instructions)
-3. Build and test: `sui move build` and `sui move test`
-4. (Optional) Read the Move.toml file to understand the project configuration
+1. `sources/main.move` dosyasini acin
+2. Primitive types kullanarak uc constant tanimlayin (TODO talimatlarina uyun)
+3. Derleyin ve test edin: `sui move build` ve `sui move test`
+4. (Istege bagli) Proje yapilandirmasini anlamak icin Move.toml dosyasini okuyun
 
-**Your constants should look like:**
+**Constant'lariniz su sekilde gorunmeli:**
 ```move
 const NUMBER: u64 = 42;
 const FLAG: bool = true;
 const MY_ADDRESS: address = @0x1;
 ```
 
-**Expected output:**
+**Beklenen cikti:**
 ```
 BUILDING day_01
 Build successful
 ```
 
-**No tests yet?** That's normal! Day 1 has no test functions yet. We'll start testing in Day 2.
+**Henuz test yok mu?** Bu normal! Gun 1'de henuz test fonksiyonlari yok. Testlere Gun 2'de baslayacagiz.
 
-## Reading Materials
+## Okuma Materyalleri
 
-Before coding, read these sections from Move Book:
+Kod yazmadan once Move Book'tan su bolumleri okuyun:
 
-1. **Hello World** - Learn how to create your first Move package:
+1. **Hello World** - Ilk Move paketinizi nasil olusturacaginizi ogrenin:
    [https://move-book.com/your-first-move/hello-world/](https://move-book.com/your-first-move/hello-world/)
 
-2. **Modules** - Understand module structure:
+2. **Modules** - Module yapisini anlayin:
    [https://move-book.com/move-basics/module/](https://move-book.com/move-basics/module/)
 
-3. **Primitive Types** - Learn about basic types:
+3. **Primitive Types** - Temel tipleri ogrenin:
    [https://move-book.com/move-basics/primitive-types/](https://move-book.com/move-basics/primitive-types/)
 
 ## Commit
@@ -134,4 +134,3 @@ sui move test
 git add day_01/
 git commit -m "Day 1: setup package and module"
 ```
-

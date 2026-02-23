@@ -1,13 +1,13 @@
-/// DAY 4: Vector + Ownership Basics - SOLUTION
-/// 
-/// This is the solution file for day 4.
-/// Students should complete main.move, not this file.
+/// GUN 4: Vector + Ownership Temelleri - COZUM
+///
+/// Bu cozum dosyasidir.
+/// Ogrenciler main.move dosyasini tamamlamalidir, bu dosyayi degil.
 
 module challenge::day_04_solution {
     use std::vector;
     use std::string::String;
 
-    // Copy the Habit struct from day_03
+    // day_03'ten Habit struct'ini (veri yapisi) kopyalayin
     public struct Habit has copy, drop {
         name: String,
         completed: bool,
@@ -20,21 +20,20 @@ module challenge::day_04_solution {
         }
     }
 
-    // HabitList struct containing a vector of habits
+    // Aliskanliklarin vector'unu iceren HabitList struct'i
     public struct HabitList has drop {
         habits: vector<Habit>,
     }
 
-    // Create an empty habit list
+    // Bos bir aliskanlik listesi olusturur
     public fun empty_list(): HabitList {
         HabitList {
             habits: vector::empty(),
         }
     }
 
-    // Add a habit to the list (transfers ownership of habit)
+    // Listeye bir aliskanlik ekler (habit'in ownership'ini aktarir)
     public fun add_habit(list: &mut HabitList, habit: Habit) {
         vector::push_back(&mut list.habits, habit);
     }
 }
-

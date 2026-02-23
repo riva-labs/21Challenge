@@ -1,17 +1,17 @@
-/// DAY 7: Unit Tests for Habit Tracker
+/// GUN 7: Habit Tracker icin Birim Testleri
 ///
-/// Today you will:
-/// 1. Learn how to write tests in Move
-/// 2. Write tests for your habit tracker
-/// 3. Use assert! macro
+/// Bugun yapacaklariniz:
+/// 1. Move'da test yazmayi ogreneceksiniz
+/// 2. Habit tracker'iniz icin testler yazacaksiniz
+/// 3. assert! makrosunu kullanacaksiniz
 ///
-/// Note: You can copy code from day_06/sources/solution.move if needed
+/// Not: Gerekirse day_06/sources/solution.move dosyasindan kod kopyalayabilirsiniz
 
 module challenge::day_07 {
     use std::vector;
     use std::string::{Self, String};
 
-    // Copy from day_06: Habit struct with String
+    // day_06'dan kopyalanan: String ile Habit struct (veri yapisi)
     public struct Habit has copy, drop {
         name: String,
         completed: bool,
@@ -51,25 +51,24 @@ module challenge::day_07 {
         }
     }
 
-    // Note: assert! is a built-in macro in Move 2024 - no import needed!
+    // Not: assert! Move 2024'te yerlesik bir makrodur - ice aktarmaya gerek yok!
 
-    // TODO: Write a test 'test_add_habits' that:
-    // - Creates an empty list
-    // - Adds 1-2 habits
-    // - Checks that the list length is correct
+    // TODO: Asagidakileri yapan bir 'test_add_habits' testi yazin:
+    // - Bos bir liste olusturun
+    // - 1-2 aliskanlik ekleyin
+    // - Liste uzunlugunun dogru oldugunu kontrol edin
     // #[test]
     // fun test_add_habits() {
-    //     // Your code here
-    //     // Use b"Exercise".to_string() to create a String
+    //     // Kodunuz buraya
+    //     // String olusturmak icin b"Exercise".to_string() kullanin
     // }
 
-    // TODO: Write a test 'test_complete_habit' that:
-    // - Creates a list and adds a habit
-    // - Completes the habit
-    // - Checks that completed == true
+    // TODO: Asagidakileri yapan bir 'test_complete_habit' testi yazin:
+    // - Bir liste olusturun ve bir aliskanlik ekleyin
+    // - Aliskanligi tamamlayin
+    // - completed == true oldugunu kontrol edin
     // #[test]
     // fun test_complete_habit() {
-    //     // Your code here
+    //     // Kodunuz buraya
     // }
 }
-

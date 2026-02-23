@@ -1,32 +1,32 @@
-# Day 13: Simple Aggregations (Total Reward, Completed Count)
+# Gun 13: Basit Aggregation'lar (Toplam Odul, Tamamlanan Sayisi)
 
-## What You'll Learn Today
+## Bugun Ne Ogreneceksiniz
 
-Today you'll learn:
-- How to iterate over vectors
-- How to calculate totals and counts
-- How to filter data based on conditions
+Bugun ogrenecekleriniz:
+- Vector'ler uzerinde nasil dongu yapilir
+- Toplam ve sayim nasil hesaplanir
+- Kosullara gore veri nasil filtrelenir
 
-## Understanding Aggregations
+## Aggregation'lari Anlama
 
-**Aggregation** means collecting and summarizing data:
-- **Sum** - Add up all values (total reward)
-- **Count** - Count items that match a condition (completed tasks)
+**Aggregation** (toplulastirma), veriyi toplama ve ozetleme anlamina gelir:
+- **Toplam** - Tum degerleri toplama (toplam odul)
+- **Sayim** - Bir kosulla eslesen ogeleri sayma (tamamlanan gorevler)
 
-You'll use loops to:
-1. Go through each item in a vector
-2. Check a condition or get a value
-3. Add to a running total or counter
+Donguler kullanarak:
+1. Bir vector'deki her ogenin uzerinden gecersiniz
+2. Bir kosul kontrol eder veya bir deger alirsiniz
+3. Calisan bir toplam veya sayaca eklersiniz
 
-## Your Task
+## Goreviniz
 
-1. The code from day_12 is already in `sources/main.move` (you can also check `day_12/sources/solution.move` if needed)
-2. Write `total_reward()` that sums all task rewards
-3. Write `completed_count()` that counts completed tasks
+1. day_12'deki kod zaten `sources/main.move` dosyasinda (gerekirse `day_12/sources/solution.move` dosyasini da kontrol edebilirsiniz)
+2. Tum gorev odullerini toplayan `total_reward()` yazin
+3. Tamamlanan gorevleri sayan `completed_count()` yazin
 
-## Reading Materials
+## Okuma Materyalleri
 
-1. **Control Flow** - Review loops for iteration:
+1. **Kontrol Akisi** - Dongu icin kontrol akisini gozden gecirin:
    [https://move-book.com/move-basics/control-flow/](https://move-book.com/move-basics/control-flow/)
 
 ## Commit
