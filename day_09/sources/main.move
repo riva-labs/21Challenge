@@ -8,33 +8,40 @@
 module challenge::day_09 {
     use std::string::String;
 
-    // Copy Task struct from day_08, but we'll update it
+    public enum TaskStatus has copy, drop {
+        Open,
+        Completed,
+    }
+    
+    public struct Task has copy, drop {
+        title: String,
+        reward: u64,
+        status: TaskStatus, 
+    }
 
-    // TODO: Define an enum called 'TaskStatus' with two variants:
-    // - Open
-    // - Completed
-    // Add 'copy' and 'drop' abilities
-    // public enum TaskStatus has copy, drop {
-    //     Open,
-    //     Completed,
-    // }
+    public fun new_task(title: String, reward: u64): Task {
+        Task {
+            title,
+            reward,
+            status: TaskStatus::Open, 
+        }
+    }
 
-    // TODO: Update Task struct to use TaskStatus instead of done: bool
-    // public struct Task has copy, drop {
-    //     title: String,
-    //     reward: u64,
-    //     status: TaskStatus,  // Changed from done: bool
-    // }
+    public fun is_open(task: &Task): bool {
+        task.status == TaskStatus::Open
+    }
 
-    // TODO: Update new_task to set status = TaskStatus::Open
-    // public fun new_task(title: String, reward: u64): Task {
-    //     // Your code here
-    // }
+    // --- TEST SENARYOSU ---
+    #[test_only]
+    use std::string;
 
-    // TODO: Write a function 'is_open' that checks if task.status == TaskStatus::Open
-    // public fun is_open(task: &Task): bool {
-    //     // Your code here
-    //     // Hint: task.status == TaskStatus::Open
-    // }
+    #[test]
+    fun test_task_status_system() {
+        let title = string::utf8(b"Learn Enums");
+        let task = new_task(title, 1000);
+
+        // Durumun 'Open' olduğunu iki farklı yöntemle doğruluyoruz
+        assert!(is_open(&task), 0);
+        assert!(task.status == TaskStatus::Open, 1);
+    }
 }
-

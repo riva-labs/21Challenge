@@ -7,20 +7,33 @@
 
 module challenge::day_08 {
     use std::string::String;
+    
+    public struct Task has copy, drop{
+        title: String,
+        reward: u64,
+        done: bool,
+    }
 
-    // TODO: Define a struct called 'Task' with:
-    // - title: String
-    // - reward: u64
-    // - done: bool
-    // Add 'copy' and 'drop' abilities
-    // public struct Task has copy, drop {
-    //     // Your fields here
-    // }
+    public fun nwe_task(title: String, reward: u64): Task{
+        Task{
+            title,
+            reward,
+            done: false,
+        }
+    }
 
-    // TODO: Write a constructor function 'new_task'
-    // that takes title and reward, returns a Task with done = false
-    // public fun new_task(title: String, reward: u64): Task {
-    //     // Your code here
-    // }
+    #[test_only]
+    use std::string;
+
+    #[test]
+    fun test_new_task(){
+        let title = string::utf8(b"Fix Bug");
+        let reward = 1000;
+        let task = nwe_task(title,reward);
+
+        assert!(task.title == title,0);
+        assert!(task.reward == reward,1);
+        assert!(task.done == false,2);
+    }    
 }
 
